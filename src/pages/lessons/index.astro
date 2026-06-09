@@ -1,0 +1,93 @@
+---
+import { getCollection } from 'astro:content';
+import '../../styles/global.css';
+
+const lessons = (await getCollection('lessons')).sort(
+  (a, b) => (a.data.order ?? 999) - (b.data.order ?? 999)
+);
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>All Lessons — TheVoicer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  </head>
+  <body>
+    <nav class="topnav">
+      <a href="/" class="brand">TheVoicer</a>
+    </nav>
+    <main class="page">
+      <h1>All Lessons</h1>
+      <p class="sub">Browse the full curriculum below.</p>
+      <div class="list">
+        {lessons.map(lesson => (
+          <a href={`/lessons/${lesson.id}`} class="row">
+            <span class="num">{lesson.data.order ?? '—'}</span>
+            <div class="info">
+              <span class="title">{lesson.data.title}</span>
+              {lesson.data.description && <span class="desc">{lesson.data.description}</span>}
+            </div>
+            <span class="arrow">→</span>
+          </a>
+        ))}
+      </div>
+    </main>
+  </body>
+</html>
+
+<style>
+  .topnav {
+    display: flex;
+    align-items: center;
+    padding: 1rem 2rem;
+    border-bottom: 1px solid var(--color-border);
+  }
+  .brand {
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: var(--color-accent);
+    letter-spacing: -0.02em;
+  }
+  .brand:hover { text-decoration: none; color: var(--color-accent-soft); }
+
+  .page {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 3rem 2rem 6rem;
+  }
+  .page h1 { margin-bottom: 0.4rem; }
+  .sub { color: var(--color-muted); margin-bottom: 2.5rem; }
+
+  .list { display: flex; flex-direction: column; gap: 0.5rem; }
+
+  .row {
+    display: grid;
+    grid-template-columns: 2.5rem 1fr auto;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.25rem;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    color: inherit;
+    text-decoration: none;
+    transition: border-color 0.15s;
+  }
+  .row:hover { border-color: var(--color-accent); text-decoration: none; }
+  .num {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    color: var(--color-accent);
+    font-weight: 700;
+  }
+  .info { display: flex; flex-direction: column; gap: 0.2rem; }
+  .title { font-weight: 600; font-size: 0.95rem; }
+  .desc { font-size: 0.8rem; color: var(--color-muted); }
+  .arrow { color: var(--color-muted); font-size: 0.9rem; }
+  .row:hover .arrow { color: var(--color-accent-soft); }
+</style>

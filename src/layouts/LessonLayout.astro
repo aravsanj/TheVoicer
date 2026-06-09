@@ -1,0 +1,250 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description?: string;
+  order?: number;
+  tags?: string[];
+  slug?: string;
+  isCompleted?: boolean;
+  isBookmarked?: boolean;
+}
+
+const { title, description, order, tags = [], slug, isCompleted = false, isBookmarked = false } = Astro.props;
+const user = Astro.locals.user;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title} — TheVoicer</title>
+    {description && <meta name="description" content={description} />}
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  </head>
+  <body>
+    <nav class="topnav">
+      <a href="/" class="brand">TheVoicer</a>
+      <a href="/lessons" class="nav-link">All Lessons</a>
+      <div class="nav-auth">
+        {user ? (
+          <>
+            <a href="/profile" class="nav-link">{user.email}</a>
+            <form method="POST" action="/api/auth/logout" style="display:inline">
+              <button type="submit" class="btn-ghost">Sign out</button>
+            </form>
+          </>
+        ) : (
+          <a href="/login" class="btn-ghost">Sign in</a>
+        )}
+      </div>
+    </nav>
+
+    <main class="lesson-page">
+      <header class="lesson-header">
+        {order && <span class="lesson-number">Lesson {order}</span>}
+        <h1>{title}</h1>
+        {description && <p class="lesson-desc">{description}</p>}
+        {tags.length > 0 && (
+          <div class="tags">
+            {tags.map(tag => <span class="tag">{tag}</span>)}
+          </div>
+        )}
+
+        {user && slug && (
+          <div class="lesson-actions">
+            <button
+              id="btn-complete"
+              class:list={['btn-action', { active: isCompleted }]}
+              data-slug={slug}
+              data-completed={isCompleted}
+            >
+              {isCompleted ? '✓ Completed' : 'Mark complete'}
+            </button>
+            <button
+              id="btn-bookmark"
+              class:list={['btn-action', { active: isBookmarked }]}
+              data-slug={slug}
+              data-bookmarked={isBookmarked}
+            >
+              {isBookmarked ? '★ Bookmarked' : '☆ Bookmark'}
+            </button>
+          </div>
+        )}
+
+        {!user && slug && (
+          <p class="signin-hint"><a href="/login">Sign in</a> to track progress and bookmark lessons.</p>
+        )}
+      </header>
+
+      <article class="lesson-content">
+        <slot />
+      </article>
+
+      <footer class="lesson-footer">
+        <a href="/lessons">← Back to all lessons</a>
+      </footer>
+    </main>
+
+    {user && slug && (
+      <script>
+        function setupButton(id, endpoint, stateAttr, labels) {
+          const btn = document.getElementById(id);
+          if (!btn) return;
+          let active = btn.dataset[stateAttr] === 'true';
+          btn.addEventListener('click', async () => {
+            const slug = btn.dataset.slug;
+            const res = await fetch(`/api/${endpoint}/${slug}`, { method: 'POST' });
+            if (!res.ok) return;
+            const data = await res.json();
+            const key = Object.keys(data)[0];
+            active = data[key];
+            btn.textContent = active ? labels[1] : labels[0];
+            btn.classList.toggle('active', active);
+          });
+        }
+        setupButton('btn-complete', 'progress', 'completed', ['Mark complete', '✓ Completed']);
+        setupButton('btn-bookmark', 'bookmarks', 'bookmarked', ['☆ Bookmark', '★ Bookmarked']);
+      </script>
+    )}
+  </body>
+</html>
+
+<style>
+  .topnav {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 1rem 2rem;
+    border-bottom: 1px solid var(--color-border);
+    position: sticky;
+    top: 0;
+    background: rgba(15, 15, 19, 0.9);
+    backdrop-filter: blur(12px);
+    z-index: 100;
+  }
+  .brand {
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: var(--color-accent);
+    letter-spacing: -0.02em;
+  }
+  .brand:hover { text-decoration: none; color: var(--color-accent-soft); }
+  .nav-link {
+    font-size: 0.9rem;
+    color: var(--color-muted);
+  }
+  .nav-link:hover { color: var(--color-text); }
+  .nav-auth {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  .nav-email {
+    font-size: 0.85rem;
+    color: var(--color-muted);
+  }
+  .btn-ghost {
+    background: none;
+    border: 1px solid var(--color-border);
+    color: var(--color-muted);
+    padding: 0.3rem 0.75rem;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    cursor: pointer;
+    text-decoration: none;
+  }
+  .btn-ghost:hover { color: var(--color-text); border-color: var(--color-muted); }
+
+  .lesson-page {
+    max-width: 820px;
+    margin: 0 auto;
+    padding: 3rem 2rem 5rem;
+  }
+
+  .lesson-header {
+    margin-bottom: 2.5rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid var(--color-border);
+  }
+  .lesson-number {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--color-accent);
+    background: rgba(124, 106, 247, 0.1);
+    padding: 0.25rem 0.75rem;
+    border-radius: 999px;
+    margin-bottom: 0.75rem;
+  }
+  .lesson-header h1 {
+    color: var(--color-text);
+  }
+  .lesson-desc {
+    color: var(--color-muted);
+    font-size: 1.05rem;
+    margin-top: 0.5rem;
+    line-height: 1.6;
+  }
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 1rem;
+  }
+  .tag {
+    font-size: 0.75rem;
+    background: var(--color-tag);
+    color: var(--color-muted);
+    padding: 0.25rem 0.65rem;
+    border-radius: 4px;
+    border: 1px solid var(--color-border);
+  }
+
+  .lesson-actions {
+    display: flex;
+    gap: 0.75rem;
+    margin-top: 1.25rem;
+  }
+  .btn-action {
+    background: none;
+    border: 1px solid var(--color-border);
+    color: var(--color-muted);
+    padding: 0.4rem 1rem;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+  .btn-action:hover { border-color: var(--color-accent); color: var(--color-accent); }
+  .btn-action.active { background: rgba(124, 106, 247, 0.15); border-color: var(--color-accent); color: var(--color-accent); }
+
+  .signin-hint {
+    margin-top: 1rem;
+    font-size: 0.85rem;
+    color: var(--color-muted);
+  }
+
+  .lesson-content {
+    line-height: 1.8;
+  }
+
+  .lesson-footer {
+    margin-top: 4rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--color-border);
+    font-size: 0.9rem;
+    color: var(--color-muted);
+  }
+  .lesson-footer a {
+    color: var(--color-muted);
+  }
+  .lesson-footer a:hover { color: var(--color-accent-soft); }
+</style>

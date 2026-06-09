@@ -1,0 +1,2 @@
+@AGENTS.md
+@CONTEXT_MODE.md

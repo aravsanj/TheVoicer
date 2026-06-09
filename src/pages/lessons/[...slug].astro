@@ -1,0 +1,43 @@
+---
+import { getEntry, render } from 'astro:content';
+import LessonLayout from '../../layouts/LessonLayout.astro';
+import { db } from '../../db/client';
+import { lessonCompletions, bookmarks } from '../../db/schema';
+import { eq, and } from 'drizzle-orm';
+
+const { slug } = Astro.params;
+const lesson = await getEntry('lessons', slug ?? '');
+if (!lesson) return Astro.redirect('/lessons');
+
+const { Content } = await render(lesson);
+const user = Astro.locals.user;
+
+let isCompleted = false;
+let isBookmarked = false;
+
+if (user) {
+  const [completion] = await db
+    .select({ id: lessonCompletions.id })
+    .from(lessonCompletions)
+    .where(and(eq(lessonCompletions.userId, user.id), eq(lessonCompletions.lessonSlug, lesson.id)));
+  isCompleted = !!completion;
+
+  const [bookmark] = await db
+    .select({ id: bookmarks.id })
+    .from(bookmarks)
+    .where(and(eq(bookmarks.userId, user.id), eq(bookmarks.lessonSlug, lesson.id)));
+  isBookmarked = !!bookmark;
+}
+---
+
+<LessonLayout
+  title={lesson.data.title}
+  description={lesson.data.description}
+  order={lesson.data.order}
+  tags={lesson.data.tags}
+  slug={lesson.id}
+  isCompleted={isCompleted}
+  isBookmarked={isBookmarked}
+>
+  <Content />
+</LessonLayout>
