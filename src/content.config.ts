@@ -4,6 +4,7 @@ import { glob } from 'astro/loaders';
 const lessons = defineCollection({
   loader: glob({ pattern: '**/*.{md,mdx}', base: './src/content/lessons' }),
   schema: z.object({
+    slug: z.string(),
     title: z.string(),
     description: z.string().optional(),
     order: z.number().optional(),

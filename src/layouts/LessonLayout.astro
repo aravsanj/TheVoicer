@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import Navbar from '../components/Navbar.astro';
 
 interface Props {
   title: string;
@@ -27,22 +28,7 @@ const user = Astro.locals.user;
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
   </head>
   <body>
-    <nav class="topnav">
-      <a href="/" class="brand">TheVoicer</a>
-      <a href="/lessons" class="nav-link">All Lessons</a>
-      <div class="nav-auth">
-        {user ? (
-          <>
-            <a href="/profile" class="nav-link">{user.email}</a>
-            <form method="POST" action="/api/auth/logout" style="display:inline">
-              <button type="submit" class="btn-ghost">Sign out</button>
-            </form>
-          </>
-        ) : (
-          <a href="/login" class="btn-ghost">Sign in</a>
-        )}
-      </div>
-    </nav>
+    <Navbar />
 
     <main class="lesson-page">
       <header class="lesson-header">
@@ -115,52 +101,6 @@ const user = Astro.locals.user;
 </html>
 
 <style>
-  .topnav {
-    display: flex;
-    align-items: center;
-    gap: 1.5rem;
-    padding: 1rem 2rem;
-    border-bottom: 1px solid var(--color-border);
-    position: sticky;
-    top: 0;
-    background: rgba(15, 15, 19, 0.9);
-    backdrop-filter: blur(12px);
-    z-index: 100;
-  }
-  .brand {
-    font-weight: 700;
-    font-size: 1.1rem;
-    color: var(--color-accent);
-    letter-spacing: -0.02em;
-  }
-  .brand:hover { text-decoration: none; color: var(--color-accent-soft); }
-  .nav-link {
-    font-size: 0.9rem;
-    color: var(--color-muted);
-  }
-  .nav-link:hover { color: var(--color-text); }
-  .nav-auth {
-    margin-left: auto;
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-  }
-  .nav-email {
-    font-size: 0.85rem;
-    color: var(--color-muted);
-  }
-  .btn-ghost {
-    background: none;
-    border: 1px solid var(--color-border);
-    color: var(--color-muted);
-    padding: 0.3rem 0.75rem;
-    border-radius: 6px;
-    font-size: 0.85rem;
-    cursor: pointer;
-    text-decoration: none;
-  }
-  .btn-ghost:hover { color: var(--color-text); border-color: var(--color-muted); }
-
   .lesson-page {
     max-width: 820px;
     margin: 0 auto;

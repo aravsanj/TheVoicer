@@ -1,12 +1,13 @@
 ---
-import { getEntry, render } from 'astro:content';
+import { getCollection, render } from 'astro:content';
 import LessonLayout from '../../layouts/LessonLayout.astro';
 import { db } from '../../db/client';
 import { lessonCompletions, bookmarks } from '../../db/schema';
 import { eq, and } from 'drizzle-orm';
 
 const { slug } = Astro.params;
-const lesson = await getEntry('lessons', slug ?? '');
+const lessons = await getCollection('lessons');
+const lesson = lessons.find(l => l.data.slug === slug);
 if (!lesson) return Astro.redirect('/lessons');
 
 const { Content } = await render(lesson);
@@ -19,13 +20,13 @@ if (user) {
   const [completion] = await db
     .select({ id: lessonCompletions.id })
     .from(lessonCompletions)
-    .where(and(eq(lessonCompletions.userId, user.id), eq(lessonCompletions.lessonSlug, lesson.id)));
+    .where(and(eq(lessonCompletions.userId, user.id), eq(lessonCompletions.lessonSlug, lesson.data.slug)));
   isCompleted = !!completion;
 
   const [bookmark] = await db
     .select({ id: bookmarks.id })
     .from(bookmarks)
-    .where(and(eq(bookmarks.userId, user.id), eq(bookmarks.lessonSlug, lesson.id)));
+    .where(and(eq(bookmarks.userId, user.id), eq(bookmarks.lessonSlug, lesson.data.slug)));
   isBookmarked = !!bookmark;
 }
 ---
@@ -35,7 +36,7 @@ if (user) {
   description={lesson.data.description}
   order={lesson.data.order}
   tags={lesson.data.tags}
-  slug={lesson.id}
+  slug={lesson.data.slug}
   isCompleted={isCompleted}
   isBookmarked={isBookmarked}
 >

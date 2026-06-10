@@ -1,6 +1,7 @@
 ---
 import { getCollection } from 'astro:content';
 import '../../styles/global.css';
+import Navbar from '../../components/Navbar.astro';
 
 const lessons = (await getCollection('lessons')).sort(
   (a, b) => (a.data.order ?? 999) - (b.data.order ?? 999)
@@ -18,15 +19,13 @@ const lessons = (await getCollection('lessons')).sort(
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
   </head>
   <body>
-    <nav class="topnav">
-      <a href="/" class="brand">TheVoicer</a>
-    </nav>
+    <Navbar />
     <main class="page">
       <h1>All Lessons</h1>
       <p class="sub">Browse the full curriculum below.</p>
       <div class="list">
         {lessons.map(lesson => (
-          <a href={`/lessons/${lesson.id}`} class="row">
+          <a href={`/lessons/${lesson.data.slug}`} class="row">
             <span class="num">{lesson.data.order ?? '—'}</span>
             <div class="info">
               <span class="title">{lesson.data.title}</span>
@@ -41,20 +40,6 @@ const lessons = (await getCollection('lessons')).sort(
 </html>
 
 <style>
-  .topnav {
-    display: flex;
-    align-items: center;
-    padding: 1rem 2rem;
-    border-bottom: 1px solid var(--color-border);
-  }
-  .brand {
-    font-weight: 700;
-    font-size: 1.1rem;
-    color: var(--color-accent);
-    letter-spacing: -0.02em;
-  }
-  .brand:hover { text-decoration: none; color: var(--color-accent-soft); }
-
   .page {
     max-width: 760px;
     margin: 0 auto;

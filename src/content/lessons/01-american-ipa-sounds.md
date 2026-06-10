@@ -1,4 +1,5 @@
 ---
+slug: "american-ipa-sounds"
 title: "American English IPA Sounds"
 description: "A complete reference of all American English phonemes — vowels, diphthongs, and consonants with IPA symbols and word examples."
 order: 1

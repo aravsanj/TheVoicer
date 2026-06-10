@@ -23,6 +23,7 @@ Lessons live in `src/content/lessons/` as `.md` or `.mdx` files. The collection 
 ```ts
 // Frontmatter schema
 {
+  slug: string;           // required — stable unique ID used for URLs and DB records
   title: string;          // required
   description?: string;
   order?: number;         // controls sort order on the lessons index
@@ -34,9 +35,9 @@ Lessons live in `src/content/lessons/` as `.md` or `.mdx` files. The collection 
 
 - `/` — home (`src/pages/index.astro`)
 - `/lessons` — lesson listing (`src/pages/lessons/index.astro`), sorts by `order`
-- `/lessons/[slug]` — individual lesson (`src/pages/lessons/[...slug].astro`), slug = file id (filename without extension)
+- `/lessons/[slug]` — individual lesson (`src/pages/lessons/[...slug].astro`), slug = `data.slug` from frontmatter
 
-The slug page calls `getStaticPaths()` via `getCollection('lessons')` and renders each lesson through `LessonLayout`.
+The slug page uses `getCollection('lessons')` and finds the lesson by `data.slug`, then renders it through `LessonLayout`.
 
 ### Layout
 
