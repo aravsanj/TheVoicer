@@ -41,7 +41,7 @@ Longer words can have two levels of stress:
 | Word            | IPA                   |
 |-----------------|-----------------------|
 | education       | /ˌɛd·jʊˈkeɪ·ʃən/      |
-| pronunciation   | /prəˌnʌn·siˈeɪ·ʃən/   |
+| pronunciation   | /prəˌnʌn·siːˈeɪ·ʃən/   |
 | communication   | /kəˌmjuː·nɪˈkeɪ·ʃən/  |
 | information     | /ˌɪn·fɚˈmeɪ·ʃən/      |
 

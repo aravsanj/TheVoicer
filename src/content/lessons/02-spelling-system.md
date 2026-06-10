@@ -31,7 +31,7 @@ One letter can map to several different sounds depending on the word.
 | Word | Spelling | Sound   | Phoneme   | Word IPA  |
 |------|----------|---------|-----------|-----------|
 | cat  | c        | k-sound | /k/       | /kæt/     |
-| city | c        | s-sound | /s/       | /ˈsɪti/   |
+| city | c        | s-sound | /s/       | /ˈsɪtiː/  |
 
 ### The letter **G**
 
@@ -65,7 +65,7 @@ The same phoneme can be spelled many different ways across different words.
 
 | Word  | Spelling | Phoneme | Word IPA    |
 |-------|----------|---------|-------------|
-| baby  | a        | /eɪ/    | /ˈbeɪbi/    |
+| baby  | a        | /eɪ/    | /ˈbeɪbiː/   |
 | steak | ea       | /eɪ/    | /steɪk/     |
 | rain  | ai       | /eɪ/    | /reɪn/      |
 | day   | ay       | /eɪ/    | /deɪ/       |
@@ -80,7 +80,7 @@ The same phoneme can be spelled many different ways across different words.
 | fell   | e        | /ɛ/     | /fɛl/       |
 | head   | ea       | /ɛ/     | /hɛd/       |
 | said   | ai       | /ɛ/     | /sɛd/       |
-| any    | a        | /ɛ/     | /ˈɛni/      |
+| any    | a        | /ɛ/     | /ˈɛniː/     |
 | friend | ie       | /ɛ/     | /frɛnd/     |
 
 ### The /f/ sound

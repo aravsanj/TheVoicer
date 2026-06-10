@@ -97,11 +97,11 @@ Vowels are shaped by:
 
 1. **Tongue body position (front/back)** — how far forward or back the tongue body sits
 2. **Tongue height** — how close the tongue is to the roof of the mouth; high = close to roof, low = far from roof
-3. **Lip rounding** — whether the lips round (as in /u/) or spread (as in /i/)
+3. **Lip rounding** — whether the lips round (as in /u/) or spread (as in /iː/)
 
 | Tongue Body Position | Height | Lip Rounding | Sounds | Examples |
 |----------------------|--------|-------------|--------|---------|
-| Front | High | Unrounded | /i/, /ɪ/ | *eat*, *sit* |
+| Front | High | Unrounded | /iː/, /ɪ/ | *eat*, *sit* |
 | Front | Mid | Unrounded | /eɪ/, /ɛ/ | *face*, *bet* |
 | Front | Low | Unrounded | /æ/ | *cat* |
 | Central | Mid | Unrounded | /ə/, /ʌ/ | *about*, *cup* |

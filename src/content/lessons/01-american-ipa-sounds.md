@@ -10,7 +10,7 @@ tags: ["phonetics", "IPA", "vowels", "consonants", "American English"]
 
 | Symbol | Common Name   | Articulatory Description (Phonetic Label)      | American Word Examples  |
 |--------|---------------|------------------------------------------------|-------------------------|
-| /i/    | long-e        | Close front unrounded vowel                    | eat, sleep, me          |
+| /iː/   | long-e        | Close front unrounded vowel                    | eat, sleep, me          |
 | /ɪ/    | short-i       | Near-close near-front unrounded vowel          | big, sit, kit           |
 | /ɛ/    | short-e       | Open-mid front unrounded vowel                 | bet, met, head          |
 | /æ/    | short-a       | Near-open front unrounded vowel                | bat, cat, land          |

@@ -37,15 +37,15 @@ These suffixes are **stress-attracting** — the syllable right before the suffi
 **-ity / -ety**
 | Word          | IPA                       | Stressed syllable |
 |---------------|---------------------------|-------------------|
-| possiBILity   | /ˌpɑs·əˈbɪl·ɪ·ti/         | -bil-             |
-| sinCErity     | /sɪnˈsɛr·ɪ·ti/            | -cer-             |
-| maJORity      | /məˈdʒɔr·ɪ·ti/            | -jor-             |
-| QUAlity       | /ˈkwɑl·ɪ·ti/              | -qual-            |
+| possiBILity   | /ˌpɑs·əˈbɪl·ɪ·tiː/         | -bil-             |
+| sinCErity     | /sɪnˈsɛr·ɪ·tiː/            | -cer-             |
+| maJORity      | /məˈdʒɔr·ɪ·tiː/            | -jor-             |
+| QUAlity       | /ˈkwɑl·ɪ·tiː/              | -qual-            |
 
 **-ious / -eous / -uous**
 | Word           | IPA                      | Stressed syllable |
 |----------------|--------------------------|-------------------|
-| mysTErious     | /mɪˈstɪr·i·əs/           | -te-              |
+| mysTErious     | /mɪˈstɪr·iː·əs/           | -te-              |
 | couRAGeous     | /kəˈreɪ·dʒəs/            | -ra-              |
 | amBIGuous      | /æmˈbɪɡ·ju·əs/           | -big-             |
 
@@ -71,11 +71,11 @@ These suffixes do **not** change where stress falls. The original root keeps its
 
 | Base word | IPA           | With suffix  | IPA               |
 |-----------|---------------|--------------|-------------------|
-| HAPpy     | /ˈhæp·i/      | HAPpiness    | /ˈhæp·i·nəs/      |
-| CAREful   | /ˈkɛr·fəl/    | CAREfully    | /ˈkɛr·fəl·i/      |
+| HAPpy     | /ˈhæp·iː/      | HAPpiness    | /ˈhæp·iː·nəs/      |
+| CAREful   | /ˈkɛr·fəl/    | CAREfully    | /ˈkɛr·fəl·iː/      |
 | MANage    | /ˈmæn·ɪdʒ/    | MANagement   | /ˈmæn·ɪdʒ·mənt/   |
 | TEACH     | /tiːtʃ/       | TEACHer      | /ˈtiː·tʃɚ/        |
-| QUICK     | /kwɪk/        | QUICKly      | /ˈkwɪk·li/        |
+| QUICK     | /kwɪk/        | QUICKly      | /ˈkwɪk·liː/        |
 
 ---
 
@@ -86,7 +86,7 @@ Most prefixes in English are **unstressed** — they don't attract stress to the
 | Prefix | Word            | IPA                      | Stress on root |
 |--------|-----------------|--------------------------|----------------|
 | re-    | rePEAT          | /rɪˈpiːt/                | root: -peat    |
-| un-    | unHAPpy         | /ʌnˈhæp·i/               | root: -hap-    |
+| un-    | unHAPpy         | /ʌnˈhæp·iː/               | root: -hap-    |
 | dis-   | disagREE        | /ˌdɪs·əˈɡriː/            | root: -gree    |
 | pre-   | prePARE         | /prɪˈpɛr/                | root: -pare    |
 | mis-   | misunderSTAND   | /ˌmɪs·ʌn·dɚˈstænd/       | root: -stand   |
@@ -102,6 +102,6 @@ When you encounter an unfamiliar word, look for a suffix you recognize and apply
 
 1. *sophistication* → ends in **-tion** → stress on syllable before it → **-ca-** → /səˌfɪs·tɪˈkeɪ·ʃən/ ✓
 2. *democratic* → ends in **-ic** → stress on syllable before it → **-crat-** → /ˌdɛm·əˈkræt·ɪk/ ✓
-3. *carefully* → ends in **-ly** (neutral suffix) → stress stays on root *care* → /ˈkɛr·fəl·i/ ✓
+3. *carefully* → ends in **-ly** (neutral suffix) → stress stays on root *care* → /ˈkɛr·fəl·iː/ ✓
 
 These patterns won't work 100% of the time, but they're accurate often enough to be worth internalizing.

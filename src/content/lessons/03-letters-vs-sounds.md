@@ -63,7 +63,7 @@ When the same letter appears twice in a row, it almost always represents a singl
 | butter | 6       | 4      | /ˈbʌtɚ/ |
 | glass  | 5       | 4      | /ɡlæs/  |
 | egg    | 3       | 2      | /ɛɡ/    |
-| happy  | 5       | 4      | /ˈhæpi/ |
+| happy  | 5       | 4      | /ˈhæpiː/ |
 
 ---
 

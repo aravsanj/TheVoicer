@@ -29,7 +29,7 @@ The **schwa** is the most common vowel sound in American English. It sounds like
 | a            | **a**bout   | /ə·ˈbaʊt/        |
 | e            | syst**e**m  | /ˈsɪs·təm/       |
 | i            | poss**i**ble | /ˈpɑs·ə·bəl/    |
-| o            | mem**o**ry  | /ˈmɛm·ə·ri/      |
+| o            | mem**o**ry  | /ˈmɛm·ə·riː/     |
 | u            | circ**u**s  | /ˈsɝː·kəs/       |
 
 ---
@@ -85,11 +85,11 @@ Stress and reduction are two sides of the same coin. When you stress one syllabl
 - to → unstressed, reduced to /ə/
 - graph → secondary stress, full vowel /æ/
 
-**photography** /fəˈtɑɡ·rə·fi/
+**photography** /fəˈtɑɡ·rə·fiː/
 - pho → now unstressed, reduces to /fə/
 - TOG → stressed, full vowel /ɑ/
 - ra → unstressed, /ə/
-- phy → unstressed, /fi/
+- phy → unstressed, /fiː/
 
 The word's stress shifted — and so did its entire vowel pattern. This is one of the most striking features of English pronunciation.
 

@@ -42,7 +42,7 @@ Two-syllable words introduce a new layer: **one syllable gets more emphasis than
 
 | Word    | IPA         | Emphasis |
 |---------|-------------|----------|
-| HAPpy   | /ˈhæp·i/    | 1st      |
+| HAPpy   | /ˈhæp·iː/    | 1st      |
 | TAble   | /ˈteɪ·bəl/  | 1st      |
 | beGIN   | /bɪˈɡɪn/    | 2nd      |
 | alONE   | /əˈloʊn/    | 2nd      |

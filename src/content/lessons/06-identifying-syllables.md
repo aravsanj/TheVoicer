@@ -93,7 +93,7 @@ Blends that work together stay together.
 
 **Silent letters:** Letters don't equal sounds.
 - *chocolate* → 3 syllables /ˈtʃɑk·lɪt/, not 4
-- *every* → 3 syllables /ˈɛv·ɚ·i/, often reduced to 2 in fast speech /ˈɛv·ri/ (the middle syllable drops)
+- *every* → 3 syllables /ˈɛv·ɚ·iː/, often reduced to 2 in fast speech /ˈɛv·riː/ (the middle syllable drops)
 
 ---
 
