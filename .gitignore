@@ -30,3 +30,11 @@ pnpm-debug.log*
 .vscode/
 .idea/
 Thumbs.db
+
+## Word and python script
+
+
+mismatches.txt
+word_list.txt
+build_word_data.py
+verify_ipa.py

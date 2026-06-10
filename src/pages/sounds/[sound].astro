@@ -1,0 +1,494 @@
+---
+import Navbar from '../../components/Navbar.astro';
+import wordsData from '../../data/words.json';
+
+export function getStaticPaths() {
+  const sounds = new Set<string>();
+  for (const word of wordsData) {
+    for (const sound of word.sounds) sounds.add(sound);
+  }
+  return [...sounds].map(sound => ({ params: { sound } }));
+}
+
+const SOUND_META: Record<string, { label: string; ipa: string; example: string; desc: string }> = {
+  // Vowels
+  'long-e':   { label: 'Long E',   ipa: 'iː',  example: 'beat',    desc: 'The high front tense vowel, as in "see", "be", "free".' },
+  'short-i':  { label: 'Short I',  ipa: 'ɪ',   example: 'bit',     desc: 'The high front lax vowel, as in "it", "him", "will".' },
+  'long-a':   { label: 'Long A',   ipa: 'eɪ',  example: 'bait',    desc: 'The mid front diphthong, as in "say", "make", "day".' },
+  'short-e':  { label: 'Short E',  ipa: 'ɛ',   example: 'bet',     desc: 'The mid front lax vowel, as in "end", "bed", "said".' },
+  'short-a':  { label: 'Short A',  ipa: 'æ',   example: 'bat',     desc: 'The low front vowel, as in "and", "cat", "hand".' },
+  'short-o':  { label: 'Short O',  ipa: 'ɑː',  example: 'bot',     desc: 'The low back vowel, as in "hot", "father", "calm".' },
+  'aw':       { label: 'AW',       ipa: 'ɔː',  example: 'bought',  desc: 'The mid-low back rounded vowel, as in "law", "saw", "all".' },
+  'long-o':   { label: 'Long O',   ipa: 'oʊ',  example: 'boat',    desc: 'The mid back diphthong, as in "go", "home", "know".' },
+  'long-u':   { label: 'Long U',   ipa: 'uː',  example: 'boot',    desc: 'The high back tense vowel, as in "you", "true", "move".' },
+  'short-u':  { label: 'Short U',  ipa: 'ʌ',   example: 'but',     desc: 'The mid central vowel (stressed) or schwa (unstressed), as in "up", "love".' },
+  'r-vowel':  { label: 'R-Vowel',  ipa: 'ɜːr', example: 'bird',    desc: 'The r-colored vowel, as in "her", "word", "learn".' },
+  'long-i':   { label: 'Long I',   ipa: 'aɪ',  example: 'bite',    desc: 'The low front diphthong, as in "my", "time", "right".' },
+  'ow':       { label: 'OW',       ipa: 'aʊ',  example: 'bout',    desc: 'The back diphthong, as in "out", "now", "how".' },
+  'short-oo': { label: 'Short OO', ipa: 'ʊ',   example: 'foot',    desc: 'The high back lax vowel, as in "book", "put", "could".' },
+  'oi':       { label: 'OI',       ipa: 'ɔɪ',  example: 'boy',     desc: 'The back-front diphthong, as in "oil", "join", "voice".' },
+  // R-controlled vowels
+  'ar':       { label: 'AR',        ipa: 'ɑːr', example: 'car',    desc: 'The r-colored low back vowel, as in "car", "star", "far".' },
+  'or':       { label: 'OR',        ipa: 'ɔːr', example: 'for',    desc: 'The r-colored mid back vowel, as in "for", "more", "four".' },
+  'air':      { label: 'AIR',       ipa: 'ɛr',  example: 'care',   desc: 'The r-colored mid front vowel, as in "care", "there", "share".' },
+  'ear':      { label: 'EAR',       ipa: 'ɪr',  example: 'here',   desc: 'The r-colored high front vowel, as in "here", "year", "near".' },
+  // Stops
+  'p':        { label: '/p/',       ipa: 'p',   example: 'pat',     desc: 'Voiceless bilabial stop, as in "pen", "spin", "tip".' },
+  'b':        { label: '/b/',       ipa: 'b',   example: 'bat',     desc: 'Voiced bilabial stop, as in "bed", "cab".' },
+  't':        { label: '/t/',       ipa: 't',   example: 'top',     desc: 'Voiceless alveolar stop, as in "ten", "sit".' },
+  'd':        { label: '/d/',       ipa: 'd',   example: 'dog',     desc: 'Voiced alveolar stop, as in "den", "bad".' },
+  'k':        { label: '/k/',       ipa: 'k',   example: 'cat',     desc: 'Voiceless velar stop, as in "key", "sky", "back".' },
+  'g':        { label: '/g/',       ipa: 'ɡ',   example: 'get',     desc: 'Voiced velar stop, as in "go", "big".' },
+  // Fricatives
+  'f':        { label: '/f/',       ipa: 'f',   example: 'fish',    desc: 'Voiceless labiodental fricative, as in "fan", "off".' },
+  'v':        { label: '/v/',       ipa: 'v',   example: 'van',     desc: 'Voiced labiodental fricative, as in "van", "of".' },
+  'th':       { label: '/θ/',       ipa: 'θ',   example: 'think',   desc: 'Voiceless dental fricative, as in "thin", "bath", "math".' },
+  'dh':       { label: '/ð/',       ipa: 'ð',   example: 'this',    desc: 'Voiced dental fricative, as in "the", "them", "bathe".' },
+  's':        { label: '/s/',       ipa: 's',   example: 'sit',     desc: 'Voiceless alveolar fricative, as in "sit", "pass".' },
+  'z':        { label: '/z/',       ipa: 'z',   example: 'zip',     desc: 'Voiced alveolar fricative, as in "zoo", "buzz".' },
+  'sh':       { label: '/ʃ/',       ipa: 'ʃ',   example: 'ship',    desc: 'Voiceless postalveolar fricative, as in "ship", "wish".' },
+  'zh':       { label: '/ʒ/',       ipa: 'ʒ',   example: 'measure', desc: 'Voiced postalveolar fricative, as in "measure", "vision".' },
+  'h':        { label: '/h/',       ipa: 'h',   example: 'hat',     desc: 'Voiceless glottal fricative, as in "hat", "ahead".' },
+  // Affricates
+  'ch':       { label: '/tʃ/',      ipa: 'tʃ',  example: 'chat',    desc: 'Voiceless postalveolar affricate, as in "chip", "much".' },
+  'j':        { label: '/dʒ/',      ipa: 'dʒ',  example: 'jump',    desc: 'Voiced postalveolar affricate, as in "jump", "edge".' },
+  // Nasals
+  'm':        { label: '/m/',       ipa: 'm',   example: 'map',     desc: 'Bilabial nasal, as in "map", "him".' },
+  'n':        { label: '/n/',       ipa: 'n',   example: 'nap',     desc: 'Alveolar nasal, as in "nap", "on".' },
+  'ng':       { label: '/ŋ/',       ipa: 'ŋ',   example: 'sing',    desc: 'Velar nasal, as in "sing", "ring", "think".' },
+  // Liquids & Glides
+  'l':        { label: '/l/',       ipa: 'l',   example: 'lip',     desc: 'Alveolar lateral approximant, as in "lip", "well".' },
+  'r':        { label: '/r/',       ipa: 'r',   example: 'red',     desc: 'Alveolar approximant, as in "red", "car".' },
+  'w':        { label: '/w/',       ipa: 'w',   example: 'wet',     desc: 'Labial-velar approximant, as in "wet", "away".' },
+  'y':        { label: '/j/',       ipa: 'j',   example: 'yes',     desc: 'Palatal approximant, as in "yes", "use", "beyond".' },
+};
+
+const { sound } = Astro.params;
+const meta = SOUND_META[sound] ?? { label: sound, ipa: '?', example: '', desc: '' };
+const words = wordsData
+  .filter(w => w.sounds.includes(sound))
+  .sort((a, b) => a.word.localeCompare(b.word));
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{meta.label} Sound {meta.ipa} — TheVoicer</title>
+    <meta name="description" content={`All common English words with the ${meta.label} sound (${meta.ipa}), with IPA and stress patterns.`} />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/src/styles/global.css" />
+  </head>
+  <body>
+    <Navbar />
+    <main class="page">
+      <header class="page-header">
+        <a href="/sounds" class="back-link">← All sounds</a>
+        <div class="sound-hero">
+          <span class="ipa-big">{meta.ipa}</span>
+          <div class="hero-text">
+            <h1>{meta.label} Sound</h1>
+            <p class="hero-desc">{meta.desc}</p>
+          </div>
+        </div>
+        <div class="stats-row">
+          <span class="stat">{words.length.toLocaleString()} words</span>
+          <span class="stat-sep">·</span>
+          <span class="stat">as in <em>{meta.example}</em></span>
+        </div>
+      </header>
+
+      <details class="key-guide">
+        <summary class="key-guide-toggle">Pronunciation key <span class="key-guide-hint">IPA → respelling</span></summary>
+        <div class="key-guide-body">
+          <div class="key-section">
+            <span class="key-section-label">Vowels</span>
+            <div class="key-grid">
+              {[
+                { ipa: 'ɑː', key: 'AH', ex: 'father' },
+                { ipa: 'æ',  key: 'A',  ex: 'cat' },
+                { ipa: 'ə',  key: 'uh', ex: 'about' },
+                { ipa: 'ʌ',  key: 'UH', ex: 'but' },
+                { ipa: 'ɔː', key: 'AW', ex: 'law' },
+                { ipa: 'aʊ', key: 'OW', ex: 'out' },
+                { ipa: 'aɪ', key: 'I',  ex: 'bite' },
+                { ipa: 'ɛ',  key: 'EH', ex: 'bet' },
+                { ipa: 'ɚ',  key: 'ur', ex: 'butter' },
+                { ipa: 'ɝː', key: 'UR', ex: 'bird' },
+                { ipa: 'eɪ', key: 'AY', ex: 'day' },
+                { ipa: 'ɪ',  key: 'IH', ex: 'bit' },
+                { ipa: 'iː', key: 'EE', ex: 'see' },
+                { ipa: 'oʊ', key: 'OH', ex: 'go' },
+                { ipa: 'ɔɪ', key: 'OY', ex: 'boy' },
+                { ipa: 'ʊ',   key: 'U',   ex: 'book' },
+                { ipa: 'uː',  key: 'OO',  ex: 'boot' },
+                { ipa: 'ɑːr', key: 'AR',  ex: 'car' },
+                { ipa: 'ɔːr', key: 'OR',  ex: 'for' },
+                { ipa: 'ɛr',  key: 'AIR', ex: 'care' },
+                { ipa: 'ɪr',  key: 'EAR', ex: 'here' },
+              ].map(({ ipa, key, ex }) => (
+                <div class:list={['key-chip', { 'key-chip--active': ipa === meta.ipa }]}>
+                  <span class="key-ipa">{ipa}</span>
+                  <span class="key-arrow">→</span>
+                  <span class="key-resp">{key}</span>
+                  <span class="key-ex">{ex}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+          <div class="key-section">
+            <span class="key-section-label">Consonants</span>
+            <div class="key-grid">
+              {[
+                { ipa: 'b',  key: 'B',  ex: 'bed' },
+                { ipa: 'd',  key: 'D',  ex: 'dog' },
+                { ipa: 'f',  key: 'F',  ex: 'fan' },
+                { ipa: 'ɡ',  key: 'G',  ex: 'get' },
+                { ipa: 'h',  key: 'H',  ex: 'hat' },
+                { ipa: 'k',  key: 'K',  ex: 'cat' },
+                { ipa: 'l',  key: 'L',  ex: 'lip' },
+                { ipa: 'm',  key: 'M',  ex: 'map' },
+                { ipa: 'n',  key: 'N',  ex: 'nap' },
+                { ipa: 'p',  key: 'P',  ex: 'pat' },
+                { ipa: 'r',  key: 'R',  ex: 'red' },
+                { ipa: 's',  key: 'S',  ex: 'sit' },
+                { ipa: 't',  key: 'T',  ex: 'top' },
+                { ipa: 'v',  key: 'V',  ex: 'van' },
+                { ipa: 'w',  key: 'W',  ex: 'wet' },
+                { ipa: 'z',  key: 'Z',  ex: 'zip' },
+                { ipa: 'tʃ', key: 'CH', ex: 'chip' },
+                { ipa: 'dʒ', key: 'J',  ex: 'jump' },
+                { ipa: 'ð',  key: 'DH', ex: 'the' },
+                { ipa: 'ŋ',  key: 'NG', ex: 'sing' },
+                { ipa: 'ʃ',  key: 'SH', ex: 'ship' },
+                { ipa: 'θ',  key: 'TH', ex: 'think' },
+                { ipa: 'j',  key: 'Y',  ex: 'yes' },
+                { ipa: 'ʒ',  key: 'ZH', ex: 'measure' },
+              ].map(({ ipa, key, ex }) => (
+                <div class:list={['key-chip', { 'key-chip--active': ipa === meta.ipa }]}>
+                  <span class="key-ipa">{ipa}</span>
+                  <span class="key-arrow">→</span>
+                  <span class="key-resp">{key}</span>
+                  <span class="key-ex">{ex}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+          <p class="key-note">Uppercase = stressed syllable · lowercase = unstressed · <em>example</em> in italics</p>
+        </div>
+      </details>
+
+      <div class="filter-row">
+        <input
+          id="filter-input"
+          type="search"
+          placeholder="Filter words…"
+          autocomplete="off"
+          spellcheck="false"
+        />
+        <span id="filter-count" class="filter-count">{words.length} shown</span>
+      </div>
+
+      <div class="table-wrap">
+        <table id="word-table">
+          <thead>
+            <tr>
+              <th>Word</th>
+              <th>IPA</th>
+              <th>Pronunciation</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            {words.map(w => (
+              <tr data-word={w.word}>
+                <td class="cell-word">{w.word}</td>
+                <td class="cell-ipa">{w.ipa}</td>
+                <td class="cell-stress">{w.respelling}</td>
+                <td class="cell-cambridge">
+                  <a
+                    href={`https://dictionary.cambridge.org/pronunciation/english/${w.word}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="cambridge-link"
+                    title="Cambridge pronunciation"
+                  >Cambridge ↗</a>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </main>
+
+    <script>
+      const input = document.getElementById('filter-input') as HTMLInputElement;
+      const countEl = document.getElementById('filter-count') as HTMLElement;
+      const rows = document.querySelectorAll<HTMLTableRowElement>('#word-table tbody tr');
+
+      input.addEventListener('input', () => {
+        const q = input.value.trim().toLowerCase();
+        let shown = 0;
+        for (const row of rows) {
+          const match = !q || row.dataset.word!.includes(q);
+          row.hidden = !match;
+          if (match) shown++;
+        }
+        countEl.textContent = `${shown} shown`;
+      });
+    </script>
+  </body>
+</html>
+
+<style>
+  .page {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 3rem 2rem 6rem;
+  }
+
+  .back-link {
+    display: inline-block;
+    font-size: 0.85rem;
+    color: var(--color-muted);
+    margin-bottom: 2rem;
+    text-decoration: none;
+  }
+  .back-link:hover { color: var(--color-accent-soft); text-decoration: none; }
+
+  .sound-hero {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .ipa-big {
+    font-family: var(--font-mono);
+    font-size: 4rem;
+    color: var(--color-accent);
+    line-height: 1;
+    flex-shrink: 0;
+    background: rgba(124, 106, 247, 0.1);
+    border: 1px solid rgba(124, 106, 247, 0.2);
+    border-radius: 12px;
+    padding: 0.5rem 1rem;
+  }
+
+  .hero-text h1 {
+    font-size: 2rem;
+    margin-bottom: 0.35rem;
+  }
+
+  .hero-desc {
+    color: var(--color-muted);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  .stats-row {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--color-muted);
+    margin-bottom: 2rem;
+  }
+
+  .stats-row em {
+    font-style: normal;
+    color: var(--color-accent-soft);
+    font-family: var(--font-mono);
+  }
+
+  .stat-sep { color: var(--color-border); }
+
+  .filter-row {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  #filter-input {
+    flex: 1;
+    max-width: 320px;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    color: var(--color-text);
+    font-family: var(--font-sans);
+    font-size: 0.9rem;
+    padding: 0.55rem 0.9rem;
+    outline: none;
+    transition: border-color 0.15s;
+  }
+
+  #filter-input:focus { border-color: var(--color-accent); }
+  #filter-input::placeholder { color: var(--color-muted); }
+
+  .filter-count {
+    font-size: 0.8rem;
+    color: var(--color-muted);
+    font-family: var(--font-mono);
+  }
+
+  .table-wrap {
+    overflow-x: auto;
+    border: 1px solid var(--color-border);
+    border-radius: 10px;
+  }
+
+  .table-wrap table {
+    margin: 0;
+  }
+
+  .table-wrap thead th:first-child { border-radius: 10px 0 0 0; }
+  .table-wrap thead th:last-child  { border-radius: 0 10px 0 0; }
+
+  .cell-word {
+    font-family: var(--font-sans);
+    font-weight: 500;
+    color: var(--color-text);
+  }
+
+  .cell-ipa {
+    color: var(--color-accent-soft);
+  }
+
+  /* Pronunciation key guide */
+  .key-guide {
+    border: 1px solid var(--color-border);
+    border-radius: 10px;
+    margin-bottom: 1.25rem;
+    background: var(--color-surface);
+  }
+
+  .key-guide-toggle {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.75rem 1rem;
+    cursor: pointer;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--color-text);
+    list-style: none;
+    user-select: none;
+  }
+  .key-guide-toggle::-webkit-details-marker { display: none; }
+  .key-guide-toggle::before {
+    content: '▸';
+    font-size: 0.7rem;
+    color: var(--color-muted);
+    transition: transform 0.15s;
+  }
+  .key-guide[open] .key-guide-toggle::before { transform: rotate(90deg); }
+
+  .key-guide-hint {
+    font-size: 0.78rem;
+    color: var(--color-muted);
+    font-weight: 400;
+  }
+
+  .key-guide-body {
+    padding: 0 1rem 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .key-section { display: flex; flex-direction: column; gap: 0.5rem; }
+
+  .key-section-label {
+    font-size: 0.72rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--color-muted);
+  }
+
+  .key-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+
+  .key-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    padding: 0.3rem 0.55rem;
+    border: 1px solid var(--color-border);
+    border-radius: 6px;
+    font-size: 0.8rem;
+    background: var(--color-bg);
+    white-space: nowrap;
+  }
+
+  .key-chip--active {
+    border-color: var(--color-accent);
+    background: rgba(124, 106, 247, 0.08);
+  }
+
+  .key-ipa {
+    font-family: var(--font-mono);
+    color: var(--color-accent-soft);
+  }
+
+  .key-chip--active .key-ipa { color: var(--color-accent); }
+
+  .key-arrow { color: var(--color-border); font-size: 0.7rem; }
+
+  .key-resp {
+    font-family: var(--font-mono);
+    font-weight: 600;
+    color: var(--color-text);
+    font-size: 0.78rem;
+  }
+
+  .key-ex {
+    color: var(--color-muted);
+    font-size: 0.75rem;
+    font-style: italic;
+  }
+
+  .key-note {
+    font-size: 0.75rem;
+    color: var(--color-muted);
+    margin: 0;
+    padding-top: 0.25rem;
+    border-top: 1px solid var(--color-border);
+  }
+
+  .key-note em { color: var(--color-accent-soft); font-style: normal; }
+
+  .cell-stress {
+    font-family: var(--font-sans);
+    color: var(--color-muted);
+    font-size: 0.85rem;
+  }
+
+  .cell-cambridge {
+    white-space: nowrap;
+  }
+
+  .cambridge-link {
+    font-size: 0.78rem;
+    color: var(--color-muted);
+    text-decoration: none;
+    opacity: 0.6;
+    transition: opacity 0.15s, color 0.15s;
+  }
+
+  .cambridge-link:hover {
+    color: var(--color-accent-soft);
+    opacity: 1;
+    text-decoration: none;
+  }
+
+</style>
