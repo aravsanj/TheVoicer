@@ -44,3 +44,8 @@ The slug page uses `getCollection('lessons')` and finds the lesson by `data.slug
 `src/layouts/LessonLayout.astro` is the only layout. It accepts `title`, `description`, `order`, and `tags` props, imports `src/styles/global.css`, and renders a `<slot />` for lesson content.
 
 There is no `src/components/` directory yet.
+
+## Lesson Content Rules
+
+- Never say "next lesson", "previous lesson", or any relative positional reference. Lessons are standalone files and may be read in any order.
+- When referencing another lesson, always link directly: `[Lesson Title](/lessons/lesson-slug)`.
