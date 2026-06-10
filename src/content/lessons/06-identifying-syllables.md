@@ -1,0 +1,111 @@
+---
+slug: "identifying-syllables"
+title: "Identifying Syllables"
+description: "Learn practical techniques to count and divide syllables in any English word — using the chin-drop method, beats, and vowel sound counting."
+order: 6
+tags: ["syllables", "counting", "techniques", "rhythm"]
+---
+
+## Three Ways to Find Syllables
+
+You don't need to guess — there are reliable physical and auditory tricks for counting syllables in any word.
+
+---
+
+## Method 1: The Chin Drop
+
+Place your hand flat under your chin. Say the word slowly and naturally.
+
+**Every time your chin drops, that's one syllable.**
+
+Your jaw opens for each vowel sound, so the chin drops once per syllable.
+
+| Word      | Chin Drops | Syllables |
+|-----------|------------|-----------|
+| sun       | 1          | 1         |
+| paper     | 2          | 2         |
+| telephone | 3          | 3         |
+| dictionary | 4         | 4         |
+
+This is the most reliable method because it's physical — your body counts for you.
+
+---
+
+## Method 2: Clap or Tap the Beats
+
+Say the word out loud and clap once for each beat of sound you hear.
+
+- **dog** → clap → 1 syllable
+- **run·ning** → clap clap → 2 syllables
+- **won·der·ful** → clap clap clap → 3 syllables
+
+Think of syllables like beats in music. A word has a natural rhythm, and each beat is a syllable.
+
+---
+
+## Method 3: Count Vowel Sounds
+
+Since every syllable has exactly one vowel sound, you can count vowel sounds directly.
+
+1. Say the word
+2. Identify each distinct vowel sound you pronounce
+3. That count = number of syllables
+
+> **Say**, don't spell. The word *beautiful* has 5 vowel letters (e, a, u, i, u) but only 3 vowel sounds: /bjuː·tɪ·fəl/ → 3 syllables.
+
+---
+
+## Where Do Syllables Break?
+
+When a word has multiple syllables, there's a point where one syllable ends and the next begins. This is called the **syllable boundary**.
+
+Common patterns:
+
+### VC·CV — Split between two consonants
+Two consonants between vowels → split them in the middle.
+
+- **pep·per** /ˈpɛp·ɚ/
+- **sis·ter** /ˈsɪs·tɚ/
+- **bas·ket** /ˈbæs·kɪt/
+
+### V·CV — Single consonant between vowels
+One consonant between two vowels → it usually goes with the *second* syllable (open syllable rule).
+
+- **o·pen** /ˈoʊ·pən/
+- **mu·sic** /ˈmjuː·zɪk/
+- **la·bel** /ˈleɪ·bəl/
+
+### Consonant clusters
+Blends that work together stay together.
+
+- **prob·lem** /ˈprɑb·ləm/ — *bl* stays with the second syllable
+- **a·stro·naut** — *str* cluster stays intact
+
+---
+
+## Common Mistakes
+
+**Merging syllables:** Saying *interesting* as 3 syllables /ˈɪn·trɪs·tɪŋ/ is natural in fast speech, but the full form has 4: /ˈɪn·tɚ·ɛs·tɪŋ/.
+
+**Adding syllables:** Some learners insert extra vowels between consonant clusters.
+- *film* → should be 1 syllable, not "fi·lum"
+- *strength* → 1 syllable, not "stren·geth"
+
+**Silent letters:** Letters don't equal sounds.
+- *chocolate* → 3 syllables /ˈtʃɑk·lɪt/, not 4
+- *every* → 3 syllables /ˈɛv·ɚ·i/, often reduced to 2 in fast speech /ˈɛv·ri/ (the middle syllable drops)
+
+---
+
+## Practice Set
+
+Use the chin-drop method on these words. Check your count below.
+
+| Word         | Syllable Count |
+|--------------|----------------|
+| red          | 1              |
+| garden       | 2              |
+| banana       | 3              |
+| carefully    | 4              |
+| university   | 5              |
+| responsibility | 6            |

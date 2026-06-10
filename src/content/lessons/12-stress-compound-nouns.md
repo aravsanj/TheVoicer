@@ -1,0 +1,83 @@
+---
+slug: "stress-compound-nouns"
+title: "Stress in Compound Nouns"
+description: "Compound nouns follow a consistent stress rule: the first word carries the stress. Learn to distinguish them from noun phrases, which stress the second word."
+order: 12
+tags: ["stress", "compound nouns", "noun phrases", "word formation"]
+---
+
+## What Is a Compound Noun?
+
+A **compound noun** is two (or more) words that together function as a single noun with a unified meaning.
+
+- **blackboard** — not just any board that is black; a specific thing used in classrooms
+- **greenhouse** — not just a house that is green; a building for growing plants
+- **football** — not a ball that is made of feet; a specific sport
+
+The combined meaning is often different from the sum of the parts.
+
+---
+
+## The Stress Rule for Compound Nouns
+
+**In compound nouns, stress falls on the FIRST word (or first element).**
+
+| Compound Noun   | Stress    | IPA                 |
+|-----------------|-----------|---------------------|
+| BLACKboard      | BLACK-     | /ˈblæk·bɔːrd/       |
+| SUNflower       | SUN-       | /ˈsʌn·flaʊ·ɚ/       |
+| AIRport         | AIR-       | /ˈɛɚ·pɔːrt/          |
+| TOOTHbrush      | TOOTH-     | /ˈtuːθ·brʌʃ/         |
+| CELLphone       | CELL-      | /ˈsɛl·foʊn/          |
+| BEDroom         | BED-       | /ˈbɛd·ruːm/          |
+| HAIRcut         | HAIR-      | /ˈhɛɚ·kʌt/           |
+
+---
+
+## Compound Noun vs. Noun Phrase
+
+This is where many learners get confused. A **noun phrase** is an adjective + noun describing a modified noun — and it stresses the *second* word (the noun).
+
+**Compound noun** → stress on **first** word (one concept)  
+**Noun phrase** → stress on **second** word (description)
+
+| Expression       | Type          | Stress       | Meaning                         |
+|------------------|---------------|--------------|----------------------------------|
+| **GREEN**house   | compound noun | 1st word     | a building for growing plants    |
+| green **HOUSE**  | noun phrase   | 2nd word     | a house that is (painted) green  |
+| **BLACK**board   | compound noun | 1st word     | a classroom writing surface      |
+| black **BOARD**  | noun phrase   | 2nd word     | a board that is black            |
+| **HOT**dog       | compound noun | 1st word     | the food                         |
+| hot **DOG**      | noun phrase   | 2nd word     | a dog that is hot (temperature)  |
+| **DARK**room     | compound noun | 1st word     | a photography room               |
+| dark **ROOM**    | noun phrase   | 2nd word     | a room that is dark              |
+
+---
+
+## Written as One Word, Two Words, or Hyphenated?
+
+English is inconsistent about how it writes compounds. The stress pattern holds regardless of spelling:
+
+| Written form     | Example        |
+|------------------|----------------|
+| One word         | **BED**room, **SUN**flower |
+| Two words        | **ICE** cream, **FIRE** truck |
+| Hyphenated       | **WELL**-being, **SELF**-control |
+
+When you're unsure if something is a compound noun, try the stress test: if it sounds right with stress on the first word and the two words have a unified concept, it's likely a compound.
+
+---
+
+## Quick Contrast Pairs
+
+Say these aloud and hear the difference:
+
+| Compound (stress 1st) | Noun Phrase (stress 2nd) |
+|-----------------------|--------------------------|
+| **BOOK**store         | big **STORE**            |
+| **CAR**pool           | red **CAR**              |
+| **DOORbell**          | front **DOOR**           |
+| **HAIR**dresser       | long **HAIR**            |
+| **SHOE**maker         | old **SHOE**             |
+
+The stress difference is real and native speakers use it naturally to signal whether they mean a specific compound concept or just a described object.
