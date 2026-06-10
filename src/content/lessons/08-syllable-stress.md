@@ -93,6 +93,50 @@ English stress is not fully predictable, but patterns exist:
 
 ---
 
+## Real-World Stress Patterns
+
+### Days of the Week
+
+All seven days follow the same rule: **primary stress falls on the first syllable**.
+
+| Day         | Stressed syllable |
+|-------------|-------------------|
+| **MON**day   | 1st |
+| **TUES**day  | 1st |
+| **WEDNES**day | 1st |
+| **THURS**day | 1st |
+| **FRI**day   | 1st |
+| **SAT**urday | 1st |
+| **SUN**day   | 1st |
+
+This is consistent — no exceptions. If you stress any other syllable ("mon·**DAY**"), it sounds unnatural to native speakers.
+
+### Months of the Year
+
+The rule depends on syllable count:
+
+- **Two-syllable months** → stress on syllable 1 (with one exception: **Ju·LY**)
+- **Three-syllable months** → stress on syllable 2
+
+| Month       | Syllables | Stressed syllable |
+|-------------|-----------|-------------------|
+| **JAN**uary  | 4 | 1st |
+| **FEB**ruary | 4 | 1st |
+| **MARCH**    | 1 | — |
+| **APR**il    | 2 | 1st |
+| **MAY**      | 1 | — |
+| **JUNE**     | 1 | — |
+| ju**LY**     | 2 | 2nd ← exception |
+| **AU**gust   | 2 | 1st |
+| sep**TEM**ber | 3 | 2nd |
+| **OC**tober  | 3 | 1st |
+| no**VEM**ber | 3 | 2nd |
+| **DE**cember | 3 | 1st |
+
+Notice that September, November follow the "stress syllable 2" pattern for three-syllable words, while October and December stress syllable 1. English stress isn't perfectly predictable — but patterns get you most of the way there.
+
+---
+
 ## Why This Matters for Learners
 
 Many languages have **fixed stress** (always on the first syllable, always on the last, etc.). English does not — stress shifts, and it carries meaning.
