@@ -4,11 +4,11 @@ Write a new lesson for TheVoicer at the slug and topic provided.
 
 ## Source of truth
 
-All IPA symbols, phoneme keys, labels, and word examples come from `src/data/soundMeta.ts`. Never invent phonetic data or use symbols not in that file. The keys in `SOUND_META` (e.g. `long-e`, `short-a`, `schwa`) are the canonical names used across the codebase.
+All IPA symbols, phoneme keys, labels, and word examples come from `src/data/sounds.json` (accessed via `src/data/sounds.ts`). Never invent phonetic data or use symbols not in that file. The keys in `SOUND_META` (e.g. `long-e`, `short-a`, `schwa`) are the canonical names used across the codebase.
 
 ## File
 
-Create `src/content/lessons/<order>-<slug>.md` with frontmatter:
+Create `src/content/lessons/<order>-<slug>.mdx` with frontmatter:
 
 ```
 ---
@@ -21,6 +21,18 @@ tags: [...]
 ```
 
 Check existing lessons to pick the right `order` number.
+
+Add this import at the top of the file (after the frontmatter closing `---`):
+
+```mdx
+import Sound from '../../components/Sound.astro';
+```
+
+Use `<Sound id="..." />` to reference any sound in the lesson body or table cells. Available props:
+- `<Sound id="short-a" />` — IPA chip + label, links to sound page (default)
+- `<Sound id="short-a" compact />` — IPA chip only (for Phoneme columns)
+- `<Sound id="short-a" labelOnly />` — label text only (for Sound name columns)
+- `<Sound id="short-a" link={false} />` — no link
 
 ## Voice and style
 
@@ -48,8 +60,8 @@ Write like a good teacher talking to an adult learner, not like a textbook and n
 
 ## Content rules
 
-- Every IPA symbol used in the lesson body must appear in `phonemes.json`. No improvised symbols.
-- Word examples in tables should match or extend the `examples` arrays in `phonemes.json`.
+- Every IPA symbol used in the lesson body must appear in `sounds.json`. No improvised symbols.
+- Word examples in tables should match or extend the `examples` arrays in `sounds.json`.
 - Do not reference other lessons by position ("the previous lesson", "next lesson"). Link by title and slug if needed.
 - Tables are for comparison, not decoration. If a table has one column of data, it should be prose.
 - Lesson length: cover one idea well. Stop when the idea is covered.
