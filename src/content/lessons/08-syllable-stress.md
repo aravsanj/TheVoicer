@@ -10,33 +10,26 @@ tags: ["stress", "syllables", "rhythm", "American English", "phonetics"]
 
 When you say a multi-syllable word, you don't say every syllable with equal force. One syllable gets more **volume**, **length**, and **pitch** than the others. That's **stress**.
 
-Stressed syllables are:
-- **Louder** — more breath force
-- **Longer** — held slightly longer
-- **Higher in pitch** — a subtle rise
-
-Unstressed syllables are shorter, quieter, and often reduced.
+Stressed syllables are louder, longer, and higher in pitch than unstressed ones. Unstressed syllables are shorter, quieter, and often reduced.
 
 ---
 
 ## Stress Is Not Optional
 
-In English, stress is **lexical** — it's part of the word's identity. Putting stress on the wrong syllable doesn't just sound odd; it can make the word unrecognizable to a native speaker.
+In English, stress is **lexical**, meaning it's part of the word's identity. Putting stress on the wrong syllable doesn't just sound odd; it can make the word unrecognizable to a native speaker.
 
 Compare:
-- **DESsert** /ˈdɛz·ɚt/ — the sweet food after a meal
-- **deSERT** /dɪˈzɝːt/ — the dry, sandy landscape (also: to abandon)
+- **DESsert** /ˈdɛz·ɚt/: the sweet food after a meal
+- **deSERT** /dɪˈzɝːt/: the dry, sandy landscape (also: to abandon)
 
 Same letters. Completely different stress. Different words.
-
----
 
 ## Primary and Secondary Stress
 
 Longer words can have two levels of stress:
 
-- **Primary stress (ˈ)** — the strongest syllable
-- **Secondary stress (ˌ)** — a medium syllable, stronger than unstressed but weaker than primary
+- **Primary stress (ˈ)**: the strongest syllable
+- **Secondary stress (ˌ)**: a medium syllable, stronger than unstressed but weaker than primary
 
 | Word            | IPA                   |
 |-----------------|-----------------------|
@@ -47,21 +40,17 @@ Longer words can have two levels of stress:
 
 In these words, the syllable before *-tion* nearly always takes primary stress.
 
----
-
 ## How to Hear Stress
 
-**Exercise:** Say the word *banana* three ways and notice which sounds natural:
+**Exercise:** Say the word *banana* three ways and notice which sounds right:
 
-- BA·na·na — stress on first syllable
-- ba·NA·na — stress on second syllable ✓
-- ba·na·NA — stress on third syllable
+- BA·na·na (stress on first syllable)
+- ba·NA·na (stress on second syllable) ✓
+- ba·na·NA (stress on third syllable)
 
 Only the second version sounds right: /bəˈnæn·ə/.
 
 **Technique:** Say the word in an exaggerated, slow way and tap when you feel the "punch." That punch is the stressed syllable.
-
----
 
 ## Stress Rules (General Tendencies)
 
@@ -109,7 +98,7 @@ All seven days follow the same rule: **primary stress falls on the first syllabl
 | **SAT**urday | 1st |
 | **SUN**day   | 1st |
 
-This is consistent — no exceptions. If you stress any other syllable ("mon·**DAY**"), it sounds unnatural to native speakers.
+This is consistent. No exceptions. If you stress any other syllable ("mon·**DAY**"), native speakers will notice.
 
 ### Months of the Year
 
@@ -122,10 +111,10 @@ The rule depends on syllable count:
 |-------------|-----------|-------------------|
 | **JAN**uary  | 4 | 1st |
 | **FEB**ruary | 4 | 1st |
-| **MARCH**    | 1 | — |
+| **MARCH**    | 1 | 1st |
 | **APR**il    | 2 | 1st |
-| **MAY**      | 1 | — |
-| **JUNE**     | 1 | — |
+| **MAY**      | 1 | 1st |
+| **JUNE**     | 1 | 1st |
 | ju**LY**     | 2 | 2nd ← exception |
 | **AU**gust   | 2 | 1st |
 | sep**TEM**ber | 3 | 2nd |
@@ -133,14 +122,12 @@ The rule depends on syllable count:
 | no**VEM**ber | 3 | 2nd |
 | **DE**cember | 3 | 1st |
 
-Notice that September, November follow the "stress syllable 2" pattern for three-syllable words, while October and December stress syllable 1. English stress isn't perfectly predictable — but patterns get you most of the way there.
-
----
+Notice that September, November follow the "stress syllable 2" pattern for three-syllable words, while October and December stress syllable 1. English stress isn't perfectly predictable, but patterns get you most of the way there.
 
 ## Why This Matters for Learners
 
-Many languages have **fixed stress** (always on the first syllable, always on the last, etc.). English does not — stress shifts, and it carries meaning.
+Many languages have **fixed stress** (always on the first syllable, always on the last, etc.). English does not. Stress shifts, and it carries meaning.
 
-Getting stress right signals fluency. Getting it wrong — even with perfect sounds — can break communication.
+Getting stress right signals fluency. Getting it wrong, even with perfect sounds, can break communication.
 
 > The goal isn't to memorize every word's stress. It's to **notice** stress when you hear words and **internalize** the patterns so your ear starts predicting correctly.

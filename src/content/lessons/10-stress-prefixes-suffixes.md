@@ -10,13 +10,11 @@ tags: ["stress", "prefixes", "suffixes", "word formation", "patterns"]
 
 Many English suffixes have a fixed relationship with stress. Learning these patterns gives you a powerful shortcut for figuring out stress in new words.
 
----
-
 ## Stress-Fixing Suffixes (stress falls on a specific syllable)
 
 ### Suffixes that pull stress to the syllable immediately before them
 
-These suffixes are **stress-attracting** — the syllable right before the suffix gets primary stress.
+These suffixes are **stress-attracting**: the syllable right before the suffix gets primary stress.
 
 **-tion / -sion / -cion**
 | Word           | IPA                      | Stressed syllable |
@@ -61,8 +59,6 @@ These suffixes are **stress-attracting** — the syllable right before the suffi
 | picturESQUE   | /ˌpɪk·tʃɚˈɛsk/           |
 | bruNETTE      | /bruːˈnɛt/               |
 
----
-
 ## Stress-Neutral Suffixes (stress stays on the base word)
 
 These suffixes do **not** change where stress falls. The original root keeps its stress.
@@ -77,11 +73,9 @@ These suffixes do **not** change where stress falls. The original root keeps its
 | TEACH     | /tiːtʃ/       | TEACHer      | /ˈtiː·tʃɚ/        |
 | QUICK     | /kwɪk/        | QUICKly      | /ˈkwɪk·liː/        |
 
----
-
 ## Prefixes and Stress
 
-Most prefixes in English are **unstressed** — they don't attract stress to themselves. The stress stays on the root.
+Most prefixes in English are **unstressed**: they don't attract stress to themselves. The stress stays on the root.
 
 | Prefix | Word            | IPA                      | Stress on root |
 |--------|-----------------|--------------------------|----------------|
@@ -92,11 +86,9 @@ Most prefixes in English are **unstressed** — they don't attract stress to the
 | mis-   | misunderSTAND   | /ˌmɪs·ʌn·dɚˈstænd/       | root: -stand   |
 | over-  | overCOME        | /ˌoʊ·vɚˈkʌm/             | root: -come    |
 
-**Exception:** When the same prefix+root pair is used as both a noun and a verb, the noun often shifts stress to the prefix. (See the next lesson on noun vs. verb stress shifts.)
+**Exception:** When the same prefix+root pair is used as both a noun and a verb, the noun often shifts stress to the prefix. (See [Shifts in Stress: Noun vs. Verb](/lessons/noun-verb-stress-shift) for details.)
 
----
-
-## Putting It Together
+## Worked Examples
 
 When you encounter an unfamiliar word, look for a suffix you recognize and apply the rule:
 

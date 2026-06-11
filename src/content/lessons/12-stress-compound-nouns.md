@@ -10,13 +10,11 @@ tags: ["stress", "compound nouns", "noun phrases", "word formation"]
 
 A **compound noun** is two (or more) words that together function as a single noun with a unified meaning.
 
-- **blackboard** — not just any board that is black; a specific thing used in classrooms
-- **greenhouse** — not just a house that is green; a building for growing plants
-- **football** — not a ball that is made of feet; a specific sport
+- **blackboard**: not just any board that is black; a specific thing used in classrooms
+- **greenhouse**: not just a house that is green; a building for growing plants
+- **football**: not a ball that is made of feet; a specific sport
 
 The combined meaning is often different from the sum of the parts.
-
----
 
 ## The Stress Rule for Compound Nouns
 
@@ -32,11 +30,9 @@ The combined meaning is often different from the sum of the parts.
 | BEDroom         | BED-       | /ˈbɛd·ruːm/          |
 | HAIRcut         | HAIR-      | /ˈhɛɚ·kʌt/           |
 
----
-
 ## Compound Noun vs. Noun Phrase
 
-This is where many learners get confused. A **noun phrase** is an adjective + noun describing a modified noun — and it stresses the *second* word (the noun).
+This is where many learners get confused. A **noun phrase** is an adjective + noun describing a modified noun, and it stresses the *second* word (the noun).
 
 **Compound noun** → stress on **first** word (one concept)  
 **Noun phrase** → stress on **second** word (description)
@@ -52,8 +48,6 @@ This is where many learners get confused. A **noun phrase** is an adjective + no
 | **DARK**room     | compound noun | 1st word     | a photography room               |
 | dark **ROOM**    | noun phrase   | 2nd word     | a room that is dark              |
 
----
-
 ## Written as One Word, Two Words, or Hyphenated?
 
 English is inconsistent about how it writes compounds. The stress pattern holds regardless of spelling:
@@ -65,8 +59,6 @@ English is inconsistent about how it writes compounds. The stress pattern holds 
 | Hyphenated       | **WELL**-being, **SELF**-control |
 
 When you're unsure if something is a compound noun, try the stress test: if it sounds right with stress on the first word and the two words have a unified concept, it's likely a compound.
-
----
 
 ## Quick Contrast Pairs
 

@@ -15,8 +15,6 @@ English has a fascinating pattern where many two-syllable words shift their stre
 
 This is called the **noun-verb stress shift**.
 
----
-
 ## The Core Pairs
 
 | Word     | As NOUN (stress 1st) | As VERB (stress 2nd) |
@@ -40,8 +38,6 @@ This is called the **noun-verb stress shift**.
 | insult   | IN·sult /ˈɪn·sʌlt/ | in·SULT /ɪnˈsʌlt/ |
 | update   | UP·date /ˈʌp·deɪt/ | up·DATE /ʌpˈdeɪt/ |
 
----
-
 ## In Context
 
 Hearing the shift in sentences:
@@ -55,15 +51,11 @@ Hearing the shift in sentences:
 > You need a **PER·mit** (noun) to park here. → /ˈpɝː·mɪt/  
 > Will they **per·MIT** (verb) us to enter? → /pɚˈmɪt/
 
----
-
 ## Why This Happens
 
 This pattern likely emerged from older French and Latin loanwords where stress placement carried grammatical information. Over centuries, English speakers regularized it into a systematic distinction.
 
-The key insight: **stress is part of grammar, not just pronunciation.** Changing stress can change the word's grammatical category — and its vowel sounds change along with it (due to reduction in unstressed syllables).
-
----
+The key insight: **stress is part of grammar, not just pronunciation.** Changing stress can change the word's grammatical category, and its vowel sounds change along with it (due to reduction in unstressed syllables).
 
 ## How to Practice
 
@@ -72,4 +64,4 @@ The key insight: **stress is part of grammar, not just pronunciation.** Changing
 3. Say them aloud, exaggerating the stress difference
 4. Record yourself and compare to a dictionary pronunciation
 
-The shift is subtle but audible — native speakers use it automatically and notice when it's wrong.
+The shift is subtle but audible; native speakers use it automatically and notice when it's wrong.

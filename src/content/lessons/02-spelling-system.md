@@ -10,8 +10,6 @@ tags: ["spelling", "phonics", "phonetics", "American English"]
 
 English has **26 letters** in its alphabet but **44 distinct sounds** (phonemes). That mismatch means the spelling system can never be perfectly one-to-one. The same letter often represents multiple sounds, multiple spellings can represent the same sound, and some letters represent no sound at all.
 
----
-
 ## 1. Same Letter, Different Sounds
 
 One letter can map to several different sounds depending on the word.
@@ -54,8 +52,6 @@ One letter can map to several different sounds depending on the word.
 |-------|----------|--------------|-----------|-----------|
 | think | th       | voiceless-th | /θ/       | /θɪŋk/    |
 | this  | th       | voiced-th    | /ð/       | /ðɪs/     |
-
----
 
 ## 2. Same Sound, Different Spelling
 
@@ -113,8 +109,6 @@ The same phoneme can be spelled many different ways across different words.
 | special  | ci       | /ʃ/     | /ˈspɛʃəl/     |
 | pressure | ss       | /ʃ/     | /ˈprɛʃɚ/      |
 
----
-
 ## 3. Letters That Represent No Sound (Silent Letters)
 
 Many English words contain letters that are written but not pronounced.
@@ -136,10 +130,8 @@ Many English words contain letters that are written but not pronounced.
 | island  | s             | iland         | /ˈaɪlənd/ |
 | psalm   | p             | salm          | /sɑm/   |
 
----
-
 ## Why Is English Spelling So Irregular?
 
-English borrowed heavily from Latin, French, Greek, and Norse. Words kept their original spellings even after pronunciation changed. For example, the *gh* in *right* and *night* used to represent a real sound (like the *ch* in Scottish *loch*) — English speakers stopped saying it, but the spelling stayed.
+English borrowed heavily from Latin, French, Greek, and Norse. Words kept their original spellings even after pronunciation changed. For example, the *gh* in *right* and *night* used to represent a real sound (like the *ch* in Scottish *loch*). English speakers stopped saying it, but the spelling stayed.
 
 This history is why learning **sounds first** (rather than spelling first) gives you a more reliable foundation for speaking and understanding spoken English.

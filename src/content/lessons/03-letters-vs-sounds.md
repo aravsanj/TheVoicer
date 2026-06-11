@@ -8,12 +8,7 @@ tags: ["spelling", "phonics", "phonetics", "American English"]
 
 ## The Key Idea
 
-Letters and sounds are not the same thing. When you read a word, count the **letters**. When you say a word, count the **sounds**. Those two numbers often disagree.
-
-- **More letters than sounds** — some letters are silent, or two letters share one sound.
-- **More sounds than letters** — one letter produces two sounds.
-
----
+Letters and sounds are not the same thing. When you read a word, count the **letters**. When you say a word, count the **sounds**. Those two numbers often disagree. Sometimes a word has more letters than sounds: silent letters and digraphs don't each need their own slot. Other times it has more sounds than letters: a single letter can produce two sounds.
 
 ## 1. More Letters Than Sounds
 
@@ -65,8 +60,6 @@ When the same letter appears twice in a row, it almost always represents a singl
 | egg    | 3       | 2      | /ɛɡ/    |
 | happy  | 5       | 4      | /ˈhæpiː/ |
 
----
-
 ## 2. More Sounds Than Letters
 
 ### The Letter X
@@ -97,9 +90,9 @@ The letter _X_ is the most common case of one letter producing two sounds. Depen
 
 The letter _x_ accounts for 1 letter but 2 sounds (/k/ + /s/), so the sound count is higher.
 
-### The "Cute U" — Long U after certain consonants
+### The "Cute U": Long U after certain consonants
 
-When _u_ follows _c_, _f_, _m_, _p_, or _h_ and is in a stressed syllable, it is pronounced /juː/ — two sounds (/j/ + /uː/) from one letter.
+When _u_ follows _c_, _f_, _m_, _p_, or _h_ and is in a stressed syllable, it is pronounced /juː/, which is two sounds (/j/ + /uː/) from one letter.
 
 | Word | Letters | Sounds | IPA      |
 | ---- | ------- | ------ | -------- |
@@ -111,12 +104,10 @@ When _u_ follows _c_, _f_, _m_, _p_, or _h_ and is in a stressed syllable, it is
 
 Here the letter count and sound count happen to balance because these words also contain a silent _e_. The silent _e_ removes one letter from the sound count, and the /j/ from the _u_ adds one sound back, leaving the totals even. But if you focus on the _u_ alone: **one letter, two sounds**.
 
----
-
 ## How to Count Sounds in a Word
 
 1. Say the word slowly out loud.
-2. Count each distinct sound — not each letter.
+2. Count each distinct sound, not each letter.
 3. Use the IPA transcription to check your count.
 
 | Word     | IPA       | Letter Count | Sound Count |
@@ -128,4 +119,4 @@ Here the letter count and sound count happen to balance because these words also
 | mix      | /mɪks/    | 3            | 4           |
 | knight   | /naɪt/    | 6            | 3           |
 
-The word _through_ has 7 letters but only 3 sounds — the letter-to-sound ratio is more than 2:1. The word _fox_ has 3 letters but 4 sounds. Neither is unusual in English; both patterns appear constantly.
+The word _through_ has 7 letters but only 3 sounds. The letter-to-sound ratio is more than 2:1. The word _fox_ has 3 letters but 4 sounds. Neither is unusual in English; both patterns appear constantly.
