@@ -6,7 +6,7 @@ export interface SoundMeta {
   /** Respelling abbreviation used in words.json (uppercase = stressed, lowercase = unstressed) */
   key: string;
   label: string;
-  example: string;
+  examples: string[];
   group: string;
   desc: string;
 }
