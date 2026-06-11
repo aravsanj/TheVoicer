@@ -7,6 +7,7 @@ tags: ["phonetics", "articulators", "voiced", "voiceless", "consonants", "vowels
 ---
 
 import Word from '../../components/Word.astro';
+import Sound from '../../components/Sound.astro';
 
 ## 1. Your Speech Organs (Articulators)
 
@@ -14,27 +15,27 @@ Speech is produced by shaping and directing airflow from your lungs through a se
 
 | Articulator | Role in Speech |
 |-------------|----------------|
-| **Lips** | Shape the opening; used for sounds like /p/, /b/, /m/, /w/ |
-| **Teeth** | Work with the tongue tip; used for sounds like /θ/, /ð/, /f/, /v/ |
+| **Lips** | Shape the opening; used for sounds like <Sound id="p" compact />, <Sound id="b" compact />, <Sound id="m" compact />, <Sound id="w" compact /> |
+| **Teeth** | Work with the tongue tip; used for sounds like <Sound id="th" compact />, <Sound id="dh" compact />, <Sound id="f" compact />, <Sound id="v" compact /> |
 | **Jaw** | Opens and closes to control mouth space; affects vowel height |
 | **Tongue** | Most active articulator; tip, front, and back each target different sounds |
 | **Roof of mouth** | Includes gum ridge, hard palate, and soft palate; the tongue targets each zone |
-| **Nose** | Nasal cavity resonates for /m/, /n/, /ŋ/ |
+| **Nose** | Nasal cavity resonates for <Sound id="m" compact />, <Sound id="n" compact />, <Sound id="ng" compact /> |
 | **Vocal cords** | Vibrate to produce voice; sit in the throat above the lungs |
 
 ### Tongue Zones
 
 The tongue is divided into three active zones:
 
-- **Tip**: touches the gum ridge for /t/, /d/, /n/, /l/
-- **Front (blade)**: used for /ʃ/, /ʒ/, /tʃ/, /dʒ/
-- **Back**: rises toward the soft palate for /k/, /g/, /ŋ/
+- **Tip**: touches the gum ridge for <Sound id="t" compact />, <Sound id="d" compact />, <Sound id="n" compact />, <Sound id="l" compact />
+- **Front (blade)**: used for <Sound id="sh" compact />, <Sound id="zh" compact />, <Sound id="ch" compact />, <Sound id="j" compact />
+- **Back**: rises toward the soft palate for <Sound id="k" compact />, <Sound id="g" compact />, <Sound id="ng" compact />
 
 ### Roof of Mouth Zones
 
-- **Gum ridge (alveolar ridge)**: the bumpy ridge just behind your upper front teeth; used for /t/, /d/, /s/, /z/, /n/, /l/
-- **Hard palate**: the firm bony roof further back; used for /ʃ/, /ʒ/, /tʃ/, /dʒ/, /j/
-- **Soft palate (velum)**: the flexible rear section; used for /k/, /g/, /ŋ/; lowers to allow nasal airflow for /m/, /n/, /ŋ/
+- **Gum ridge (alveolar ridge)**: the bumpy ridge just behind your upper front teeth; used for <Sound id="t" compact />, <Sound id="d" compact />, <Sound id="s" compact />, <Sound id="z" compact />, <Sound id="n" compact />, <Sound id="l" compact />
+- **Hard palate**: the firm bony roof further back; used for <Sound id="sh" compact />, <Sound id="zh" compact />, <Sound id="ch" compact />, <Sound id="j" compact />, <Sound id="y" compact />
+- **Soft palate (velum)**: the flexible rear section; used for <Sound id="k" compact />, <Sound id="g" compact />, <Sound id="ng" compact />; lowers to allow nasal airflow for <Sound id="m" compact />, <Sound id="n" compact />, <Sound id="ng" compact />
 
 ### Tongue Zone × Roof of Mouth Zone
 
@@ -42,13 +43,13 @@ The three tongue zones (Tip, Front/blade, Back) always target a surface on the r
 
 | Tongue Zone | Targets | Sounds |
 |-------------|---------|--------|
-| Tip | Teeth | /θ/ (<Word id="think" compact />), /ð/ (<Word id="this" compact />) |
-| Tip | Gum ridge | /t/, /d/, /s/, /z/, /n/, /l/ |
-| Front (blade) | Hard palate | /ʃ/ (<Word id="shoe" compact />), /ʒ/ (<Word id="measure" compact />), /tʃ/ (<Word id="chair" compact />), /dʒ/ (<Word id="jump" compact />), /j/ (<Word id="yes" compact />) |
-| Back | Soft palate | /k/ (<Word id="cat" compact />), /g/ (<Word id="go" compact />), /ŋ/ (<Word id="sing" compact />) |
-| **No tongue involved** | Lips | /p/ (<Word id="pen" compact />), /b/ (<Word id="bed" compact />), /m/ (<Word id="map" compact />), /w/ (<Word id="wet" compact />) |
-| **No tongue involved** | Lower lip + upper teeth | /f/ (<Word id="fan" compact />), /v/ (<Word id="van" compact />) |
-| **No tongue involved** | Glottis (throat) | /h/ (<Word id="hat" compact />) |
+| Tip | Teeth | <Sound id="th" compact /> (<Word id="think" compact />), <Sound id="dh" compact /> (<Word id="this" compact />) |
+| Tip | Gum ridge | <Sound id="t" compact />, <Sound id="d" compact />, <Sound id="s" compact />, <Sound id="z" compact />, <Sound id="n" compact />, <Sound id="l" compact /> |
+| Front (blade) | Hard palate | <Sound id="sh" compact /> (<Word id="shoe" compact />), <Sound id="zh" compact /> (<Word id="measure" compact />), <Sound id="ch" compact /> (<Word id="chair" compact />), <Sound id="j" compact /> (<Word id="jump" compact />), <Sound id="y" compact /> (<Word id="yes" compact />) |
+| Back | Soft palate | <Sound id="k" compact /> (<Word id="cat" compact />), <Sound id="g" compact /> (<Word id="go" compact />), <Sound id="ng" compact /> (<Word id="sing" compact />) |
+| **No tongue involved** | Lips | <Sound id="p" compact /> (<Word id="pen" compact />), <Sound id="b" compact /> (<Word id="bed" compact />), <Sound id="m" compact /> (<Word id="map" compact />), <Sound id="w" compact /> (<Word id="wet" compact />) |
+| **No tongue involved** | Lower lip + upper teeth | <Sound id="f" compact /> (<Word id="fan" compact />), <Sound id="v" compact /> (<Word id="van" compact />) |
+| **No tongue involved** | Glottis (throat) | <Sound id="h" compact /> (<Word id="hat" compact />) |
 
 ## 2. Voiced vs. Voiceless Sounds
 
@@ -58,8 +59,8 @@ Every sound is either **voiced** (vocal cords vibrate) or **voiceless** (vocal c
 
 Place the back of your hand against your throat and say these pairs slowly:
 
-- **sss** (voiceless) → **zzz** (voiced): feel the buzz appear for /z/
-- **fff** (voiceless) → **vvv** (voiced): feel the buzz appear for /v/
+- **sss** (voiceless) → **zzz** (voiced): feel the buzz appear for <Sound id="z" compact />
+- **fff** (voiceless) → **vvv** (voiced): feel the buzz appear for <Sound id="v" compact />
 
 Alternatively, cover both ears with your hands. Voiced sounds create a hum you can hear from inside your head; voiceless sounds are silent internally.
 
@@ -69,19 +70,19 @@ Most English consonants come in **pairs** that share the same mouth position but
 
 | Voiceless | Example | Voiced | Example | Tongue Zone | Target |
 |-----------|---------|--------|---------|-------------|--------|
-| /p/ | <Word id="pen" compact /> | /b/ | <Word id="bed" compact /> | (none) | Lips |
-| /t/ | <Word id="ten" compact /> | /d/ | <Word id="den" compact /> | Tip | Gum ridge |
-| /k/ | <Word id="cat" compact /> | /g/ | <Word id="got" compact /> | Back | Soft palate |
-| /f/ | <Word id="fan" compact /> | /v/ | <Word id="van" compact /> | (none) | Lower lip + upper teeth |
-| /θ/ | <Word id="think" compact /> | /ð/ | <Word id="this" compact /> | Tip | Teeth |
-| /s/ | <Word id="sip" compact /> | /z/ | <Word id="zip" compact /> | Tip | Gum ridge |
-| /ʃ/ | <Word id="shoe" compact /> | /ʒ/ | <Word id="measure" compact /> | Front (blade) | Hard palate |
-| /tʃ/ | <Word id="chair" compact /> | /dʒ/ | <Word id="jump" compact /> | Front (blade) | Hard palate |
-| /h/ | <Word id="hat" compact /> | (none) | (none) | (none) | Glottis |
+| <Sound id="p" compact /> | <Word id="pen" compact /> | <Sound id="b" compact /> | <Word id="bed" compact /> | (none) | Lips |
+| <Sound id="t" compact /> | <Word id="ten" compact /> | <Sound id="d" compact /> | <Word id="den" compact /> | Tip | Gum ridge |
+| <Sound id="k" compact /> | <Word id="cat" compact /> | <Sound id="g" compact /> | <Word id="got" compact /> | Back | Soft palate |
+| <Sound id="f" compact /> | <Word id="fan" compact /> | <Sound id="v" compact /> | <Word id="van" compact /> | (none) | Lower lip + upper teeth |
+| <Sound id="th" compact /> | <Word id="think" compact /> | <Sound id="dh" compact /> | <Word id="this" compact /> | Tip | Teeth |
+| <Sound id="s" compact /> | <Word id="sip" compact /> | <Sound id="z" compact /> | <Word id="zip" compact /> | Tip | Gum ridge |
+| <Sound id="sh" compact /> | <Word id="shoe" compact /> | <Sound id="zh" compact /> | <Word id="measure" compact /> | Front (blade) | Hard palate |
+| <Sound id="ch" compact /> | <Word id="chair" compact /> | <Sound id="j" compact /> | <Word id="jump" compact /> | Front (blade) | Hard palate |
+| <Sound id="h" compact /> | <Word id="hat" compact /> | (none) | (none) | (none) | Glottis |
 
 Some consonants have no voiceless counterpart. They are always voiced:
 
-/m/, /n/, /ŋ/, /l/, /r/, /w/, /j/
+<Sound id="m" compact />, <Sound id="n" compact />, <Sound id="ng" compact />, <Sound id="l" compact />, <Sound id="r" compact />, <Sound id="w" compact />, <Sound id="y" compact />
 
 ## 4. Vowels: Always Voiced
 
@@ -93,17 +94,17 @@ Vowels are shaped by:
 
 1. **Tongue body position (front/back)**: how far forward or back the tongue body sits
 2. **Tongue height**: how close the tongue is to the roof of the mouth; high = close to roof, low = far from roof
-3. **Lip rounding**: whether the lips round (as in /u/) or spread (as in /iː/)
+3. **Lip rounding**: whether the lips round (as in <Sound id="long-u" compact />) or spread (as in <Sound id="long-e" compact />)
 
 | Tongue Body Position | Height | Lip Rounding | Sounds | Examples |
 |----------------------|--------|-------------|--------|---------|
-| Front | High | Unrounded | /iː/, /ɪ/ | <Word id="eat" compact />, <Word id="sit" compact /> |
-| Front | Mid | Unrounded | /eɪ/, /ɛ/ | <Word id="face" compact />, <Word id="bet" compact /> |
-| Front | Low | Unrounded | /æ/ | <Word id="cat" compact /> |
-| Central | Mid | Unrounded | /ə/, /ʌ/ | <Word id="about" compact />, <Word id="cup" compact /> |
-| Central | Mid (r-colored) | Unrounded | /ɝ/, /ɚ/ | <Word id="bird" compact />, <Word id="butter" compact /> |
-| Back | High | Rounded | /u/, /ʊ/ | <Word id="food" compact />, <Word id="book" compact /> |
-| Back | Mid | Rounded | /oʊ/, /ɔ/ | <Word id="home" compact />, <Word id="law" compact /> |
-| Back | Low | Unrounded | /ɑ/ | <Word id="father" compact /> |
+| Front | High | Unrounded | <Sound id="long-e" compact />, <Sound id="short-i" compact /> | <Word id="eat" compact />, <Word id="sit" compact /> |
+| Front | Mid | Unrounded | <Sound id="long-a" compact />, <Sound id="short-e" compact /> | <Word id="face" compact />, <Word id="bet" compact /> |
+| Front | Low | Unrounded | <Sound id="short-a" compact /> | <Word id="cat" compact /> |
+| Central | Mid | Unrounded | <Sound id="schwa" compact />, <Sound id="short-u" compact /> | <Word id="about" compact />, <Word id="cup" compact /> |
+| Central | Mid (r-colored) | Unrounded | <Sound id="r-vowel" compact />, <Sound id="r-schwa" compact /> | <Word id="bird" compact />, <Word id="butter" compact /> |
+| Back | High | Rounded | <Sound id="long-u" compact />, <Sound id="short-oo" compact /> | <Word id="food" compact />, <Word id="book" compact /> |
+| Back | Mid | Rounded | <Sound id="long-o" compact />, <Sound id="aw" compact /> | <Word id="home" compact />, <Word id="law" compact /> |
+| Back | Low | Unrounded | <Sound id="short-o" compact /> | <Word id="father" compact /> |
 
 Because all vowels involve continuous voicing and an open vocal tract, they carry the most volume and sustain the longest in connected speech.
