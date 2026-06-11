@@ -8,14 +8,20 @@ interface Props {
   compact?: boolean;
   /** Show only the label text, no IPA chip */
   labelOnly?: boolean;
+  /** Show only the respelling key */
+  keyOnly?: boolean;
 }
 
-const { id, link = true, compact = false, labelOnly = false } = Astro.props;
+const { id, link = true, compact = false, labelOnly = false, keyOnly = false } = Astro.props;
 const meta = SOUND_META[id];
 ---
 
 {meta ? (
-  labelOnly ? (
+  keyOnly ? (
+    link
+      ? <a href={`/sounds/${id}`} class="sound-key-link"><code class="sound-key">{meta.key}</code></a>
+      : <code class="sound-key">{meta.key}</code>
+  ) : labelOnly ? (
     link
       ? <a href={`/sounds/${id}`} class="sound-label-link">{meta.label}</a>
       : <span class="sound-label">{meta.label}</span>
@@ -63,6 +69,24 @@ const meta = SOUND_META[id];
 
   .sound-link-wrap:hover .sound-label {
     color: var(--color-text);
+  }
+
+  .sound-key {
+    font-size: 0.8rem;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 4px;
+    padding: 0.1em 0.4em;
+    white-space: nowrap;
+  }
+
+  .sound-key-link {
+    text-decoration: none;
+  }
+
+  .sound-key-link:hover .sound-key {
+    border-color: var(--color-accent);
+    color: var(--color-accent);
   }
 
   .sound-label-link {
