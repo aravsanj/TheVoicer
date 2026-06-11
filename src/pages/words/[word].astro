@@ -14,6 +14,9 @@ if (!entry) return Astro.redirect('/sounds');
 
 const stressMap: Record<string, string> = { '0': 'Unstressed', '1': 'Primary', '2': 'Secondary' };
 const stressLabel = stressMap[entry.stress] ?? entry.stress;
+
+const e = entry as any;
+const hasVariantForms = Array.isArray(e.strongSounds) && Array.isArray(e.weakSounds);
 ---
 
 <!doctype html>
@@ -43,18 +46,59 @@ const stressLabel = stressMap[entry.stress] ?? entry.stress;
 
       <section class="section">
         <h2 class="section-title">Sounds in this word</h2>
-        <div class="sound-chips">
-          {entry.sounds.map(s => {
-            const meta = SOUND_META[s] ?? { label: s, ipa: s, group: '' };
-            return (
-              <a href={`/sounds/${s}`} class="sound-chip">
-                <span class="chip-ipa">{meta.ipa}</span>
-                <span class="chip-label">{meta.label}</span>
-                <span class="chip-group">{meta.group}</span>
-              </a>
-            );
-          })}
-        </div>
+        {hasVariantForms ? (
+          <div class="variant-forms">
+            <div class="form-block">
+              <div class="form-header">
+                <span class="form-label">Strong</span>
+                <span class="form-ipa">{e.strongIPA}</span>
+              </div>
+              <div class="sound-chips">
+                {e.strongSounds.map((s: string) => {
+                  const meta = SOUND_META[s] ?? { label: s, ipa: s, group: '' };
+                  return (
+                    <a href={`/sounds/${s}`} class="sound-chip">
+                      <span class="chip-ipa">{meta.ipa}</span>
+                      <span class="chip-label">{meta.label}</span>
+                      <span class="chip-group">{meta.group}</span>
+                    </a>
+                  );
+                })}
+              </div>
+            </div>
+            <div class="form-block">
+              <div class="form-header">
+                <span class="form-label">Weak</span>
+                <span class="form-ipa">{e.weakIPA}</span>
+              </div>
+              <div class="sound-chips">
+                {e.weakSounds.map((s: string) => {
+                  const meta = SOUND_META[s] ?? { label: s, ipa: s, group: '' };
+                  return (
+                    <a href={`/sounds/${s}`} class="sound-chip">
+                      <span class="chip-ipa">{meta.ipa}</span>
+                      <span class="chip-label">{meta.label}</span>
+                      <span class="chip-group">{meta.group}</span>
+                    </a>
+                  );
+                })}
+              </div>
+            </div>
+          </div>
+        ) : (
+          <div class="sound-chips">
+            {entry.sounds.map(s => {
+              const meta = SOUND_META[s] ?? { label: s, ipa: s, group: '' };
+              return (
+                <a href={`/sounds/${s}`} class="sound-chip">
+                  <span class="chip-ipa">{meta.ipa}</span>
+                  <span class="chip-label">{meta.label}</span>
+                  <span class="chip-group">{meta.group}</span>
+                </a>
+              );
+            })}
+          </div>
+        )}
       </section>
 
       <section class="section">
@@ -173,6 +217,39 @@ const stressLabel = stressMap[entry.stress] ?? entry.stress;
     margin-bottom: 1rem;
     border: none;
     padding: 0;
+  }
+
+  .variant-forms {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  .form-block {
+    border: 1px solid var(--color-border);
+    border-radius: 10px;
+    padding: 1rem 1.1rem;
+  }
+
+  .form-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .form-label {
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--color-muted);
+  }
+
+  .form-ipa {
+    font-family: var(--font-mono);
+    font-size: 1.1rem;
+    color: var(--color-accent-soft);
   }
 
   .sound-chips {

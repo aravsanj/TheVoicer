@@ -38,3 +38,9 @@ mismatches.txt
 word_list.txt
 build_word_data.py
 verify_ipa.py
+add-alternatives.js
+add-syllables.js
+extract-ipa.js
+en_US.txt
+fix-ipa.js
+ipa.txt
