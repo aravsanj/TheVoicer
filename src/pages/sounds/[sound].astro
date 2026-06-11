@@ -1,6 +1,7 @@
 ---
 import Navbar from '../../components/Navbar.astro';
 import wordsData from '../../data/words.json';
+import { SOUND_META } from '../../data/soundMeta';
 
 export function getStaticPaths() {
   const sounds = new Set<string>();
@@ -10,61 +11,8 @@ export function getStaticPaths() {
   return [...sounds].map(sound => ({ params: { sound } }));
 }
 
-const SOUND_META: Record<string, { label: string; ipa: string; example: string; desc: string }> = {
-  // Vowels
-  'long-e':   { label: 'Long E',   ipa: 'iː',  example: 'beat',    desc: 'The high front tense vowel, as in "see", "be", "free".' },
-  'short-i':  { label: 'Short I',  ipa: 'ɪ',   example: 'bit',     desc: 'The high front lax vowel, as in "it", "him", "will".' },
-  'long-a':   { label: 'Long A',   ipa: 'eɪ',  example: 'bait',    desc: 'The mid front diphthong, as in "say", "make", "day".' },
-  'short-e':  { label: 'Short E',  ipa: 'ɛ',   example: 'bet',     desc: 'The mid front lax vowel, as in "end", "bed", "said".' },
-  'short-a':  { label: 'Short A',  ipa: 'æ',   example: 'bat',     desc: 'The low front vowel, as in "and", "cat", "hand".' },
-  'short-o':  { label: 'Short O',  ipa: 'ɑː',  example: 'bot',     desc: 'The low back vowel, as in "hot", "father", "calm".' },
-  'aw':       { label: 'AW',       ipa: 'ɔː',  example: 'bought',  desc: 'The mid-low back rounded vowel, as in "law", "saw", "all".' },
-  'long-o':   { label: 'Long O',   ipa: 'oʊ',  example: 'boat',    desc: 'The mid back diphthong, as in "go", "home", "know".' },
-  'long-u':   { label: 'Long U',   ipa: 'uː',  example: 'boot',    desc: 'The high back tense vowel, as in "you", "true", "move".' },
-  'short-u':  { label: 'Short U',  ipa: 'ʌ',   example: 'but',     desc: 'The mid central vowel (stressed) or schwa (unstressed), as in "up", "love".' },
-  'r-vowel':  { label: 'R-Vowel',  ipa: 'ɜːr', example: 'bird',    desc: 'The r-colored vowel, as in "her", "word", "learn".' },
-  'long-i':   { label: 'Long I',   ipa: 'aɪ',  example: 'bite',    desc: 'The low front diphthong, as in "my", "time", "right".' },
-  'ow':       { label: 'OW',       ipa: 'aʊ',  example: 'bout',    desc: 'The back diphthong, as in "out", "now", "how".' },
-  'short-oo': { label: 'Short OO', ipa: 'ʊ',   example: 'foot',    desc: 'The high back lax vowel, as in "book", "put", "could".' },
-  'oi':       { label: 'OI',       ipa: 'ɔɪ',  example: 'boy',     desc: 'The back-front diphthong, as in "oil", "join", "voice".' },
-  // R-controlled vowels
-  'ar':       { label: 'AR',        ipa: 'ɑːr', example: 'car',    desc: 'The r-colored low back vowel, as in "car", "star", "far".' },
-  'or':       { label: 'OR',        ipa: 'ɔːr', example: 'for',    desc: 'The r-colored mid back vowel, as in "for", "more", "four".' },
-  'air':      { label: 'AIR',       ipa: 'ɛr',  example: 'care',   desc: 'The r-colored mid front vowel, as in "care", "there", "share".' },
-  'ear':      { label: 'EAR',       ipa: 'ɪr',  example: 'here',   desc: 'The r-colored high front vowel, as in "here", "year", "near".' },
-  // Stops
-  'p':        { label: '/p/',       ipa: 'p',   example: 'pat',     desc: 'Voiceless bilabial stop, as in "pen", "spin", "tip".' },
-  'b':        { label: '/b/',       ipa: 'b',   example: 'bat',     desc: 'Voiced bilabial stop, as in "bed", "cab".' },
-  't':        { label: '/t/',       ipa: 't',   example: 'top',     desc: 'Voiceless alveolar stop, as in "ten", "sit".' },
-  'd':        { label: '/d/',       ipa: 'd',   example: 'dog',     desc: 'Voiced alveolar stop, as in "den", "bad".' },
-  'k':        { label: '/k/',       ipa: 'k',   example: 'cat',     desc: 'Voiceless velar stop, as in "key", "sky", "back".' },
-  'g':        { label: '/g/',       ipa: 'ɡ',   example: 'get',     desc: 'Voiced velar stop, as in "go", "big".' },
-  // Fricatives
-  'f':        { label: '/f/',       ipa: 'f',   example: 'fish',    desc: 'Voiceless labiodental fricative, as in "fan", "off".' },
-  'v':        { label: '/v/',       ipa: 'v',   example: 'van',     desc: 'Voiced labiodental fricative, as in "van", "of".' },
-  'th':       { label: '/θ/',       ipa: 'θ',   example: 'think',   desc: 'Voiceless dental fricative, as in "thin", "bath", "math".' },
-  'dh':       { label: '/ð/',       ipa: 'ð',   example: 'this',    desc: 'Voiced dental fricative, as in "the", "them", "bathe".' },
-  's':        { label: '/s/',       ipa: 's',   example: 'sit',     desc: 'Voiceless alveolar fricative, as in "sit", "pass".' },
-  'z':        { label: '/z/',       ipa: 'z',   example: 'zip',     desc: 'Voiced alveolar fricative, as in "zoo", "buzz".' },
-  'sh':       { label: '/ʃ/',       ipa: 'ʃ',   example: 'ship',    desc: 'Voiceless postalveolar fricative, as in "ship", "wish".' },
-  'zh':       { label: '/ʒ/',       ipa: 'ʒ',   example: 'measure', desc: 'Voiced postalveolar fricative, as in "measure", "vision".' },
-  'h':        { label: '/h/',       ipa: 'h',   example: 'hat',     desc: 'Voiceless glottal fricative, as in "hat", "ahead".' },
-  // Affricates
-  'ch':       { label: '/tʃ/',      ipa: 'tʃ',  example: 'chat',    desc: 'Voiceless postalveolar affricate, as in "chip", "much".' },
-  'j':        { label: '/dʒ/',      ipa: 'dʒ',  example: 'jump',    desc: 'Voiced postalveolar affricate, as in "jump", "edge".' },
-  // Nasals
-  'm':        { label: '/m/',       ipa: 'm',   example: 'map',     desc: 'Bilabial nasal, as in "map", "him".' },
-  'n':        { label: '/n/',       ipa: 'n',   example: 'nap',     desc: 'Alveolar nasal, as in "nap", "on".' },
-  'ng':       { label: '/ŋ/',       ipa: 'ŋ',   example: 'sing',    desc: 'Velar nasal, as in "sing", "ring", "think".' },
-  // Liquids & Glides
-  'l':        { label: '/l/',       ipa: 'l',   example: 'lip',     desc: 'Alveolar lateral approximant, as in "lip", "well".' },
-  'r':        { label: '/r/',       ipa: 'r',   example: 'red',     desc: 'Alveolar approximant, as in "red", "car".' },
-  'w':        { label: '/w/',       ipa: 'w',   example: 'wet',     desc: 'Labial-velar approximant, as in "wet", "away".' },
-  'y':        { label: '/j/',       ipa: 'j',   example: 'yes',     desc: 'Palatal approximant, as in "yes", "use", "beyond".' },
-};
-
 const { sound } = Astro.params;
-const meta = SOUND_META[sound] ?? { label: sound, ipa: '?', example: '', desc: '' };
+const meta = SOUND_META[sound] ?? { label: sound, ipa: '?', example: '', desc: '', group: '' };
 const words = wordsData
   .filter(w => w.sounds.includes(sound))
   .sort((a, b) => a.word.localeCompare(b.word));
@@ -205,7 +153,7 @@ const words = wordsData
           <tbody>
             {words.map(w => (
               <tr data-word={w.word}>
-                <td class="cell-word">{w.word}</td>
+                <td class="cell-word"><a href={`/words/${w.word}`} class="word-link">{w.word}</a></td>
                 <td class="cell-ipa">{w.ipa}</td>
                 <td class="cell-stress">{w.respelling}</td>
                 <td class="cell-cambridge">
@@ -354,6 +302,16 @@ const words = wordsData
     font-family: var(--font-sans);
     font-weight: 500;
     color: var(--color-text);
+  }
+
+  .word-link {
+    color: var(--color-text);
+    text-decoration: none;
+    font-weight: 500;
+  }
+  .word-link:hover {
+    color: var(--color-accent-soft);
+    text-decoration: underline;
   }
 
   .cell-ipa {

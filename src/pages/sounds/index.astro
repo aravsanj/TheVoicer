@@ -1,59 +1,11 @@
 ---
 import Navbar from '../../components/Navbar.astro';
+import WordSearch from '../../components/WordSearch.astro';
 import wordsData from '../../data/words.json';
+import { SOUND_META, GROUP_ORDER } from '../../data/soundMeta';
 
-const SOUND_META: Record<string, { label: string; ipa: string; example: string; group: string }> = {
-  // Vowels
-  'long-e':   { label: 'Long E',    ipa: 'iː',  example: 'beat',    group: 'Vowels' },
-  'short-i':  { label: 'Short I',   ipa: 'ɪ',   example: 'bit',     group: 'Vowels' },
-  'long-a':   { label: 'Long A',    ipa: 'eɪ',  example: 'bait',    group: 'Vowels' },
-  'short-e':  { label: 'Short E',   ipa: 'ɛ',   example: 'bet',     group: 'Vowels' },
-  'short-a':  { label: 'Short A',   ipa: 'æ',   example: 'bat',     group: 'Vowels' },
-  'short-o':  { label: 'Short O',   ipa: 'ɑː',  example: 'bot',     group: 'Vowels' },
-  'aw':       { label: 'AW',        ipa: 'ɔː',  example: 'bought',  group: 'Vowels' },
-  'long-o':   { label: 'Long O',    ipa: 'oʊ',  example: 'boat',    group: 'Vowels' },
-  'long-u':   { label: 'Long U',    ipa: 'uː',  example: 'boot',    group: 'Vowels' },
-  'short-u':  { label: 'Short U',   ipa: 'ʌ',   example: 'but',     group: 'Vowels' },
-  'r-vowel':  { label: 'R-Vowel',   ipa: 'ɜːr', example: 'bird',    group: 'Vowels' },
-  'long-i':   { label: 'Long I',    ipa: 'aɪ',  example: 'bite',    group: 'Vowels' },
-  'ow':       { label: 'OW',        ipa: 'aʊ',  example: 'bout',    group: 'Vowels' },
-  'short-oo': { label: 'Short OO',  ipa: 'ʊ',   example: 'foot',    group: 'Vowels' },
-  'oi':       { label: 'OI',        ipa: 'ɔɪ',  example: 'boy',     group: 'Vowels' },
-  // R-controlled vowels
-  'ar':       { label: 'AR',        ipa: 'ɑːr', example: 'car',     group: 'R-Controlled' },
-  'or':       { label: 'OR',        ipa: 'ɔːr', example: 'for',     group: 'R-Controlled' },
-  'air':      { label: 'AIR',       ipa: 'ɛr',  example: 'care',    group: 'R-Controlled' },
-  'ear':      { label: 'EAR',       ipa: 'ɪr',  example: 'here',    group: 'R-Controlled' },
-  // Stops
-  'p':        { label: '/p/',        ipa: 'p',   example: 'pat',     group: 'Stops' },
-  'b':        { label: '/b/',        ipa: 'b',   example: 'bat',     group: 'Stops' },
-  't':        { label: '/t/',        ipa: 't',   example: 'top',     group: 'Stops' },
-  'd':        { label: '/d/',        ipa: 'd',   example: 'dog',     group: 'Stops' },
-  'k':        { label: '/k/',        ipa: 'k',   example: 'cat',     group: 'Stops' },
-  'g':        { label: '/g/',        ipa: 'ɡ',   example: 'get',     group: 'Stops' },
-  // Fricatives
-  'f':        { label: '/f/',        ipa: 'f',   example: 'fish',    group: 'Fricatives' },
-  'v':        { label: '/v/',        ipa: 'v',   example: 'van',     group: 'Fricatives' },
-  'th':       { label: '/θ/',        ipa: 'θ',   example: 'think',   group: 'Fricatives' },
-  'dh':       { label: '/ð/',        ipa: 'ð',   example: 'this',    group: 'Fricatives' },
-  's':        { label: '/s/',        ipa: 's',   example: 'sit',     group: 'Fricatives' },
-  'z':        { label: '/z/',        ipa: 'z',   example: 'zip',     group: 'Fricatives' },
-  'sh':       { label: '/ʃ/',        ipa: 'ʃ',   example: 'ship',    group: 'Fricatives' },
-  'zh':       { label: '/ʒ/',        ipa: 'ʒ',   example: 'measure', group: 'Fricatives' },
-  'h':        { label: '/h/',        ipa: 'h',   example: 'hat',     group: 'Fricatives' },
-  // Affricates
-  'ch':       { label: '/tʃ/',       ipa: 'tʃ',  example: 'chat',    group: 'Affricates' },
-  'j':        { label: '/dʒ/',       ipa: 'dʒ',  example: 'jump',    group: 'Affricates' },
-  // Nasals
-  'm':        { label: '/m/',        ipa: 'm',   example: 'map',     group: 'Nasals' },
-  'n':        { label: '/n/',        ipa: 'n',   example: 'nap',     group: 'Nasals' },
-  'ng':       { label: '/ŋ/',        ipa: 'ŋ',   example: 'sing',    group: 'Nasals' },
-  // Liquids & Glides
-  'l':        { label: '/l/',        ipa: 'l',   example: 'lip',     group: 'Liquids & Glides' },
-  'r':        { label: '/r/',        ipa: 'r',   example: 'red',     group: 'Liquids & Glides' },
-  'w':        { label: '/w/',        ipa: 'w',   example: 'wet',     group: 'Liquids & Glides' },
-  'y':        { label: '/j/',        ipa: 'j',   example: 'yes',     group: 'Liquids & Glides' },
-};
+// Compact word data for client-side search: [word, ipa, respelling, sounds[]]
+const compactWords = wordsData.map(w => [w.word, w.ipa, w.respelling, w.sounds]);
 
 const soundCounts: Record<string, number> = {};
 for (const word of wordsData) {
@@ -62,12 +14,10 @@ for (const word of wordsData) {
   }
 }
 
-const GROUP_ORDER = ['Vowels', 'R-Controlled', 'Stops', 'Fricatives', 'Affricates', 'Nasals', 'Liquids & Glides'];
-
 const sounds = Object.entries(soundCounts).map(([sound, count]) => ({
   sound,
   count,
-  meta: SOUND_META[sound] ?? { label: sound, ipa: '?', example: '', group: 'Other' },
+  meta: SOUND_META[sound] ?? { label: sound, ipa: '?', example: '', group: 'Other', desc: '' },
 }));
 
 const byGroup = GROUP_ORDER.map(group => ({
@@ -85,7 +35,7 @@ const byGroup = GROUP_ORDER.map(group => ({
     <meta name="description" content="Browse all English vowel sounds with example words, IPA symbols, and stress patterns." />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Lora:wght@600;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="/src/styles/global.css" />
   </head>
   <body>
@@ -96,6 +46,8 @@ const byGroup = GROUP_ORDER.map(group => ({
         <h1>English Sounds</h1>
         <p class="subtitle">Browse common words grouped by vowel sound, with IPA notation and stress patterns.</p>
       </header>
+
+      <WordSearch compactWords={compactWords} />
 
       {byGroup.map(({ group, items }) => (
         <section class="sound-group">
@@ -229,4 +181,5 @@ const byGroup = GROUP_ORDER.map(group => ({
     margin-top: 0.5rem;
     font-family: var(--font-mono);
   }
+
 </style>

@@ -1,0 +1,112 @@
+---
+import Navbar from '../../components/Navbar.astro';
+import WordCard from '../../components/WordCard.astro';
+import wordsData from '../../data/words.json';
+
+export function getStaticPaths() {
+  const letters = new Set<string>();
+  for (const w of wordsData) {
+    if (w?.word) letters.add(w.word[0].toLowerCase());
+  }
+  return [...letters].map(letter => ({ params: { letter } }));
+}
+
+const { letter } = Astro.params;
+const words = wordsData.filter(w => w?.word && w.word[0].toLowerCase() === letter);
+const heading = letter.toUpperCase();
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Words starting with {heading} — TheVoicer</title>
+    <meta name="description" content={`All ${words.length} words starting with ${heading} — IPA, pronunciation, and stress patterns.`} />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Lora:wght@600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/src/styles/global.css" />
+  </head>
+  <body>
+    <Navbar />
+    <main class="page">
+      <header class="page-header">
+        <a href="/words" class="back-link">← All Words</a>
+        <div class="letter-badge">{heading}</div>
+        <h1>Words starting with "{heading}"</h1>
+        <p class="subtitle">{words.length} words</p>
+      </header>
+
+      <div class="word-grid">
+        {words.map(w => (
+          <WordCard word={w.word} ipa={w.ipa} respelling={w.respelling} />
+        ))}
+      </div>
+    </main>
+  </body>
+</html>
+
+<style>
+  .page {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 4rem 2rem 6rem;
+  }
+
+  .page-header {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+
+  .back-link {
+    display: inline-block;
+    font-size: 0.85rem;
+    color: var(--color-muted);
+    text-decoration: none;
+    margin-bottom: 1.5rem;
+    transition: color 0.15s;
+  }
+
+  .back-link:hover {
+    color: var(--color-accent-soft);
+    text-decoration: none;
+  }
+
+  .letter-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 3rem;
+    height: 3rem;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--color-accent);
+    background: rgba(124, 106, 247, 0.12);
+    border: 1px solid rgba(124, 106, 247, 0.25);
+    border-radius: 999px;
+    margin-bottom: 1rem;
+  }
+
+  .page-header h1 {
+    font-size: 2.2rem;
+    letter-spacing: -0.02em;
+    background: linear-gradient(135deg, #fff 0%, var(--color-accent-soft) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 0.5rem;
+  }
+
+  .subtitle {
+    color: var(--color-muted);
+    font-size: 1rem;
+  }
+
+  .word-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 0.6rem;
+  }
+
+</style>

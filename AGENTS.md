@@ -45,6 +45,10 @@ The slug page uses `getCollection('lessons')` and finds the lesson by `data.slug
 
 There is no `src/components/` directory yet.
 
+## Component Rules
+
+- Never duplicate component markup or styles across pages. Extract shared UI (cards, grids, etc.) into `src/components/` and import it everywhere it's needed.
+
 ## Lesson Content Rules
 
 - Never say "next lesson", "previous lesson", or any relative positional reference. Lessons are standalone files and may be read in any order.

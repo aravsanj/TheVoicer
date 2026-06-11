@@ -1,0 +1,254 @@
+---
+interface Props {
+  // [word, ipa, respelling, sounds[]]
+  compactWords: [string, string, string, string[]][];
+  placeholder?: string;
+}
+
+const {
+  compactWords,
+  placeholder = 'Look up a word… e.g. boat, culture, thought',
+} = Astro.props;
+---
+
+<div class="word-search-wrap">
+  <div class="word-search-box">
+    <svg class="search-icon" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="8.5" cy="8.5" r="5.5" stroke="currentColor" stroke-width="1.5"/>
+      <path d="M13 13L17 17" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+    </svg>
+    <input
+      id="word-search"
+      type="search"
+      placeholder={placeholder}
+      autocomplete="off"
+      spellcheck="false"
+    />
+  </div>
+  <ul id="word-results" class="word-results" hidden></ul>
+</div>
+
+<style>
+  .word-search-wrap {
+    margin-bottom: 2.5rem;
+  }
+
+  .word-search-box {
+    position: relative;
+  }
+
+  .search-icon {
+    position: absolute;
+    left: 1.1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 18px;
+    height: 18px;
+    color: var(--color-muted);
+    pointer-events: none;
+    transition: color 0.2s;
+  }
+
+  .word-search-box:focus-within .search-icon {
+    color: var(--color-accent);
+  }
+
+  #word-search {
+    width: 100%;
+    padding: 1rem 1.25rem 1rem 3rem;
+    font-size: 1rem;
+    font-family: inherit;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 14px;
+    color: var(--color-text);
+    outline: none;
+    box-sizing: border-box;
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+
+  #word-search::placeholder { color: var(--color-muted); }
+
+  #word-search:focus {
+    border-color: var(--color-accent);
+    box-shadow: 0 0 0 3px rgba(124, 106, 247, 0.15), 0 4px 20px rgba(124, 106, 247, 0.08);
+  }
+
+  .word-results {
+    list-style: none;
+    margin: 0.75rem 0 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+</style>
+
+<!-- Result card styles must be global: innerHTML-injected nodes don't get Astro's scope hash -->
+<style is:global>
+  @keyframes result-in {
+    from { opacity: 0; transform: translateY(6px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .word-result {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-left: 3px solid var(--color-accent);
+    border-radius: 12px;
+    padding: 1.1rem 1.3rem;
+    animation: result-in 0.18s ease both;
+  }
+
+  .wr-top {
+    display: flex;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 0.6rem 1rem;
+    margin-bottom: 0.85rem;
+  }
+
+  .wr-word {
+    font-family: 'Lora', Georgia, serif;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: -0.01em;
+    text-decoration: none;
+  }
+  .wr-word:hover {
+    color: var(--color-accent-soft);
+    text-decoration: underline;
+  }
+
+  .wr-ipa {
+    font-family: 'JetBrains Mono', 'Fira Code', monospace;
+    font-size: 1rem;
+    color: var(--color-accent-soft);
+    letter-spacing: 0.02em;
+  }
+
+  .wr-respelling {
+    font-family: 'JetBrains Mono', 'Fira Code', monospace;
+    font-size: 0.78rem;
+    font-weight: 500;
+    color: var(--color-muted);
+    letter-spacing: 0.06em;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid var(--color-border);
+    border-radius: 5px;
+    padding: 0.15rem 0.5rem;
+  }
+
+  .wr-sounds {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.4rem;
+  }
+
+  .wr-sound-label {
+    font-size: 0.65rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--color-muted);
+    margin-right: 0.2rem;
+  }
+
+  .wr-sound-chip {
+    display: inline-flex;
+    align-items: center;
+    font-family: 'JetBrains Mono', 'Fira Code', monospace;
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: #fff;
+    background: rgba(124, 106, 247, 0.22);
+    border: 1px solid rgba(124, 106, 247, 0.45);
+    border-radius: 6px;
+    padding: 0.28rem 0.7rem;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: background 0.15s, border-color 0.15s, transform 0.1s;
+  }
+
+  .wr-sound-chip:hover {
+    background: var(--color-accent);
+    border-color: var(--color-accent);
+    color: #fff;
+    text-decoration: none;
+    transform: translateY(-1px);
+  }
+
+  .wr-no-results {
+    padding: 1.5rem;
+    color: var(--color-muted);
+    font-size: 0.9rem;
+    text-align: center;
+    font-style: italic;
+  }
+</style>
+
+<script define:vars={{ compactWords }}>
+  const SOUND_LABELS = {
+    'long-e':'iː','short-i':'ɪ','long-a':'eɪ','short-e':'ɛ','short-a':'æ',
+    'short-o':'ɑː','aw':'ɔː','long-o':'oʊ','long-u':'uː','short-u':'ʌ',
+    'r-vowel':'ɜːr','long-i':'aɪ','ow':'aʊ','short-oo':'ʊ','oi':'ɔɪ',
+    'ar':'ɑːr','or':'ɔːr','air':'ɛr','ear':'ɪr',
+    'p':'p','b':'b','t':'t','d':'d','k':'k','g':'ɡ',
+    'f':'f','v':'v','th':'θ','dh':'ð','s':'s','z':'z',
+    'sh':'ʃ','zh':'ʒ','h':'h','ch':'tʃ','j':'dʒ',
+    'm':'m','n':'n','ng':'ŋ','l':'l','r':'r','w':'w','y':'j',
+  };
+
+  const input = document.getElementById('word-search');
+  const resultsList = document.getElementById('word-results');
+
+  function render(matches) {
+    resultsList.innerHTML = '';
+    if (matches.length === 0) {
+      resultsList.hidden = false;
+      const li = document.createElement('li');
+      li.className = 'wr-no-results';
+      li.textContent = 'No words found.';
+      resultsList.appendChild(li);
+      return;
+    }
+    resultsList.hidden = false;
+    matches.forEach(([word, ipa, respelling, sounds], i) => {
+      const li = document.createElement('li');
+      li.className = 'word-result';
+      li.style.animationDelay = `${i * 35}ms`;
+      const chips = (sounds ?? []).map(s => {
+        const label = SOUND_LABELS[s] ?? s;
+        return `<a href="/sounds/${s}" class="wr-sound-chip">${label}</a>`;
+      }).join('');
+      const soundsRow = chips
+        ? `<div class="wr-sounds"><span class="wr-sound-label">Sounds</span>${chips}</div>`
+        : '';
+      li.innerHTML = `
+        <div class="wr-top">
+          <a href="/words/${word}" class="wr-word">${word}</a>
+          <span class="wr-ipa">${ipa}</span>
+          <span class="wr-respelling">${respelling}</span>
+        </div>
+        ${soundsRow}
+      `;
+      resultsList.appendChild(li);
+    });
+  }
+
+  input.addEventListener('input', () => {
+    const q = input.value.trim().toLowerCase();
+    if (!q) { resultsList.hidden = true; resultsList.innerHTML = ''; return; }
+    const matches = compactWords.filter(([word]) => word.startsWith(q)).slice(0, 20);
+    render(matches);
+  });
+
+  // Expose clear function so host pages can reset search state
+  window.__wordSearchClear = () => {
+    input.value = '';
+    resultsList.hidden = true;
+    resultsList.innerHTML = '';
+  };
+</script>

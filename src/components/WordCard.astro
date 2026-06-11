@@ -1,0 +1,53 @@
+---
+interface Props {
+  word: string;
+  ipa: string;
+  respelling: string;
+}
+const { word, ipa, respelling } = Astro.props;
+---
+
+<a href={`/words/${word}`} class="word-card">
+  <span class="wc-word">{word}</span>
+  <span class="wc-ipa">{ipa}</span>
+  <span class="wc-respelling">{respelling}</span>
+</a>
+
+<style>
+  .word-card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 10px;
+    padding: 0.75rem 1rem;
+    text-decoration: none;
+    color: inherit;
+    transition: border-color 0.15s, transform 0.15s;
+  }
+
+  .word-card:hover {
+    border-color: var(--color-accent);
+    transform: translateY(-1px);
+    text-decoration: none;
+  }
+
+  .wc-word {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--color-text);
+  }
+
+  .wc-ipa {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    color: var(--color-accent-soft);
+  }
+
+  .wc-respelling {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    color: var(--color-muted);
+  }
+</style>

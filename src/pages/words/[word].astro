@@ -1,0 +1,278 @@
+---
+import Navbar from '../../components/Navbar.astro';
+import wordsData from '../../data/words.json';
+import { SOUND_META } from '../../data/soundMeta';
+
+export function getStaticPaths() {
+  return wordsData.map(w => ({ params: { word: w.word } }));
+}
+
+const { word } = Astro.params;
+const entry = wordsData.find(w => w.word === word);
+
+if (!entry) return Astro.redirect('/sounds');
+
+const stressMap: Record<string, string> = { '0': 'Unstressed', '1': 'Primary', '2': 'Secondary' };
+const stressLabel = stressMap[entry.stress] ?? entry.stress;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{entry.word} — Pronunciation — TheVoicer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Lora:wght@600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/src/styles/global.css" />
+  </head>
+  <body>
+    <Navbar />
+    <main class="page">
+      <a href="/words" class="back-link">← All words</a>
+
+      <header class="word-header">
+        <h1 class="word-title">{entry.word}</h1>
+        <div class="word-meta">
+          <span class="ipa-display">{entry.ipa}</span>
+          <span class="respelling-display">{entry.respelling}</span>
+          <span class="stress-badge">{stressLabel} stress</span>
+        </div>
+      </header>
+
+      <section class="section">
+        <h2 class="section-title">Sounds in this word</h2>
+        <div class="sound-chips">
+          {entry.sounds.map(s => {
+            const meta = SOUND_META[s] ?? { label: s, ipa: s, group: '' };
+            return (
+              <a href={`/sounds/${s}`} class="sound-chip">
+                <span class="chip-ipa">{meta.ipa}</span>
+                <span class="chip-label">{meta.label}</span>
+                <span class="chip-group">{meta.group}</span>
+              </a>
+            );
+          })}
+        </div>
+      </section>
+
+      <section class="section">
+        <h2 class="section-title">Technical</h2>
+        <div class="tech-grid">
+          <div class="tech-row">
+            <span class="tech-key">ARPAbet</span>
+            <span class="tech-val">{entry.arpabet}</span>
+          </div>
+          <div class="tech-row">
+            <span class="tech-key">IPA</span>
+            <span class="tech-val">{entry.ipa}</span>
+          </div>
+          <div class="tech-row">
+            <span class="tech-key">Pronunciation</span>
+            <span class="tech-val">{entry.respelling}</span>
+          </div>
+          <div class="tech-row">
+            <span class="tech-key">Stress</span>
+            <span class="tech-val">{stressLabel}</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2 class="section-title">External</h2>
+        <a
+          href={`https://dictionary.cambridge.org/pronunciation/english/${entry.word}`}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="external-link"
+        >
+          Cambridge Dictionary ↗
+        </a>
+      </section>
+    </main>
+  </body>
+</html>
+
+<style>
+  .page {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 3rem 2rem 6rem;
+  }
+
+  .back-link {
+    display: inline-block;
+    font-size: 0.85rem;
+    color: var(--color-muted);
+    margin-bottom: 2rem;
+    text-decoration: none;
+  }
+  .back-link:hover { color: var(--color-accent-soft); text-decoration: none; }
+
+  .word-header {
+    margin-bottom: 3rem;
+  }
+
+  .word-title {
+    font-family: 'Lora', Georgia, serif;
+    font-size: 3.5rem;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: -0.02em;
+    margin-bottom: 1rem;
+  }
+
+  .word-meta {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+
+  .ipa-display {
+    font-family: var(--font-mono);
+    font-size: 1.3rem;
+    color: var(--color-accent-soft);
+  }
+
+  .respelling-display {
+    font-family: var(--font-mono);
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--color-muted);
+    letter-spacing: 0.06em;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid var(--color-border);
+    border-radius: 6px;
+    padding: 0.25rem 0.7rem;
+  }
+
+  .stress-badge {
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--color-accent);
+    background: rgba(124, 106, 247, 0.12);
+    border: 1px solid rgba(124, 106, 247, 0.25);
+    border-radius: 999px;
+    padding: 0.25rem 0.75rem;
+  }
+
+  .section {
+    margin-bottom: 2.5rem;
+  }
+
+  .section-title {
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--color-muted);
+    margin-bottom: 1rem;
+    border: none;
+    padding: 0;
+  }
+
+  .sound-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+  }
+
+  .sound-chip {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 10px;
+    padding: 0.7rem 1rem;
+    text-decoration: none;
+    color: inherit;
+    transition: border-color 0.15s, transform 0.15s, background 0.15s;
+  }
+
+  .sound-chip:hover {
+    border-color: var(--color-accent);
+    background: rgba(124, 106, 247, 0.08);
+    transform: translateY(-1px);
+    text-decoration: none;
+  }
+
+  .chip-ipa {
+    font-family: var(--font-mono);
+    font-size: 1.2rem;
+    color: var(--color-accent-soft);
+    line-height: 1;
+  }
+
+  .chip-label {
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: var(--color-text);
+  }
+
+  .chip-group {
+    font-size: 0.72rem;
+    color: var(--color-muted);
+    border-left: 1px solid var(--color-border);
+    padding-left: 0.5rem;
+  }
+
+  .tech-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    border: 1px solid var(--color-border);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+
+  .tech-row {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.75rem 1.1rem;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .tech-row:last-child { border-bottom: none; }
+
+  .tech-key {
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--color-muted);
+    min-width: 80px;
+  }
+
+  .tech-val {
+    font-family: var(--font-mono);
+    font-size: 0.9rem;
+    color: var(--color-text);
+  }
+
+  .external-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--color-accent-soft);
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    padding: 0.6rem 1rem;
+    text-decoration: none;
+    transition: border-color 0.15s, color 0.15s;
+  }
+
+  .external-link:hover {
+    border-color: var(--color-accent);
+    color: var(--color-accent);
+    text-decoration: none;
+  }
+</style>

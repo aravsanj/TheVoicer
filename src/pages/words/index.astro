@@ -1,0 +1,196 @@
+---
+import Navbar from '../../components/Navbar.astro';
+import WordSearch from '../../components/WordSearch.astro';
+import WordCard from '../../components/WordCard.astro';
+import wordsData from '../../data/words.json';
+
+const totalWords = wordsData.length;
+
+// Compact word data for client-side search: [word, ipa, respelling, sounds[]]
+const compactWords = wordsData.map(w => [w.word, w.ipa, w.respelling, w.sounds]);
+
+const byLetter: Record<string, typeof wordsData[0][]> = {};
+for (const w of wordsData) {
+  if (!w || !w.word) continue;
+  const l = w.word[0].toUpperCase();
+  if (!byLetter[l]) byLetter[l] = [];
+  byLetter[l].push(w);
+}
+const letters = Object.keys(byLetter).sort();
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Word Browser — TheVoicer</title>
+    <meta name="description" content="Browse and search English words with IPA, pronunciation, and stress patterns." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Lora:wght@600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/src/styles/global.css" />
+  </head>
+  <body>
+    <Navbar />
+    <main class="page">
+      <header class="page-header">
+        <div class="badge">Word Browser</div>
+        <h1>All Words</h1>
+        <p class="subtitle">{totalWords.toLocaleString()} words with IPA, pronunciation, and stress patterns.</p>
+      </header>
+
+      <WordSearch compactWords={compactWords} placeholder="Search a word… e.g. culture, thought, beautiful" />
+
+      <div id="letter-nav" class="letter-nav">
+        {letters.map(l => (
+          <a href={`#letter-${l}`} class="letter-link">{l}</a>
+        ))}
+      </div>
+
+      <div id="alpha-sections">
+        {letters.map(l => (
+          <section class="letter-section" id={`letter-${l}`}>
+            <h2 class="letter-heading">{l}</h2>
+            <div class="word-grid">
+              {byLetter[l].slice(0, 8).map(w => (
+                <WordCard word={w.word} ipa={w.ipa} respelling={w.respelling} />
+              ))}
+              {byLetter[l].length > 8 && (
+                <a href={`/words/start-with-${l.toLowerCase()}`} class="show-more">
+                  See all {byLetter[l].length} words →
+                </a>
+              )}
+            </div>
+          </section>
+        ))}
+      </div>
+    </main>
+  </body>
+</html>
+
+<style>
+  .page {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 4rem 2rem 6rem;
+  }
+
+  .page-header {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+
+  .badge {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--color-accent);
+    background: rgba(124, 106, 247, 0.12);
+    border: 1px solid rgba(124, 106, 247, 0.25);
+    padding: 0.3rem 1rem;
+    border-radius: 999px;
+    margin-bottom: 1.25rem;
+  }
+
+  .page-header h1 {
+    font-size: 2.8rem;
+    letter-spacing: -0.02em;
+    background: linear-gradient(135deg, #fff 0%, var(--color-accent-soft) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 0.75rem;
+  }
+
+  .subtitle {
+    color: var(--color-muted);
+    font-size: 1.05rem;
+    max-width: 480px;
+    margin: 0 auto;
+  }
+
+  .letter-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .letter-link {
+    display: inline-block;
+    width: 2rem;
+    height: 2rem;
+    line-height: 2rem;
+    text-align: center;
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--color-muted);
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 6px;
+    text-decoration: none;
+    transition: border-color 0.15s, color 0.15s, background 0.15s;
+  }
+
+  .letter-link:hover {
+    border-color: var(--color-accent);
+    color: var(--color-accent-soft);
+    background: rgba(124, 106, 247, 0.08);
+    text-decoration: none;
+  }
+
+  .letter-section {
+    margin-bottom: 2.5rem;
+  }
+
+  .letter-heading {
+    font-size: 0.72rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--color-muted);
+    margin-bottom: 1rem;
+    border: none;
+    padding: 0;
+  }
+
+  .word-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 0.6rem;
+  }
+
+  .show-more {
+    display: flex;
+    align-items: center;
+    background: transparent;
+    border: 1px dashed var(--color-border);
+    border-radius: 10px;
+    padding: 0.75rem 1rem;
+    color: var(--color-muted);
+    font-size: 0.82rem;
+    font-family: inherit;
+    text-decoration: none;
+    transition: border-color 0.15s, color 0.15s;
+  }
+
+  .show-more:hover {
+    border-color: var(--color-accent);
+    color: var(--color-accent-soft);
+    text-decoration: none;
+  }
+</style>
+
+<script define:vars={{ compactWords }}>
+  const alphaSections = document.getElementById('alpha-sections');
+  const letterNav = document.getElementById('letter-nav');
+
+  document.getElementById('word-search').addEventListener('input', e => {
+    const active = e.target.value.trim().length > 0;
+    alphaSections.style.display = active ? 'none' : '';
+    letterNav.style.display = active ? 'none' : '';
+  });
+</script>
