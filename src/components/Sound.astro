@@ -55,7 +55,12 @@ const meta = SOUND_META[id];
     background: rgba(124, 106, 247, 0.1);
     border: 1px solid rgba(124, 106, 247, 0.25);
     border-radius: 4px;
-    padding: 0.05em 0.4em;
+    width: 2.2em;
+    height: 2.2em;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
   }
 
   .sound-link-wrap {
@@ -65,6 +70,12 @@ const meta = SOUND_META[id];
   .sound-link-wrap:hover .sound-ipa {
     color: var(--color-accent);
     border-color: var(--color-accent);
+  }
+
+  .sound-link-wrap .sound-label {
+    text-decoration: underline;
+    text-decoration-style: dotted;
+    text-underline-offset: 2px;
   }
 
   .sound-link-wrap:hover .sound-label {
@@ -91,7 +102,9 @@ const meta = SOUND_META[id];
 
   .sound-label-link {
     color: var(--color-muted);
-    text-decoration: none;
+    text-decoration: underline;
+    text-decoration-style: dotted;
+    text-underline-offset: 2px;
     font-size: 0.85em;
   }
 
