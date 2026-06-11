@@ -6,6 +6,8 @@ order: 10
 tags: ["stress", "prefixes", "suffixes", "word formation", "patterns"]
 ---
 
+import Word from '../../components/Word.astro';
+
 ## Suffixes and Stress: A Predictable System
 
 Many English suffixes have a fixed relationship with stress. Learning these patterns gives you a powerful shortcut for figuring out stress in new words.
@@ -19,33 +21,33 @@ These suffixes are **stress-attracting**: the syllable right before the suffix g
 **-tion / -sion / -cion**
 | Word           | IPA                      | Stressed syllable |
 |----------------|--------------------------|-------------------|
-| proDUCtion     | /prəˈdʌk·ʃən/            | -duc-             |
-| inforMAtion    | /ˌɪn·fɚˈmeɪ·ʃən/         | -ma-              |
-| compreHENsion  | /ˌkɑm·prɪˈhɛn·ʃən/       | -hen-             |
-| suspiCion      | /səˈspɪʃ·ən/             | -pi-              |
+| <Word id="production" custom="proDUCtion" /> | /prəˈdʌk·ʃən/            | -duc-             |
+| <Word id="information" custom="inforMAtion" /> | /ˌɪn·fɚˈmeɪ·ʃən/         | -ma-              |
+| <Word id="comprehension" custom="compreHENsion" /> | /ˌkɑm·prɪˈhɛn·ʃən/       | -hen-             |
+| <Word id="suspicion" custom="suspiCion" /> | /səˈspɪʃ·ən/             | -pi-              |
 
 **-ic / -ical**
 | Word          | IPA                       | Stressed syllable |
 |---------------|---------------------------|-------------------|
-| eLECtric      | /ɪˈlɛk·trɪk/              | -lec-             |
-| ecoNOMic      | /ˌɛk·əˈnɑm·ɪk/            | -nom-             |
-| hiSTORical    | /hɪˈstɔr·ɪ·kəl/           | -tor-             |
-| bioLOGical    | /ˌbaɪ·əˈlɑdʒ·ɪ·kəl/       | -log-             |
+| <Word id="electric" custom="eLECtric" /> | /ɪˈlɛk·trɪk/              | -lec-             |
+| <Word id="economic" custom="ecoNOMic" /> | /ˌɛk·əˈnɑm·ɪk/            | -nom-             |
+| <Word id="historical" custom="hiSTORical" /> | /hɪˈstɔr·ɪ·kəl/           | -tor-             |
+| <Word id="biological" custom="bioLOGical" /> | /ˌbaɪ·əˈlɑdʒ·ɪ·kəl/       | -log-             |
 
 **-ity / -ety**
 | Word          | IPA                       | Stressed syllable |
 |---------------|---------------------------|-------------------|
-| possiBILity   | /ˌpɑs·əˈbɪl·ɪ·tiː/         | -bil-             |
-| sinCErity     | /sɪnˈsɛr·ɪ·tiː/            | -cer-             |
-| maJORity      | /məˈdʒɔr·ɪ·tiː/            | -jor-             |
-| QUAlity       | /ˈkwɑl·ɪ·tiː/              | -qual-            |
+| <Word id="possibility" custom="possiBILity" /> | /ˌpɑs·əˈbɪl·ɪ·tiː/         | -bil-             |
+| <Word id="sincerity" custom="sinCErity" /> | /sɪnˈsɛr·ɪ·tiː/            | -cer-             |
+| <Word id="majority" custom="maJORity" /> | /məˈdʒɔr·ɪ·tiː/            | -jor-             |
+| <Word id="quality" custom="QUAlity" /> | /ˈkwɑl·ɪ·tiː/              | -qual-            |
 
 **-ious / -eous / -uous**
 | Word           | IPA                      | Stressed syllable |
 |----------------|--------------------------|-------------------|
-| mysTErious     | /mɪˈstɪr·iː·əs/           | -te-              |
-| couRAGeous     | /kəˈreɪ·dʒəs/            | -ra-              |
-| amBIGuous      | /æmˈbɪɡ·ju·əs/           | -big-             |
+| <Word id="mysterious" custom="mysTErious" /> | /mɪˈstɪr·iː·əs/           | -te-              |
+| <Word id="courageous" custom="couRAGeous" /> | /kəˈreɪ·dʒəs/            | -ra-              |
+| <Word id="ambiguous" custom="amBIGuous" /> | /æmˈbɪɡ·ju·əs/           | -big-             |
 
 ---
 
@@ -54,10 +56,10 @@ These suffixes are **stress-attracting**: the syllable right before the suffix g
 **-eer / -esque / -ette**
 | Word          | IPA                      |
 |---------------|--------------------------|
-| engineER      | /ˌɛn·dʒɪˈnɪɚ/            |
-| voluntEER     | /ˌvɑl·ənˈtɪɚ/            |
-| picturESQUE   | /ˌpɪk·tʃɚˈɛsk/           |
-| bruNETTE      | /bruːˈnɛt/               |
+| <Word id="engineer" custom="engineER" /> | /ˌɛn·dʒɪˈnɪɚ/            |
+| <Word id="volunteer" custom="voluntEER" /> | /ˌvɑl·ənˈtɪɚ/            |
+| <Word id="picturesque" custom="picturESQUE" /> | /ˌpɪk·tʃɚˈɛsk/           |
+| <Word id="brunette" custom="bruNETTE" /> | /bruːˈnɛt/               |
 
 ## Stress-Neutral Suffixes (stress stays on the base word)
 
@@ -67,11 +69,11 @@ These suffixes do **not** change where stress falls. The original root keeps its
 
 | Base word | IPA           | With suffix  | IPA               |
 |-----------|---------------|--------------|-------------------|
-| HAPpy     | /ˈhæp·iː/      | HAPpiness    | /ˈhæp·iː·nəs/      |
-| CAREful   | /ˈkɛr·fəl/    | CAREfully    | /ˈkɛr·fəl·iː/      |
-| MANage    | /ˈmæn·ɪdʒ/    | MANagement   | /ˈmæn·ɪdʒ·mənt/   |
-| TEACH     | /tiːtʃ/       | TEACHer      | /ˈtiː·tʃɚ/        |
-| QUICK     | /kwɪk/        | QUICKly      | /ˈkwɪk·liː/        |
+| <Word id="happy" custom="HAPpy" /> | /ˈhæp·iː/      | <Word id="happiness" custom="HAPpiness" /> | /ˈhæp·iː·nəs/      |
+| <Word id="careful" custom="CAREful" /> | /ˈkɛr·fəl/    | <Word id="carefully" custom="CAREfully" /> | /ˈkɛr·fəl·iː/      |
+| <Word id="manage" custom="MANage" /> | /ˈmæn·ɪdʒ/    | <Word id="management" custom="MANagement" /> | /ˈmæn·ɪdʒ·mənt/   |
+| <Word id="teach" custom="TEACH" /> | /tiːtʃ/       | <Word id="teacher" custom="TEACHer" /> | /ˈtiː·tʃɚ/        |
+| <Word id="quick" custom="QUICK" /> | /kwɪk/        | <Word id="quickly" custom="QUICKly" /> | /ˈkwɪk·liː/        |
 
 ## Prefixes and Stress
 
@@ -79,12 +81,12 @@ Most prefixes in English are **unstressed**: they don't attract stress to themse
 
 | Prefix | Word            | IPA                      | Stress on root |
 |--------|-----------------|--------------------------|----------------|
-| re-    | rePEAT          | /rɪˈpiːt/                | root: -peat    |
-| un-    | unHAPpy         | /ʌnˈhæp·iː/               | root: -hap-    |
-| dis-   | disagREE        | /ˌdɪs·əˈɡriː/            | root: -gree    |
-| pre-   | prePARE         | /prɪˈpɛr/                | root: -pare    |
-| mis-   | misunderSTAND   | /ˌmɪs·ʌn·dɚˈstænd/       | root: -stand   |
-| over-  | overCOME        | /ˌoʊ·vɚˈkʌm/             | root: -come    |
+| re-    | <Word id="repeat" custom="rePEAT" /> | /rɪˈpiːt/                | root: -peat    |
+| un-    | <Word id="unhappy" custom="unHAPpy" /> | /ʌnˈhæp·iː/               | root: -hap-    |
+| dis-   | <Word id="disagree" custom="disagREE" /> | /ˌdɪs·əˈɡriː/            | root: -gree    |
+| pre-   | <Word id="prepare" custom="prePARE" /> | /prɪˈpɛr/                | root: -pare    |
+| mis-   | <Word id="misunderstand" custom="misunderSTAND" /> | /ˌmɪs·ʌn·dɚˈstænd/       | root: -stand   |
+| over-  | <Word id="overcome" custom="overCOME" /> | /ˌoʊ·vɚˈkʌm/             | root: -come    |
 
 **Exception:** When the same prefix+root pair is used as both a noun and a verb, the noun often shifts stress to the prefix. (See [Shifts in Stress: Noun vs. Verb](/lessons/noun-verb-stress-shift) for details.)
 

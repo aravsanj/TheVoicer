@@ -6,6 +6,8 @@ order: 9
 tags: ["schwa", "reduction", "unstressed", "vowels", "rhythm"]
 ---
 
+import Word from '../../components/Word.astro';
+
 ## What Happens to Unstressed Vowels?
 
 In English, unstressed syllables don't just get quieter. Their vowels often **change completely**. The vowel sound shifts to a short, neutral sound regardless of what letter is written.
@@ -24,11 +26,11 @@ The **schwa** is the most common vowel sound in American English. It sounds like
 
 | Vowel Letter | Word        | Reduced Syllable |
 |--------------|-------------|------------------|
-| a            | **a**bout   | /ə·ˈbaʊt/        |
-| e            | syst**e**m  | /ˈsɪs·təm/       |
-| i            | poss**i**ble | /ˈpɑs·ə·bəl/    |
-| o            | mem**o**ry  | /ˈmɛm·ə·riː/     |
-| u            | circ**u**s  | /ˈsɝː·kəs/       |
+| a            | <Word id="about" compact /> | /ə·ˈbaʊt/        |
+| e            | <Word id="system" compact /> | /ˈsɪs·təm/       |
+| i            | <Word id="possible" compact /> | /ˈpɑs·ə·bəl/    |
+| o            | <Word id="memory" compact /> | /ˈmɛm·ə·riː/     |
+| u            | <Word id="circus" compact /> | /ˈsɝː·kəs/       |
 
 ## The Reduced /ɪ/
 
@@ -36,11 +38,11 @@ Some unstressed syllables reduce to a short /ɪ/ rather than /ə/, especially in
 
 | Word      | Reduced Syllable | IPA          |
 |-----------|------------------|--------------|
-| begin     | be-              | /bɪˈɡɪn/     |
-| decide    | de-              | /dɪˈsaɪd/    |
-| manage    | -age             | /ˈmæn·ɪdʒ/   |
-| village   | -age             | /ˈvɪl·ɪdʒ/   |
-| careless  | -less            | /ˈkɛɚ·lɪs/   |
+| <Word id="begin" compact /> | be-              | /bɪˈɡɪn/     |
+| <Word id="decide" compact /> | de-              | /dɪˈsaɪd/    |
+| <Word id="manage" compact /> | -age             | /ˈmæn·ɪdʒ/   |
+| <Word id="village" compact /> | -age             | /ˈvɪl·ɪdʒ/   |
+| <Word id="careless" compact /> | -less            | /ˈkɛɚ·lɪs/   |
 
 ## Vowel Reduction Is a Feature, Not a Flaw
 
@@ -57,14 +59,14 @@ These everyday words are almost always pronounced with schwa in connected speech
 
 | Word  | Written vowels | Actual pronunciation |
 |-------|----------------|----------------------|
-| the   | e              | /ðə/ (before consonants) |
-| a     | a              | /ə/                  |
-| of    | o              | /əv/                 |
-| to    | o              | /tə/                 |
-| and   | a              | /ənd/ or /ən/        |
-| for   | o              | /fɚ/                 |
-| from  | o              | /frəm/               |
-| can   | a              | /kən/ (unstressed)   |
+| <Word id="the" compact /> | e  | /ðə/ (before consonants) |
+| <Word id="a" compact /> | a    | /ə/                  |
+| <Word id="of" compact /> | o   | /əv/                 |
+| <Word id="to" compact /> | o   | /tə/                 |
+| <Word id="and" compact /> | a  | /ənd/ or /ən/        |
+| <Word id="for" compact /> | o  | /fɚ/                 |
+| <Word id="from" compact /> | o | /frəm/               |
+| <Word id="can" compact /> | a  | /kən/ (unstressed)   |
 
 ## Stress and Reduction Work Together
 

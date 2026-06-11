@@ -4,21 +4,41 @@ import wordsData from '../data/words.json';
 interface Props {
   id: string;
   link?: boolean;
+  /** Show only the word text with link, no IPA/respelling — for table word columns */
+  compact?: boolean;
+  /** Show only the IPA chip — for table IPA columns */
+  ipaOnly?: boolean;
+  /** Custom display text (e.g. stress-capitalized "BLACKboard") — links to word page, no IPA/respelling */
+  custom?: string;
 }
 
-const { id, link = true } = Astro.props;
+const { id, link = true, compact = false, ipaOnly = false, custom } = Astro.props;
 const entry = wordsData.find(w => w.word === id);
 ---
 
 {entry ? (
-  <span class="word-inline">
-    {link
-      ? <a href={`/words/${id}`} class="word-link">{entry.word}</a>
+  custom ? (
+    link
+      ? <a href={`/words/${id}`} class="word-compact-link">{custom}</a>
+      : <span class="word-text">{custom}</span>
+  ) : ipaOnly ? (
+    link
+      ? <a href={`/words/${id}`} class="word-ipa-link"><span class="word-ipa-chip">{entry.ipa}</span></a>
+      : <span class="word-ipa-chip">{entry.ipa}</span>
+  ) : compact ? (
+    link
+      ? <a href={`/words/${id}`} class="word-compact-link">{entry.word}</a>
       : <span class="word-text">{entry.word}</span>
-    }
-    <span class="word-ipa">{entry.ipa}</span>
-    <span class="word-key">{entry.respelling}</span>
-  </span>
+  ) : (
+    <span class="word-inline">
+      {link
+        ? <a href={`/words/${id}`} class="word-link">{entry.word}</a>
+        : <span class="word-text">{entry.word}</span>
+      }
+      <span class="word-ipa">{entry.ipa}</span>
+      <span class="word-key">{entry.respelling}</span>
+    </span>
+  )
 ) : (
   <code class="word-missing">{id}</code>
 )}
@@ -38,15 +58,57 @@ const entry = wordsData.find(w => w.word === id);
     text-decoration: none;
   }
 
+  .word-link {
+    text-decoration: underline;
+    text-decoration-style: dotted;
+    text-decoration-color: var(--color-muted);
+    text-underline-offset: 3px;
+  }
+
   .word-link:hover {
     color: var(--color-accent-soft);
+    text-decoration-style: solid;
+    text-decoration-color: var(--color-accent-soft);
+  }
+
+  .word-compact-link {
+    font-weight: 600;
+    color: var(--color-text);
     text-decoration: underline;
+    text-decoration-style: dotted;
+    text-decoration-color: var(--color-muted);
+    text-underline-offset: 3px;
+  }
+
+  .word-compact-link:hover {
+    color: var(--color-accent-soft);
+    text-decoration-style: solid;
+    text-decoration-color: var(--color-accent-soft);
   }
 
   .word-ipa {
     font-family: var(--font-mono);
     font-size: 0.85em;
     color: var(--color-accent-soft);
+  }
+
+  .word-ipa-chip {
+    font-family: var(--font-mono);
+    font-size: 1em;
+    color: var(--color-accent-soft);
+    background: rgba(124, 106, 247, 0.1);
+    border: 1px solid rgba(124, 106, 247, 0.25);
+    border-radius: 4px;
+    padding: 0.05em 0.4em;
+  }
+
+  .word-ipa-link {
+    text-decoration: none;
+  }
+
+  .word-ipa-link:hover .word-ipa-chip {
+    color: var(--color-accent);
+    border-color: var(--color-accent);
   }
 
   .word-key {
@@ -59,6 +121,21 @@ const entry = wordsData.find(w => w.word === id);
     border-radius: 4px;
     padding: 0.05em 0.4em;
     letter-spacing: 0.04em;
+  }
+
+  .word-link-icon {
+    display: inline-block;
+    width: 0.65em;
+    height: 0.65em;
+    margin-left: 0.2em;
+    vertical-align: middle;
+    opacity: 0.35;
+    flex-shrink: 0;
+  }
+
+  .word-link:hover .word-link-icon,
+  .word-compact-link:hover .word-link-icon {
+    opacity: 0.75;
   }
 
   .word-missing {

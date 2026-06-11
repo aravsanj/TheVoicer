@@ -6,6 +6,8 @@ order: 12
 tags: ["stress", "compound nouns", "noun phrases", "word formation"]
 ---
 
+import Word from '../../components/Word.astro';
+
 ## What Is a Compound Noun?
 
 A **compound noun** is two (or more) words that together function as a single noun with a unified meaning.
@@ -22,13 +24,13 @@ The combined meaning is often different from the sum of the parts.
 
 | Compound Noun   | Stress    | IPA                 |
 |-----------------|-----------|---------------------|
-| BLACKboard      | BLACK-     | /ˈblæk·bɔːrd/       |
-| SUNflower       | SUN-       | /ˈsʌn·flaʊ·ɚ/       |
-| AIRport         | AIR-       | /ˈɛɚ·pɔːrt/          |
-| TOOTHbrush      | TOOTH-     | /ˈtuːθ·brʌʃ/         |
-| CELLphone       | CELL-      | /ˈsɛl·foʊn/          |
-| BEDroom         | BED-       | /ˈbɛd·ruːm/          |
-| HAIRcut         | HAIR-      | /ˈhɛɚ·kʌt/           |
+| <Word id="blackboard" custom="BLACKboard" /> | BLACK-     | /ˈblæk·bɔːrd/       |
+| <Word id="sunflower" custom="SUNflower" /> | SUN-       | /ˈsʌn·flaʊ·ɚ/       |
+| <Word id="airport" custom="AIRport" /> | AIR-       | /ˈɛɚ·pɔːrt/          |
+| <Word id="toothbrush" custom="TOOTHbrush" /> | TOOTH-     | /ˈtuːθ·brʌʃ/         |
+| <Word id="cellphone" custom="CELLphone" /> | CELL-      | /ˈsɛl·foʊn/          |
+| <Word id="bedroom" custom="BEDroom" /> | BED-       | /ˈbɛd·ruːm/          |
+| <Word id="haircut" custom="HAIRcut" /> | HAIR-      | /ˈhɛɚ·kʌt/           |
 
 ## Compound Noun vs. Noun Phrase
 
@@ -39,13 +41,13 @@ This is where many learners get confused. A **noun phrase** is an adjective + no
 
 | Expression       | Type          | Stress       | Meaning                         |
 |------------------|---------------|--------------|----------------------------------|
-| **GREEN**house   | compound noun | 1st word     | a building for growing plants    |
+| <Word id="greenhouse" custom="GREENhouse" /> | compound noun | 1st word     | a building for growing plants    |
 | green **HOUSE**  | noun phrase   | 2nd word     | a house that is (painted) green  |
-| **BLACK**board   | compound noun | 1st word     | a classroom writing surface      |
+| <Word id="blackboard" custom="BLACKboard" /> | compound noun | 1st word     | a classroom writing surface      |
 | black **BOARD**  | noun phrase   | 2nd word     | a board that is black            |
-| **HOT**dog       | compound noun | 1st word     | the food                         |
+| <Word id="hotdog" custom="HOTdog" /> | compound noun | 1st word     | the food                         |
 | hot **DOG**      | noun phrase   | 2nd word     | a dog that is hot (temperature)  |
-| **DARK**room     | compound noun | 1st word     | a photography room               |
+| <Word id="darkroom" custom="DARKroom" /> | compound noun | 1st word     | a photography room               |
 | dark **ROOM**    | noun phrase   | 2nd word     | a room that is dark              |
 
 ## Written as One Word, Two Words, or Hyphenated?
@@ -54,7 +56,7 @@ English is inconsistent about how it writes compounds. The stress pattern holds 
 
 | Written form     | Example        |
 |------------------|----------------|
-| One word         | **BED**room, **SUN**flower |
+| One word         | <Word id="bedroom" custom="BEDroom" />, <Word id="sunflower" custom="SUNflower" /> |
 | Two words        | **ICE** cream, **FIRE** truck |
 | Hyphenated       | **WELL**-being, **SELF**-control |
 
@@ -66,10 +68,10 @@ Say these aloud and hear the difference:
 
 | Compound (stress 1st) | Noun Phrase (stress 2nd) |
 |-----------------------|--------------------------|
-| **BOOK**store         | big **STORE**            |
-| **CAR**pool           | red **CAR**              |
-| **DOORbell**          | front **DOOR**           |
-| **HAIR**dresser       | long **HAIR**            |
-| **SHOE**maker         | old **SHOE**             |
+| <Word id="bookstore" custom="BOOKstore" /> | big **STORE**            |
+| <Word id="carpool" custom="CARpool" /> | red **CAR**              |
+| <Word id="doorbell" custom="DOORbell" /> | front **DOOR**           |
+| <Word id="hairdresser" custom="HAIRdresser" /> | long **HAIR**            |
+| <Word id="shoemaker" custom="SHOEmaker" /> | old **SHOE**             |
 
 The stress difference is real and native speakers use it naturally to signal whether they mean a specific compound concept or just a described object.

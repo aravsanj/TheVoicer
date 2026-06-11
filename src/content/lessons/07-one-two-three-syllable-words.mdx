@@ -6,6 +6,8 @@ order: 7
 tags: ["syllables", "word structure", "stress patterns", "vocabulary"]
 ---
 
+import Word from '../../components/Word.astro';
+
 ## Why Syllable Count Matters
 
 The number of syllables in a word determines its **rhythm**, the pattern of beats. Once you can count syllables (see [Identifying Syllables](/lessons/identifying-syllables)), the next question is: which syllable carries the most weight?
@@ -22,11 +24,11 @@ One-syllable words have a single beat. There's no choice about where stress fall
 
 | Word   | IPA     |
 |--------|---------|
-| cat    | /kæt/   |
-| day    | /deɪ/   |
-| strength | /strɛŋkθ/ |
-| through | /θruː/ |
-| dream  | /driːm/ |
+| <Word id="cat" compact /> | /kæt/   |
+| <Word id="day" compact /> | /deɪ/   |
+| <Word id="strength" compact /> | /strɛŋkθ/ |
+| <Word id="through" compact /> | /θruː/ |
+| <Word id="dream" compact /> | /driːm/ |
 
 Single-syllable words can be simple *or* complex in their consonant clusters. They still land as one beat.
 

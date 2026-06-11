@@ -7,6 +7,7 @@ tags: ["spelling", "phonics", "phonetics", "American English"]
 ---
 
 import Sound from '../../components/Sound.astro';
+import Word from '../../components/Word.astro';
 
 ## The Key Idea
 
@@ -20,15 +21,15 @@ A silent letter is written but produces no sound. It adds to the letter count wi
 
 | Word   | Letters | Sounds | IPA      | Silent Letter(s) |
 | ------ | ------- | ------ | -------- | ---------------- |
-| knife  | 5       | 3      | /naɪf/   | k                |
-| knight | 6       | 3      | /naɪt/   | k, gh            |
-| write  | 5       | 3      | /raɪt/   | w                |
-| wrap   | 4       | 3      | /ræp/    | w                |
-| lamb   | 4       | 3      | /læm/    | b                |
-| debt   | 4       | 3      | /dɛt/    | b                |
-| castle | 6       | 4      | /ˈkæsəl/ | t                |
-| listen | 6       | 5      | /ˈlɪsən/ | t                |
-| hour   | 4       | 3      | /aʊɚ/    | h                |
+| <Word id="knife" compact /> | 5 | 3 | <Word id="knife" ipaOnly /> | k |
+| <Word id="knight" compact /> | 6 | 3 | <Word id="knight" ipaOnly /> | k, gh |
+| <Word id="write" compact /> | 5 | 3 | <Word id="write" ipaOnly /> | w |
+| <Word id="wrap" compact /> | 4 | 3 | <Word id="wrap" ipaOnly /> | w |
+| <Word id="lamb" compact /> | 4 | 3 | <Word id="lamb" ipaOnly /> | b |
+| <Word id="debt" compact /> | 4 | 3 | <Word id="debt" ipaOnly /> | b |
+| <Word id="castle" compact /> | 6 | 4 | <Word id="castle" ipaOnly /> | t |
+| <Word id="listen" compact /> | 6 | 5 | <Word id="listen" ipaOnly /> | t |
+| <Word id="hour" compact /> | 4 | 3 | <Word id="hour" ipaOnly /> | h |
 
 ### Digraphs (Two Letters → One Sound)
 
@@ -36,12 +37,12 @@ A digraph is a pair of letters that together represent a single sound. The lette
 
 | Letters | Sound                           | Phoneme | Example | IPA    |
 | ------- | ------------------------------- | ------- | ------- | ------ |
-| sh      | <Sound id="sh" labelOnly />     | /ʃ/     | ship    | /ʃɪp/  |
-| ch      | <Sound id="ch" labelOnly />     | /tʃ/    | chip    | /tʃɪp/ |
-| th      | <Sound id="th" labelOnly />     | /θ/     | think   | /θɪŋk/ |
-| ph      | <Sound id="f" labelOnly />      | /f/     | phone   | /foʊn/ |
-| ng      | <Sound id="ng" labelOnly />     | /ŋ/     | ring    | /rɪŋ/  |
-| ck      | <Sound id="k" labelOnly />      | /k/     | back    | /bæk/  |
+| sh      | <Sound id="sh" labelOnly />     | /ʃ/     | <Word id="ship" compact /> | <Word id="ship" ipaOnly /> |
+| ch      | <Sound id="ch" labelOnly />     | /tʃ/    | <Word id="chip" compact /> | <Word id="chip" ipaOnly /> |
+| th      | <Sound id="th" labelOnly />     | /θ/     | <Word id="think" compact /> | <Word id="think" ipaOnly /> |
+| ph      | <Sound id="f" labelOnly />      | /f/     | <Word id="phone" compact /> | <Word id="phone" ipaOnly /> |
+| ng      | <Sound id="ng" labelOnly />     | /ŋ/     | <Word id="ring" compact /> | <Word id="ring" ipaOnly /> |
+| ck      | <Sound id="k" labelOnly />      | /k/     | <Word id="back" compact /> | <Word id="back" ipaOnly /> |
 
 #### Example: _ship_
 
@@ -56,11 +57,11 @@ When the same letter appears twice in a row, it almost always represents a singl
 
 | Word   | Letters | Sounds | IPA     |
 | ------ | ------- | ------ | ------- |
-| bell   | 4       | 3      | /bɛl/   |
-| butter | 6       | 4      | /ˈbʌtɚ/ |
-| glass  | 5       | 4      | /ɡlæs/  |
-| egg    | 3       | 2      | /ɛɡ/    |
-| happy  | 5       | 4      | /ˈhæpiː/ |
+| <Word id="bell" compact /> | 4 | 3 | <Word id="bell" ipaOnly /> |
+| <Word id="butter" compact /> | 6 | 4 | <Word id="butter" ipaOnly /> |
+| <Word id="glass" compact /> | 5 | 4 | <Word id="glass" ipaOnly /> |
+| <Word id="egg" compact /> | 3 | 2 | <Word id="egg" ipaOnly /> |
+| <Word id="happy" compact /> | 5 | 4 | <Word id="happy" ipaOnly /> |
 
 ## 2. More Sounds Than Letters
 
@@ -72,18 +73,18 @@ The letter _X_ is the most common case of one letter producing two sounds. Depen
 
 | Word | Letters | Sounds | IPA     |
 | ---- | ------- | ------ | ------- |
-| fox  | 3       | 4      | /fɑks/  |
-| box  | 3       | 4      | /bɑks/  |
-| mix  | 3       | 4      | /mɪks/  |
-| next | 4       | 5      | /nɛkst/ |
+| <Word id="fox" compact /> | 3 | 4 | <Word id="fox" ipaOnly /> |
+| <Word id="box" compact /> | 3 | 4 | <Word id="box" ipaOnly /> |
+| <Word id="mix" compact /> | 3 | 4 | <Word id="mix" ipaOnly /> |
+| <Word id="next" compact /> | 4 | 5 | <Word id="next" ipaOnly /> |
 
 #### X = /ɡz/ (between vowels, before a stressed vowel)
 
 | Word  | Letters | Sounds | IPA       |
 | ----- | ------- | ------ | --------- |
-| exam  | 4       | 5      | /ɪɡˈzæm/  |
-| exact | 5       | 6      | /ɪɡˈzækt/ |
-| exist | 5       | 6      | /ɪɡˈzɪst/ |
+| <Word id="exam" compact /> | 4 | 5 | <Word id="exam" ipaOnly /> |
+| <Word id="exact" compact /> | 5 | 6 | <Word id="exact" ipaOnly /> |
+| <Word id="exist" compact /> | 5 | 6 | <Word id="exist" ipaOnly /> |
 
 #### Example: _fox_
 
@@ -98,11 +99,11 @@ When _u_ follows _c_, _f_, _m_, _p_, or _h_ and is in a stressed syllable, it is
 
 | Word | Letters | Sounds | IPA      |
 | ---- | ------- | ------ | -------- |
-| cute | 4       | 4      | /kjuːt/  |
-| cure | 4       | 4      | /kjʊɚ/   |
-| mute | 4       | 4      | /mjuːt/  |
-| fuse | 4       | 4      | /fjuːz/  |
-| huge | 4       | 4      | /hjuːdʒ/ |
+| <Word id="cute" compact /> | 4 | 4 | <Word id="cute" ipaOnly /> |
+| <Word id="cure" compact /> | 4 | 4 | <Word id="cure" ipaOnly /> |
+| <Word id="mute" compact /> | 4 | 4 | <Word id="mute" ipaOnly /> |
+| <Word id="fuse" compact /> | 4 | 4 | <Word id="fuse" ipaOnly /> |
+| <Word id="huge" compact /> | 4 | 4 | <Word id="huge" ipaOnly /> |
 
 Here the letter count and sound count happen to balance because these words also contain a silent _e_. The silent _e_ removes one letter from the sound count, and the /j/ from the _u_ adds one sound back, leaving the totals even. But if you focus on the _u_ alone: **one letter, two sounds**.
 
@@ -114,11 +115,11 @@ Here the letter count and sound count happen to balance because these words also
 
 | Word     | IPA       | Letter Count | Sound Count |
 | -------- | --------- | ------------ | ----------- |
-| through  | /θruː/    | 7            | 3           |
-| strength | /strɛŋkθ/ | 8            | 7           |
-| fox      | /fɑks/    | 3            | 4           |
-| ship     | /ʃɪp/     | 4            | 3           |
-| mix      | /mɪks/    | 3            | 4           |
-| knight   | /naɪt/    | 6            | 3           |
+| <Word id="through" compact /> | <Word id="through" ipaOnly /> | 7 | 3 |
+| <Word id="strength" compact /> | <Word id="strength" ipaOnly /> | 8 | 7 |
+| <Word id="fox" compact /> | <Word id="fox" ipaOnly /> | 3 | 4 |
+| <Word id="ship" compact /> | <Word id="ship" ipaOnly /> | 4 | 3 |
+| <Word id="mix" compact /> | <Word id="mix" ipaOnly /> | 3 | 4 |
+| <Word id="knight" compact /> | <Word id="knight" ipaOnly /> | 6 | 3 |
 
 The word _through_ has 7 letters but only 3 sounds. The letter-to-sound ratio is more than 2:1. The word _fox_ has 3 letters but 4 sounds. Neither is unusual in English; both patterns appear constantly.

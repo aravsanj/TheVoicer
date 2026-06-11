@@ -1,5 +1,6 @@
 ---
 import Navbar from '../../components/Navbar.astro';
+import Word from '../../components/Word.astro';
 import wordsData from '../../data/words.json';
 import { SOUND_META, GROUP_ORDER } from '../../data/sounds';
 
@@ -98,7 +99,7 @@ const words = wordsData
           <tbody>
             {words.map(w => (
               <tr data-word={w.word}>
-                <td class="cell-word"><a href={`/words/${w.word}`} class="word-link">{w.word}</a></td>
+                <td class="cell-word"><Word id={w.word} compact /></td>
                 <td class="cell-ipa">{w.ipa}</td>
                 <td class="cell-stress">{w.respelling}</td>
                 <td class="cell-cambridge">

@@ -1,5 +1,6 @@
 ---
 import { SOUND_META, GROUP_ORDER } from '../data/sounds';
+import Word from './Word.astro';
 
 interface Props {
   /** Render only this group (e.g. "Vowels"). Omit to render all groups. */
@@ -40,7 +41,7 @@ const sections = groups.map(g => ({
               </td>
               <td class="cell-name">{meta.label}</td>
               <td class="cell-key"><code>{meta.key}</code></td>
-              <td class="cell-example"><em>{meta.example}</em></td>
+              <td class="cell-example"><Word id={meta.example} /></td>
               <td class="cell-desc">{meta.desc}</td>
             </tr>
           ))}
@@ -88,11 +89,6 @@ const sections = groups.map(g => ({
     border-radius: 4px;
     padding: 0.1em 0.4em;
     white-space: nowrap;
-  }
-
-  .cell-example em {
-    font-style: normal;
-    color: var(--color-accent-soft);
   }
 
   .cell-desc {

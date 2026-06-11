@@ -6,6 +6,8 @@ order: 4
 tags: ["phonetics", "articulators", "voiced", "voiceless", "consonants", "vowels"]
 ---
 
+import Word from '../../components/Word.astro';
+
 ## 1. Your Speech Organs (Articulators)
 
 Speech is produced by shaping and directing airflow from your lungs through a series of movable parts called **articulators**.
@@ -40,13 +42,13 @@ The three tongue zones (Tip, Front/blade, Back) always target a surface on the r
 
 | Tongue Zone | Targets | Sounds |
 |-------------|---------|--------|
-| Tip | Teeth | /θ/ (*think*), /ð/ (*this*) |
+| Tip | Teeth | /θ/ (<Word id="think" compact />), /ð/ (<Word id="this" compact />) |
 | Tip | Gum ridge | /t/, /d/, /s/, /z/, /n/, /l/ |
-| Front (blade) | Hard palate | /ʃ/ (*shoe*), /ʒ/ (*measure*), /tʃ/ (*chair*), /dʒ/ (*jump*), /j/ (*yes*) |
-| Back | Soft palate | /k/ (*cat*), /g/ (*go*), /ŋ/ (*sing*) |
-| **No tongue involved** | Lips | /p/ (*pen*), /b/ (*bed*), /m/ (*map*), /w/ (*wet*) |
-| **No tongue involved** | Lower lip + upper teeth | /f/ (*fan*), /v/ (*van*) |
-| **No tongue involved** | Glottis (throat) | /h/ (*hat*) |
+| Front (blade) | Hard palate | /ʃ/ (<Word id="shoe" compact />), /ʒ/ (<Word id="measure" compact />), /tʃ/ (<Word id="chair" compact />), /dʒ/ (<Word id="jump" compact />), /j/ (<Word id="yes" compact />) |
+| Back | Soft palate | /k/ (<Word id="cat" compact />), /g/ (<Word id="go" compact />), /ŋ/ (<Word id="sing" compact />) |
+| **No tongue involved** | Lips | /p/ (<Word id="pen" compact />), /b/ (<Word id="bed" compact />), /m/ (<Word id="map" compact />), /w/ (<Word id="wet" compact />) |
+| **No tongue involved** | Lower lip + upper teeth | /f/ (<Word id="fan" compact />), /v/ (<Word id="van" compact />) |
+| **No tongue involved** | Glottis (throat) | /h/ (<Word id="hat" compact />) |
 
 ## 2. Voiced vs. Voiceless Sounds
 
@@ -67,15 +69,15 @@ Most English consonants come in **pairs** that share the same mouth position but
 
 | Voiceless | Example | Voiced | Example | Tongue Zone | Target |
 |-----------|---------|--------|---------|-------------|--------|
-| /p/ | *pen* | /b/ | *bed* | (none) | Lips |
-| /t/ | *ten* | /d/ | *den* | Tip | Gum ridge |
-| /k/ | *cat* | /g/ | *got* | Back | Soft palate |
-| /f/ | *fan* | /v/ | *van* | (none) | Lower lip + upper teeth |
-| /θ/ | *think* | /ð/ | *this* | Tip | Teeth |
-| /s/ | *sip* | /z/ | *zip* | Tip | Gum ridge |
-| /ʃ/ | *shoe* | /ʒ/ | *measure* | Front (blade) | Hard palate |
-| /tʃ/ | *chair* | /dʒ/ | *jump* | Front (blade) | Hard palate |
-| /h/ | *hat* | (none) | (none) | (none) | Glottis |
+| /p/ | <Word id="pen" compact /> | /b/ | <Word id="bed" compact /> | (none) | Lips |
+| /t/ | <Word id="ten" compact /> | /d/ | <Word id="den" compact /> | Tip | Gum ridge |
+| /k/ | <Word id="cat" compact /> | /g/ | <Word id="got" compact /> | Back | Soft palate |
+| /f/ | <Word id="fan" compact /> | /v/ | <Word id="van" compact /> | (none) | Lower lip + upper teeth |
+| /θ/ | <Word id="think" compact /> | /ð/ | <Word id="this" compact /> | Tip | Teeth |
+| /s/ | <Word id="sip" compact /> | /z/ | <Word id="zip" compact /> | Tip | Gum ridge |
+| /ʃ/ | <Word id="shoe" compact /> | /ʒ/ | <Word id="measure" compact /> | Front (blade) | Hard palate |
+| /tʃ/ | <Word id="chair" compact /> | /dʒ/ | <Word id="jump" compact /> | Front (blade) | Hard palate |
+| /h/ | <Word id="hat" compact /> | (none) | (none) | (none) | Glottis |
 
 Some consonants have no voiceless counterpart. They are always voiced:
 
@@ -95,13 +97,13 @@ Vowels are shaped by:
 
 | Tongue Body Position | Height | Lip Rounding | Sounds | Examples |
 |----------------------|--------|-------------|--------|---------|
-| Front | High | Unrounded | /iː/, /ɪ/ | *eat*, *sit* |
-| Front | Mid | Unrounded | /eɪ/, /ɛ/ | *face*, *bet* |
-| Front | Low | Unrounded | /æ/ | *cat* |
-| Central | Mid | Unrounded | /ə/, /ʌ/ | *about*, *cup* |
-| Central | Mid (r-colored) | Unrounded | /ɝ/, /ɚ/ | *bird*, *butter* |
-| Back | High | Rounded | /u/, /ʊ/ | *food*, *book* |
-| Back | Mid | Rounded | /oʊ/, /ɔ/ | *home*, *law* |
-| Back | Low | Unrounded | /ɑ/ | *father* |
+| Front | High | Unrounded | /iː/, /ɪ/ | <Word id="eat" compact />, <Word id="sit" compact /> |
+| Front | Mid | Unrounded | /eɪ/, /ɛ/ | <Word id="face" compact />, <Word id="bet" compact /> |
+| Front | Low | Unrounded | /æ/ | <Word id="cat" compact /> |
+| Central | Mid | Unrounded | /ə/, /ʌ/ | <Word id="about" compact />, <Word id="cup" compact /> |
+| Central | Mid (r-colored) | Unrounded | /ɝ/, /ɚ/ | <Word id="bird" compact />, <Word id="butter" compact /> |
+| Back | High | Rounded | /u/, /ʊ/ | <Word id="food" compact />, <Word id="book" compact /> |
+| Back | Mid | Rounded | /oʊ/, /ɔ/ | <Word id="home" compact />, <Word id="law" compact /> |
+| Back | Low | Unrounded | /ɑ/ | <Word id="father" compact /> |
 
 Because all vowels involve continuous voicing and an open vocal tract, they carry the most volume and sustain the longest in connected speech.

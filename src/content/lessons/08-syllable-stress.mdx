@@ -6,6 +6,8 @@ order: 8
 tags: ["stress", "syllables", "rhythm", "American English", "phonetics"]
 ---
 
+import Word from '../../components/Word.astro';
+
 ## What Is Syllable Stress?
 
 When you say a multi-syllable word, you don't say every syllable with equal force. One syllable gets more **volume**, **length**, and **pitch** than the others. That's **stress**.
@@ -33,10 +35,10 @@ Longer words can have two levels of stress:
 
 | Word            | IPA                   |
 |-----------------|-----------------------|
-| education       | /ˌɛd·jʊˈkeɪ·ʃən/      |
-| pronunciation   | /prəˌnʌn·siːˈeɪ·ʃən/   |
-| communication   | /kəˌmjuː·nɪˈkeɪ·ʃən/  |
-| information     | /ˌɪn·fɚˈmeɪ·ʃən/      |
+| <Word id="education" compact /> | /ˌɛd·jʊˈkeɪ·ʃən/      |
+| <Word id="pronunciation" compact /> | /prəˌnʌn·siːˈeɪ·ʃən/   |
+| <Word id="communication" compact /> | /kəˌmjuː·nɪˈkeɪ·ʃən/  |
+| <Word id="information" compact /> | /ˌɪn·fɚˈmeɪ·ʃən/      |
 
 In these words, the syllable before *-tion* nearly always takes primary stress.
 
@@ -59,26 +61,26 @@ English stress is not fully predictable, but patterns exist:
 ### Two-syllable nouns and adjectives → stress on syllable 1
 | Word    | Stress |
 |---------|--------|
-| PEOple  | 1st    |
-| TAble   | 1st    |
-| HAPpy   | 1st    |
-| YELlow  | 1st    |
+| <Word id="people" custom="PEOple" /> | 1st    |
+| <Word id="table" custom="TAble" /> | 1st    |
+| <Word id="happy" custom="HAPpy" /> | 1st    |
+| <Word id="yellow" custom="YELlow" /> | 1st    |
 
 ### Two-syllable verbs → stress often on syllable 2
 | Word    | Stress |
 |---------|--------|
-| beGIN   | 2nd    |
-| reLAX   | 2nd    |
-| preSENT | 2nd    |
-| rePEAT  | 2nd    |
+| <Word id="begin" custom="beGIN" /> | 2nd    |
+| <Word id="relax" custom="reLAX" /> | 2nd    |
+| <Word id="present" custom="preSENT" /> | 2nd    |
+| <Word id="repeat" custom="rePEAT" /> | 2nd    |
 
 ### Words ending in -tion, -sion, -ic, -ical → stress on syllable before the suffix
 | Word          | Stressed syllable |
 |---------------|-------------------|
-| proDUCtion    | -duc-             |
-| eLECtric      | -lec-             |
-| geoGRAPHic    | -graph-           |
-| hiSTORical    | -tor-             |
+| <Word id="production" custom="proDUCtion" /> | -duc-             |
+| <Word id="electric" custom="eLECtric" /> | -lec-             |
+| <Word id="geographic" custom="geoGRAPHic" /> | -graph-           |
+| <Word id="historical" custom="hiSTORical" /> | -tor-             |
 
 ---
 

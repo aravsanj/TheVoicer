@@ -7,6 +7,7 @@ tags: ["spelling", "phonics", "phonetics", "American English"]
 ---
 
 import Sound from '../../components/Sound.astro';
+import Word from '../../components/Word.astro';
 
 ## The Core Problem: 26 Letters, 46 Sounds
 
@@ -20,40 +21,40 @@ One letter can map to several different sounds depending on the word.
 
 | Word  | Spelling | Sound    | Phoneme                              | Word IPA     |
 |-------|----------|----------|--------------------------------------|--------------|
-| hat   | a        | <Sound id="short-a" labelOnly /> | <Sound id="short-a" compact />       | /hæt/        |
-| all   | a        | <Sound id="aw" labelOnly />      | <Sound id="aw" compact />            | /ɔːl/        |
-| art   | a        | <Sound id="short-o" labelOnly /> | <Sound id="short-o" compact />       | /ɑːrt/       |
-| age   | a        | <Sound id="long-a" labelOnly />  | <Sound id="long-a" compact />        | /eɪdʒ/       |
-| about | a        | <Sound id="schwa" labelOnly />   | <Sound id="schwa" compact />         | /əˈbaʊt/     |
+| <Word id="hat" compact /> | a | <Sound id="short-a" labelOnly /> | <Sound id="short-a" compact /> | <Word id="hat" ipaOnly /> |
+| <Word id="all" compact /> | a | <Sound id="aw" labelOnly />      | <Sound id="aw" compact />      | <Word id="all" ipaOnly /> |
+| <Word id="art" compact /> | a | <Sound id="short-o" labelOnly /> | <Sound id="short-o" compact /> | <Word id="art" ipaOnly /> |
+| <Word id="age" compact /> | a | <Sound id="long-a" labelOnly />  | <Sound id="long-a" compact />  | <Word id="age" ipaOnly /> |
+| <Word id="about" compact /> | a | <Sound id="schwa" labelOnly /> | <Sound id="schwa" compact />   | <Word id="about" ipaOnly /> |
 
 ### The letter **C**
 
 | Word | Spelling | Sound   | Phoneme                        | Word IPA  |
 |------|----------|---------|--------------------------------|-----------|
-| cat  | c        | <Sound id="k" labelOnly /> | <Sound id="k" compact />       | /kæt/     |
-| city | c        | <Sound id="s" labelOnly /> | <Sound id="s" compact />       | /ˈsɪtiː/  |
+| <Word id="cat" compact /> | c | <Sound id="k" labelOnly /> | <Sound id="k" compact /> | <Word id="cat" ipaOnly /> |
+| <Word id="city" compact /> | c | <Sound id="s" labelOnly /> | <Sound id="s" compact /> | <Word id="city" ipaOnly /> |
 
 ### The letter **G**
 
 | Word | Spelling | Sound   | Phoneme                        | Word IPA  |
 |------|----------|---------|--------------------------------|-----------|
-| go   | g        | <Sound id="g" labelOnly /> | <Sound id="g" compact />       | /ɡoʊ/     |
-| gym  | g        | <Sound id="j" labelOnly /> | <Sound id="j" compact />       | /dʒɪm/    |
+| <Word id="go" compact /> | g | <Sound id="g" labelOnly /> | <Sound id="g" compact /> | <Word id="go" ipaOnly /> |
+| <Word id="gym" compact /> | g | <Sound id="j" labelOnly /> | <Sound id="j" compact /> | <Word id="gym" ipaOnly /> |
 
 ### The letter **S**
 
 | Word | Spelling | Sound    | Phoneme                        | Word IPA  |
 |------|----------|----------|--------------------------------|-----------|
-| sit  | s        | <Sound id="s" labelOnly />  | <Sound id="s" compact />       | /sɪt/     |
-| his  | s        | <Sound id="z" labelOnly />  | <Sound id="z" compact />       | /hɪz/     |
-| sure | s        | <Sound id="sh" labelOnly /> | <Sound id="sh" compact />      | /ʃʊr/     |
+| <Word id="sit" compact /> | s | <Sound id="s" labelOnly />  | <Sound id="s" compact />  | <Word id="sit" ipaOnly /> |
+| <Word id="his" compact /> | s | <Sound id="z" labelOnly />  | <Sound id="z" compact />  | <Word id="his" ipaOnly /> |
+| <Word id="sure" compact /> | s | <Sound id="sh" labelOnly /> | <Sound id="sh" compact /> | <Word id="sure" ipaOnly /> |
 
 ### The letter **TH**
 
 | Word  | Spelling | Sound        | Phoneme                        | Word IPA  |
 |-------|----------|--------------|--------------------------------|-----------|
-| think | th       | <Sound id="th" labelOnly /> | <Sound id="th" compact />      | /θɪŋk/    |
-| this  | th       | <Sound id="dh" labelOnly /> | <Sound id="dh" compact />      | /ðɪs/     |
+| <Word id="think" compact /> | th | <Sound id="th" labelOnly /> | <Sound id="th" compact /> | <Word id="think" ipaOnly /> |
+| <Word id="this" compact /> | th | <Sound id="dh" labelOnly /> | <Sound id="dh" compact />  | <Word id="this" ipaOnly /> |
 
 ## 2. Same Sound, Different Spelling
 
@@ -63,53 +64,53 @@ The same phoneme can be spelled many different ways across different words.
 
 | Word  | Spelling | Phoneme                           | Word IPA    |
 |-------|----------|-----------------------------------|-------------|
-| baby  | a        | <Sound id="long-a" compact />     | /ˈbeɪbiː/   |
-| steak | ea       | <Sound id="long-a" compact />     | /steɪk/     |
-| rain  | ai       | <Sound id="long-a" compact />     | /reɪn/      |
-| day   | ay       | <Sound id="long-a" compact />     | /deɪ/       |
-| they  | ey       | <Sound id="long-a" compact />     | /ðeɪ/       |
-| vein  | ei       | <Sound id="long-a" compact />     | /veɪn/      |
-| eight | eigh     | <Sound id="long-a" compact />     | /eɪt/       |
+| <Word id="baby" compact /> | a  | <Sound id="long-a" compact /> | <Word id="baby" ipaOnly /> |
+| <Word id="steak" compact /> | ea | <Sound id="long-a" compact /> | <Word id="steak" ipaOnly /> |
+| <Word id="rain" compact /> | ai | <Sound id="long-a" compact /> | <Word id="rain" ipaOnly /> |
+| <Word id="day" compact /> | ay  | <Sound id="long-a" compact /> | <Word id="day" ipaOnly /> |
+| <Word id="they" compact /> | ey | <Sound id="long-a" compact /> | <Word id="they" ipaOnly /> |
+| <Word id="vein" compact /> | ei | <Sound id="long-a" compact /> | <Word id="vein" ipaOnly /> |
+| <Word id="eight" compact /> | eigh | <Sound id="long-a" compact /> | <Word id="eight" ipaOnly /> |
 
 ### The <Sound id="short-e" /> sound
 
 | Word   | Spelling | Phoneme                           | Word IPA    |
 |--------|----------|-----------------------------------|-------------|
-| fell   | e        | <Sound id="short-e" compact />    | /fɛl/       |
-| head   | ea       | <Sound id="short-e" compact />    | /hɛd/       |
-| said   | ai       | <Sound id="short-e" compact />    | /sɛd/       |
-| any    | a        | <Sound id="short-e" compact />    | /ˈɛniː/     |
-| friend | ie       | <Sound id="short-e" compact />    | /frɛnd/     |
+| <Word id="fell" compact /> | e  | <Sound id="short-e" compact /> | <Word id="fell" ipaOnly /> |
+| <Word id="head" compact /> | ea | <Sound id="short-e" compact /> | <Word id="head" ipaOnly /> |
+| <Word id="said" compact /> | ai | <Sound id="short-e" compact /> | <Word id="said" ipaOnly /> |
+| <Word id="any" compact /> | a  | <Sound id="short-e" compact /> | <Word id="any" ipaOnly /> |
+| <Word id="friend" compact /> | ie | <Sound id="short-e" compact /> | <Word id="friend" ipaOnly /> |
 
 ### The <Sound id="f" /> sound
 
 | Word  | Spelling | Phoneme                        | Word IPA    |
 |-------|----------|--------------------------------|-------------|
-| fish  | f        | <Sound id="f" compact />       | /fɪʃ/       |
-| photo | ph       | <Sound id="f" compact />       | /ˈfoʊtoʊ/   |
-| stuff | ff       | <Sound id="f" compact />       | /stʌf/      |
-| laugh | gh       | <Sound id="f" compact />       | /læf/       |
+| <Word id="fish" compact /> | f  | <Sound id="f" compact /> | <Word id="fish" ipaOnly /> |
+| <Word id="photo" compact /> | ph | <Sound id="f" compact /> | <Word id="photo" ipaOnly /> |
+| <Word id="stuff" compact /> | ff | <Sound id="f" compact /> | <Word id="stuff" ipaOnly /> |
+| <Word id="laugh" compact /> | gh | <Sound id="f" compact /> | <Word id="laugh" ipaOnly /> |
 
 ### The <Sound id="long-e" /> sound
 
 | Word   | Spelling | Phoneme                           | Word IPA    |
 |--------|----------|-----------------------------------|-------------|
-| see    | ee       | <Sound id="long-e" compact />     | /siː/       |
-| seat   | ea       | <Sound id="long-e" compact />     | /siːt/      |
-| these  | e        | <Sound id="long-e" compact />     | /ðiːz/      |
-| pizza  | i        | <Sound id="long-e" compact />     | /ˈpiːtsə/   |
-| key    | ey       | <Sound id="long-e" compact />     | /kiː/       |
-| police | i        | <Sound id="long-e" compact />     | /pəˈliːs/   |
+| <Word id="see" compact /> | ee  | <Sound id="long-e" compact /> | <Word id="see" ipaOnly /> |
+| <Word id="seat" compact /> | ea | <Sound id="long-e" compact /> | <Word id="seat" ipaOnly /> |
+| <Word id="these" compact /> | e | <Sound id="long-e" compact /> | <Word id="these" ipaOnly /> |
+| <Word id="pizza" compact /> | i | <Sound id="long-e" compact /> | <Word id="pizza" ipaOnly /> |
+| <Word id="key" compact /> | ey  | <Sound id="long-e" compact /> | <Word id="key" ipaOnly /> |
+| <Word id="police" compact /> | i | <Sound id="long-e" compact /> | <Word id="police" ipaOnly /> |
 
 ### The <Sound id="sh" /> sound
 
 | Word     | Spelling | Phoneme                        | Word IPA      |
 |----------|----------|--------------------------------|---------------|
-| ship     | sh       | <Sound id="sh" compact />      | /ʃɪp/         |
-| station  | ti       | <Sound id="sh" compact />      | /ˈsteɪʃən/    |
-| machine  | ch       | <Sound id="sh" compact />      | /məˈʃiːn/     |
-| special  | ci       | <Sound id="sh" compact />      | /ˈspɛʃəl/     |
-| pressure | ss       | <Sound id="sh" compact />      | /ˈprɛʃɚ/      |
+| <Word id="ship" compact /> | sh    | <Sound id="sh" compact /> | <Word id="ship" ipaOnly /> |
+| <Word id="station" compact /> | ti | <Sound id="sh" compact /> | <Word id="station" ipaOnly /> |
+| <Word id="machine" compact /> | ch | <Sound id="sh" compact /> | <Word id="machine" ipaOnly /> |
+| <Word id="special" compact /> | ci | <Sound id="sh" compact /> | <Word id="special" ipaOnly /> |
+| <Word id="pressure" compact /> | ss | <Sound id="sh" compact /> | <Word id="pressure" ipaOnly /> |
 
 ## 3. Letters That Represent No Sound (Silent Letters)
 
@@ -117,20 +118,20 @@ Many English words contain letters that are written but not pronounced.
 
 | Word    | Silent Letter | Pronunciation | IPA     |
 |---------|---------------|---------------|---------|
-| right   | gh            | rit           | /raɪt/  |
-| knight  | k, gh         | nit           | /naɪt/  |
-| knife   | k             | nife          | /naɪf/  |
-| wrap    | w             | rap           | /ræp/   |
-| write   | w             | rite          | /raɪt/  |
-| lamb    | b             | lam           | /læm/   |
-| comb    | b             | kome          | /koʊm/  |
-| hour    | h             | our           | /aʊɚ/   |
-| honest  | h             | onest         | /ˈɑnɪst/ |
-| castle  | t             | cassel        | /ˈkæsəl/ |
-| listen  | t             | lissen        | /ˈlɪsən/ |
-| debt    | b             | det           | /dɛt/   |
-| island  | s             | iland         | /ˈaɪlənd/ |
-| psalm   | p             | salm          | /sɑm/   |
+| <Word id="right" compact /> | gh | rit | <Word id="right" ipaOnly /> |
+| <Word id="knight" compact /> | k, gh | nit | <Word id="knight" ipaOnly /> |
+| <Word id="knife" compact /> | k  | nife | <Word id="knife" ipaOnly /> |
+| <Word id="wrap" compact /> | w   | rap  | <Word id="wrap" ipaOnly /> |
+| <Word id="write" compact /> | w  | rite | <Word id="write" ipaOnly /> |
+| <Word id="lamb" compact /> | b   | lam  | <Word id="lamb" ipaOnly /> |
+| <Word id="comb" compact /> | b   | kome | <Word id="comb" ipaOnly /> |
+| <Word id="hour" compact /> | h   | our  | <Word id="hour" ipaOnly /> |
+| <Word id="honest" compact /> | h | onest | <Word id="honest" ipaOnly /> |
+| <Word id="castle" compact /> | t | cassel | <Word id="castle" ipaOnly /> |
+| <Word id="listen" compact /> | t | lissen | <Word id="listen" ipaOnly /> |
+| <Word id="debt" compact /> | b   | det  | <Word id="debt" ipaOnly /> |
+| <Word id="island" compact /> | s | iland | <Word id="island" ipaOnly /> |
+| <Word id="psalm" compact /> | p  | salm | <Word id="psalm" ipaOnly /> |
 
 ## Why Is English Spelling So Irregular?
 

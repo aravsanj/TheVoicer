@@ -6,6 +6,8 @@ order: 13
 tags: ["vowels", "consonants", "length", "voiced", "voiceless", "rhythm", "American English"]
 ---
 
+import Word from '../../components/Word.astro';
+
 ## Sound Length Is Not Fixed
 
 In English, the same sound can be held for a longer or shorter time depending on where it appears and what comes after it. This variation in **length** is one of the things that gives English its characteristic rhythm.
@@ -18,11 +20,11 @@ Compare these pairs. The vowel in each word is the same sound, but it's held for
 
 | Shorter vowel (before voiceless) | Longer vowel (before voiced) |
 |----------------------------------|------------------------------|
-| **cap** /kæp/                    | **cab** /kæːb/               |
-| **bet** /bɛt/                    | **bed** /bɛːd/               |
-| **rice** /raɪs/                  | **rise** /raɪːz/             |
-| **back** /bæk/                   | **bag** /bæːɡ/               |
-| **leaf** /liːf/                  | **leave** /liːːv/            |
+| <Word id="cap" /> | <Word id="cab" /> |
+| <Word id="bet" /> | <Word id="bed" /> |
+| <Word id="rice" /> | <Word id="rise" /> |
+| <Word id="back" /> | <Word id="bag" /> |
+| <Word id="leaf" /> | <Word id="leave" /> |
 
 The vowel in **cab** is noticeably longer than in **cap**, even though both use the /æ/ sound. Native speakers rely on this length difference, not just the final consonant, to distinguish the two words.
 
@@ -46,9 +48,9 @@ Final consonant sounds follow their own length pattern.
 
 | Shorter (voiced final)  | Longer (voiceless final) |
 |-------------------------|--------------------------|
-| **leave** /liːv/        | **leaf** /liːf/          |
-| **prize** /praɪz/       | **price** /praɪs/        |
-| **rouge** /ruːʒ/        | **rush** /rʌʃ/           |
+| <Word id="leave" /> | <Word id="leaf" /> |
+| <Word id="prize" /> | <Word id="price" /> |
+| <Word id="rouge" /> | <Word id="rush" /> |
 
 This may seem counterintuitive. Voiced sounds typically involve more vocal activity. But the compensation works like a trade-off: the **vowel** before a voiced consonant gets longer, while the **voiced consonant itself** is shorter. The voiceless consonant, by contrast, gets more time and airflow.
 
@@ -58,9 +60,9 @@ The length rules above apply to **continuant** sounds, meaning sounds you can su
 
 | Voiceless stops | Voiced stops |
 |-----------------|--------------|
-| /p/ (cap)       | /b/ (cab)    |
-| /t/ (bet)       | /d/ (bed)    |
-| /k/ (back)      | /ɡ/ (bag)    |
+| /p/ (<Word id="cap" compact />) | /b/ (<Word id="cab" compact />) |
+| /t/ (<Word id="bet" compact />) | /d/ (<Word id="bed" compact />) |
+| /k/ (<Word id="back" compact />) | /ɡ/ (<Word id="bag" compact />) |
 
 For words ending in these sounds, the length difference is perceived through the **vowel** before the stop, not through the stop itself. **cap** and **cab** are distinguished primarily because the vowel in **cab** is longer, not because you hold the final /b/ longer than the /p/.
 
@@ -68,10 +70,10 @@ For words ending in these sounds, the length difference is perceived through the
 
 | Word     | Vowel length | Consonant length | Reason                            |
 |----------|--------------|------------------|------------------------------------|
-| **cap**  | Short        | (stop, n/a)      | Voiceless stop follows             |
-| **cab**  | Long         | (stop, n/a)      | Voiced stop follows                |
-| **race** | Short        | Long /s/         | Voiceless continuant follows/ends  |
-| **rays** | Long         | Short /z/        | Voiced continuant ends the word    |
-| **go**   | Long         | (none)           | Word-final in sentence             |
+| <Word id="cap" compact /> | Short        | (stop, n/a)      | Voiceless stop follows             |
+| <Word id="cab" compact /> | Long         | (stop, n/a)      | Voiced stop follows                |
+| <Word id="race" compact /> | Short        | Long /s/         | Voiceless continuant follows/ends  |
+| <Word id="rays" compact /> | Long         | Short /z/        | Voiced continuant ends the word    |
+| <Word id="go" compact /> | Long         | (none)           | Word-final in sentence             |
 
 Paying attention to these length patterns, even subtly, will make your speech clearer and help you distinguish words like **cap/cab** and **race/rays** when listening.
