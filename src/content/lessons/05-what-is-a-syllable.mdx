@@ -6,7 +6,8 @@ order: 5
 tags: ["syllables", "phonetics", "rhythm", "vowels"]
 ---
 
-import Word from '../../components/Word.astro';
+import Word from "../../components/Word.astro";
+import Sound from "../../components/Sound.astro";
 
 ## The Basic Unit of Speech
 
@@ -20,19 +21,24 @@ A syllable is a unit of pronunciation built around **one vowel sound**. You cann
 
 The vowel is the loudest, most resonant part of a syllable. Consonants attach to it before and after, but the vowel is what makes a syllable "ring."
 
-| Word   | Vowel Sound | Syllables |
-|--------|-------------|-----------|
-| <Word id="sun" compact /> | /ʌ/         | 1         |
-| <Word id="open" compact /> | /oʊ/ + /ə/  | 2         |
-| <Word id="animal" compact /> | /æ/ + /ɪ/ + /ə/ | 3     |
+| Word                         | Vowel Sound                                                                                    | Syllables |
+| ---------------------------- | ---------------------------------------------------------------------------------------------- | --------- |
+| <Word id="sun" compact />    | <Sound id="short-u" compact />                                                                 | 1         |
+| <Word id="open" compact />   | <Sound id="long-o" compact /> + <Sound id="schwa" compact />                                   | 2         |
+| <Word id="animal" compact /> | <Sound id="short-a" compact /> + <Sound id="short-i" compact /> + <Sound id="schwa" compact /> | 3         |
 
 ## Vowel Letters vs. Vowel Sounds
 
-A common trap: **vowel letters** (a, e, i, o, u) are not the same as **vowel sounds**. Syllables are counted by *sounds*, not letters.
+A common trap: **vowel letters** (a, e, i, o, u) are not the same as **vowel sounds**. Syllables are counted by _sounds_, not letters.
 
-- **cake** → looks like 2 vowel letters (a, e), but the *e* is silent → **1 syllable**, one vowel sound /eɪ/
-- **blue** → 2 vowel letters (u, e), but pronounced as one sound /u/ → **1 syllable**
-- **fire** → 2 vowel letters, but pronounced as the diphthong /aɪ/ + syllabic /ɚ/ → **2 syllables** (in most American speech: *fi-yer*)
+- <Word id="cake" compact /> → looks like 2 vowel letters (a, e), but the *e* is
+  silent → **1 syllable**, one vowel sound <Sound id="long-a" compact />
+- <Word id="blue" compact /> → 2 vowel letters (u, e), but pronounced as one
+  sound
+  <Sound id="long-u" compact /> → **1 syllable**
+- <Word id="fire" compact /> → 2 vowel letters, but pronounced as the diphthong
+  <Sound id="long-i" compact /> + syllabic <Sound id="r-schwa" compact /> → **2
+  syllables** (in most American speech: *fi-yer*)
 
 Always count sounds, not letters.
 
@@ -46,12 +52,12 @@ Mispronouncing syllable count is one of the most common reasons native speakers 
 
 How many syllables do you hear?
 
-| Word        | Answer |
-|-------------|--------|
-| <Word id="cat" compact /> | 1      |
-| <Word id="window" compact /> | 2      |
-| <Word id="beautiful" compact /> | 3      |
-| <Word id="education" compact /> | 4      |
-| <Word id="communication" compact /> | 5    |
+| Word                                | Answer |
+| ----------------------------------- | ------ |
+| <Word id="cat" compact />           | 1      |
+| <Word id="window" compact />        | 2      |
+| <Word id="beautiful" compact />     | 3      |
+| <Word id="education" compact />     | 4      |
+| <Word id="communication" compact /> | 5      |
 
 Say each word aloud and tap your finger for each beat. That's how many syllables it has.

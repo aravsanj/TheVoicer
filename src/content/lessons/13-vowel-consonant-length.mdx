@@ -7,6 +7,7 @@ tags: ["vowels", "consonants", "length", "voiced", "voiceless", "rhythm", "Ameri
 ---
 
 import Word from '../../components/Word.astro';
+import Sound from '../../components/Sound.astro';
 
 ## Sound Length Is Not Fixed
 
@@ -26,7 +27,7 @@ Compare these pairs. The vowel in each word is the same sound, but it's held for
 | <Word id="back" /> | <Word id="bag" /> |
 | <Word id="leaf" /> | <Word id="leave" /> |
 
-The vowel in **cab** is noticeably longer than in **cap**, even though both use the /æ/ sound. Native speakers rely on this length difference, not just the final consonant, to distinguish the two words.
+The vowel in <Word id="cab" compact /> is noticeably longer than in <Word id="cap" compact />, even though both use the <Sound id="short-a" compact /> sound. Native speakers rely on this length difference, not just the final consonant, to distinguish the two words.
 
 ## Vowel Length: Sentence Position
 
@@ -44,7 +45,7 @@ This lengthening at the end of a sentence is connected to falling intonation. Th
 
 Final consonant sounds follow their own length pattern.
 
-**Voiceless final consonants** (/f/, /s/, /ʃ/, /θ/, /tʃ/) are held **longer** than voiced final consonants (/v/, /z/, /ʒ/, /ð/, /dʒ/).
+**Voiceless final consonants** (<Sound id="f" compact />, <Sound id="s" compact />, <Sound id="sh" compact />, <Sound id="th" compact />, <Sound id="ch" compact />) are held **longer** than voiced final consonants (<Sound id="v" compact />, <Sound id="z" compact />, <Sound id="zh" compact />, <Sound id="dh" compact />, <Sound id="j" compact />).
 
 | Shorter (voiced final)  | Longer (voiceless final) |
 |-------------------------|--------------------------|
@@ -64,7 +65,7 @@ The length rules above apply to **continuant** sounds, meaning sounds you can su
 | /t/ (<Word id="bet" compact />) | /d/ (<Word id="bed" compact />) |
 | /k/ (<Word id="back" compact />) | /ɡ/ (<Word id="bag" compact />) |
 
-For words ending in these sounds, the length difference is perceived through the **vowel** before the stop, not through the stop itself. **cap** and **cab** are distinguished primarily because the vowel in **cab** is longer, not because you hold the final /b/ longer than the /p/.
+For words ending in these sounds, the length difference is perceived through the **vowel** before the stop, not through the stop itself. <Word id="cap" compact /> and <Word id="cab" compact /> are distinguished primarily because the vowel in <Word id="cab" compact /> is longer, not because you hold the final <Sound id="b" compact /> longer than the <Sound id="p" compact />.
 
 ## Length Patterns at a Glance
 
