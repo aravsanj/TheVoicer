@@ -1,0 +1,102 @@
+---
+import { SOUND_META, GROUP_ORDER } from '../data/sounds';
+
+interface Props {
+  /** Render only this group (e.g. "Vowels"). Omit to render all groups. */
+  group?: string;
+}
+
+const { group } = Astro.props;
+
+const groups = group
+  ? [group]
+  : GROUP_ORDER;
+
+const sections = groups.map(g => ({
+  name: g,
+  items: Object.entries(SOUND_META).filter(([, m]) => m.group === g),
+})).filter(s => s.items.length > 0);
+---
+
+{sections.map(({ name, items }) => (
+  <section class="phoneme-section">
+    <h2>{name} <span class="count">({items.length})</span></h2>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Symbol</th>
+            <th>Name</th>
+            <th>Key</th>
+            <th>Example</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          {items.map(([id, meta]) => (
+            <tr>
+              <td class="cell-ipa">
+                <a href={`/sounds/${id}`} class="sound-link">{meta.ipa}</a>
+              </td>
+              <td class="cell-name">{meta.label}</td>
+              <td class="cell-key"><code>{meta.key}</code></td>
+              <td class="cell-example"><em>{meta.example}</em></td>
+              <td class="cell-desc">{meta.desc}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  </section>
+))}
+
+<style>
+  .phoneme-section {
+    margin-bottom: 2.5rem;
+  }
+
+  .count {
+    font-size: 0.85em;
+    font-weight: 400;
+    color: var(--color-muted);
+  }
+
+  .table-wrap {
+    overflow-x: auto;
+  }
+
+  .cell-ipa {
+    font-family: var(--font-mono);
+    font-size: 1.15rem;
+    white-space: nowrap;
+  }
+
+  .sound-link {
+    color: var(--color-accent-soft);
+    text-decoration: none;
+  }
+
+  .sound-link:hover {
+    color: var(--color-accent);
+    text-decoration: underline;
+  }
+
+  .cell-key code {
+    font-size: 0.8rem;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 4px;
+    padding: 0.1em 0.4em;
+    white-space: nowrap;
+  }
+
+  .cell-example em {
+    font-style: normal;
+    color: var(--color-accent-soft);
+  }
+
+  .cell-desc {
+    font-size: 0.85rem;
+    color: var(--color-muted);
+  }
+</style>

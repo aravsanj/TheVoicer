@@ -2,11 +2,13 @@
 interface Props {
   // [word, ipa, respelling, sounds[]]
   compactWords: [string, string, string, string[]][];
+  soundLabels: Record<string, string>;
   placeholder?: string;
 }
 
 const {
   compactWords,
+  soundLabels,
   placeholder = 'Look up a word… e.g. boat, culture, thought',
 } = Astro.props;
 ---
@@ -189,17 +191,8 @@ const {
   }
 </style>
 
-<script define:vars={{ compactWords }}>
-  const SOUND_LABELS = {
-    'long-e':'iː','short-i':'ɪ','long-a':'eɪ','short-e':'ɛ','short-a':'æ',
-    'short-o':'ɑː','aw':'ɔː','long-o':'oʊ','long-u':'uː','short-u':'ʌ',
-    'r-vowel':'ɜːr','long-i':'aɪ','ow':'aʊ','short-oo':'ʊ','oi':'ɔɪ',
-    'ar':'ɑːr','or':'ɔːr','air':'ɛr','ear':'ɪr',
-    'p':'p','b':'b','t':'t','d':'d','k':'k','g':'ɡ',
-    'f':'f','v':'v','th':'θ','dh':'ð','s':'s','z':'z',
-    'sh':'ʃ','zh':'ʒ','h':'h','ch':'tʃ','j':'dʒ',
-    'm':'m','n':'n','ng':'ŋ','l':'l','r':'r','w':'w','y':'j',
-  };
+<script define:vars={{ compactWords, soundLabels }}>
+  const SOUND_LABELS = soundLabels;
 
   const input = document.getElementById('word-search');
   const resultsList = document.getElementById('word-results');

@@ -3,11 +3,15 @@ import Navbar from '../../components/Navbar.astro';
 import WordSearch from '../../components/WordSearch.astro';
 import WordCard from '../../components/WordCard.astro';
 import wordsData from '../../data/words.json';
+import { SOUND_META } from '../../data/sounds';
 
 const totalWords = wordsData.length;
 
 // Compact word data for client-side search: [word, ipa, respelling, sounds[]]
 const compactWords = wordsData.map(w => [w.word, w.ipa, w.respelling, w.sounds]);
+
+// Sound ID → IPA map for client-side chip rendering, derived from canonical sounds.json
+const soundLabels = Object.fromEntries(Object.entries(SOUND_META).map(([id, m]) => [id, m.ipa]));
 
 const byLetter: Record<string, typeof wordsData[0][]> = {};
 for (const w of wordsData) {
@@ -40,7 +44,7 @@ const letters = Object.keys(byLetter).sort();
         <p class="subtitle">{totalWords.toLocaleString()} words with IPA, pronunciation, and stress patterns.</p>
       </header>
 
-      <WordSearch compactWords={compactWords} placeholder="Search a word… e.g. culture, thought, beautiful" />
+      <WordSearch compactWords={compactWords} soundLabels={soundLabels} placeholder="Search a word… e.g. culture, thought, beautiful" />
 
       <div id="letter-nav" class="letter-nav">
         {letters.map(l => (

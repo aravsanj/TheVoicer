@@ -1,7 +1,7 @@
 ---
 import Navbar from '../../components/Navbar.astro';
 import wordsData from '../../data/words.json';
-import { SOUND_META } from '../../data/soundMeta';
+import { SOUND_META, GROUP_ORDER } from '../../data/sounds';
 
 export function getStaticPaths() {
   const sounds = new Set<string>();
@@ -52,79 +52,24 @@ const words = wordsData
       <details class="key-guide">
         <summary class="key-guide-toggle">Pronunciation key <span class="key-guide-hint">IPA → respelling</span></summary>
         <div class="key-guide-body">
-          <div class="key-section">
-            <span class="key-section-label">Vowels</span>
-            <div class="key-grid">
-              {[
-                { ipa: 'ɑː', key: 'AH', ex: 'father' },
-                { ipa: 'æ',  key: 'A',  ex: 'cat' },
-                { ipa: 'ə',  key: 'uh', ex: 'about' },
-                { ipa: 'ʌ',  key: 'UH', ex: 'but' },
-                { ipa: 'ɔː', key: 'AW', ex: 'law' },
-                { ipa: 'aʊ', key: 'OW', ex: 'out' },
-                { ipa: 'aɪ', key: 'I',  ex: 'bite' },
-                { ipa: 'ɛ',  key: 'EH', ex: 'bet' },
-                { ipa: 'ɚ',  key: 'ur', ex: 'butter' },
-                { ipa: 'ɝː', key: 'UR', ex: 'bird' },
-                { ipa: 'eɪ', key: 'AY', ex: 'day' },
-                { ipa: 'ɪ',  key: 'IH', ex: 'bit' },
-                { ipa: 'iː', key: 'EE', ex: 'see' },
-                { ipa: 'oʊ', key: 'OH', ex: 'go' },
-                { ipa: 'ɔɪ', key: 'OY', ex: 'boy' },
-                { ipa: 'ʊ',   key: 'U',   ex: 'book' },
-                { ipa: 'uː',  key: 'OO',  ex: 'boot' },
-                { ipa: 'ɑːr', key: 'AR',  ex: 'car' },
-                { ipa: 'ɔːr', key: 'OR',  ex: 'for' },
-                { ipa: 'ɛr',  key: 'AIR', ex: 'care' },
-                { ipa: 'ɪr',  key: 'EAR', ex: 'here' },
-              ].map(({ ipa, key, ex }) => (
-                <div class:list={['key-chip', { 'key-chip--active': ipa === meta.ipa }]}>
-                  <span class="key-ipa">{ipa}</span>
-                  <span class="key-arrow">→</span>
-                  <span class="key-resp">{key}</span>
-                  <span class="key-ex">{ex}</span>
-                </div>
-              ))}
+          {GROUP_ORDER.map(group => (
+            <div class="key-section">
+              <span class="key-section-label">{group}</span>
+              <div class="key-grid">
+                {Object.entries(SOUND_META)
+                  .filter(([, m]) => m.group === group)
+                  .map(([id, m]) => (
+                    <div class:list={['key-chip', { 'key-chip--active': id === sound }]}>
+                      <span class="key-ipa">{m.ipa}</span>
+                      <span class="key-arrow">→</span>
+                      <span class="key-resp">{m.key}</span>
+                      <span class="key-ex">{m.example}</span>
+                    </div>
+                  ))
+                }
+              </div>
             </div>
-          </div>
-          <div class="key-section">
-            <span class="key-section-label">Consonants</span>
-            <div class="key-grid">
-              {[
-                { ipa: 'b',  key: 'B',  ex: 'bed' },
-                { ipa: 'd',  key: 'D',  ex: 'dog' },
-                { ipa: 'f',  key: 'F',  ex: 'fan' },
-                { ipa: 'ɡ',  key: 'G',  ex: 'get' },
-                { ipa: 'h',  key: 'H',  ex: 'hat' },
-                { ipa: 'k',  key: 'K',  ex: 'cat' },
-                { ipa: 'l',  key: 'L',  ex: 'lip' },
-                { ipa: 'm',  key: 'M',  ex: 'map' },
-                { ipa: 'n',  key: 'N',  ex: 'nap' },
-                { ipa: 'p',  key: 'P',  ex: 'pat' },
-                { ipa: 'r',  key: 'R',  ex: 'red' },
-                { ipa: 's',  key: 'S',  ex: 'sit' },
-                { ipa: 't',  key: 'T',  ex: 'top' },
-                { ipa: 'v',  key: 'V',  ex: 'van' },
-                { ipa: 'w',  key: 'W',  ex: 'wet' },
-                { ipa: 'z',  key: 'Z',  ex: 'zip' },
-                { ipa: 'tʃ', key: 'CH', ex: 'chip' },
-                { ipa: 'dʒ', key: 'J',  ex: 'jump' },
-                { ipa: 'ð',  key: 'DH', ex: 'the' },
-                { ipa: 'ŋ',  key: 'NG', ex: 'sing' },
-                { ipa: 'ʃ',  key: 'SH', ex: 'ship' },
-                { ipa: 'θ',  key: 'TH', ex: 'think' },
-                { ipa: 'j',  key: 'Y',  ex: 'yes' },
-                { ipa: 'ʒ',  key: 'ZH', ex: 'measure' },
-              ].map(({ ipa, key, ex }) => (
-                <div class:list={['key-chip', { 'key-chip--active': ipa === meta.ipa }]}>
-                  <span class="key-ipa">{ipa}</span>
-                  <span class="key-arrow">→</span>
-                  <span class="key-resp">{key}</span>
-                  <span class="key-ex">{ex}</span>
-                </div>
-              ))}
-            </div>
-          </div>
+          ))}
           <p class="key-note">Uppercase = stressed syllable · lowercase = unstressed · <em>example</em> in italics</p>
         </div>
       </details>

@@ -2,10 +2,12 @@
 import Navbar from '../../components/Navbar.astro';
 import WordSearch from '../../components/WordSearch.astro';
 import wordsData from '../../data/words.json';
-import { SOUND_META, GROUP_ORDER } from '../../data/soundMeta';
+import { SOUND_META, GROUP_ORDER } from '../../data/sounds';
 
 // Compact word data for client-side search: [word, ipa, respelling, sounds[]]
 const compactWords = wordsData.map(w => [w.word, w.ipa, w.respelling, w.sounds]);
+
+const soundLabels = Object.fromEntries(Object.entries(SOUND_META).map(([id, m]) => [id, m.ipa]));
 
 const soundCounts: Record<string, number> = {};
 for (const word of wordsData) {
@@ -49,7 +51,7 @@ let globalIndex = 0;
         <p class="subtitle">Browse common words grouped by vowel sound, with IPA notation and stress patterns.</p>
       </header>
 
-      <WordSearch compactWords={compactWords} />
+      <WordSearch compactWords={compactWords} soundLabels={soundLabels} />
 
       {byGroup.map(({ group, items }) => (
         <section class="sound-group">

@@ -1,0 +1,69 @@
+---
+import wordsData from '../data/words.json';
+
+interface Props {
+  id: string;
+  link?: boolean;
+}
+
+const { id, link = true } = Astro.props;
+const entry = wordsData.find(w => w.word === id);
+---
+
+{entry ? (
+  <span class="word-inline">
+    {link
+      ? <a href={`/words/${id}`} class="word-link">{entry.word}</a>
+      : <span class="word-text">{entry.word}</span>
+    }
+    <span class="word-ipa">{entry.ipa}</span>
+    <span class="word-key">{entry.respelling}</span>
+  </span>
+) : (
+  <code class="word-missing">{id}</code>
+)}
+
+<style>
+  .word-inline {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35em;
+    white-space: nowrap;
+  }
+
+  .word-text,
+  .word-link {
+    font-weight: 600;
+    color: var(--color-text);
+    text-decoration: none;
+  }
+
+  .word-link:hover {
+    color: var(--color-accent-soft);
+    text-decoration: underline;
+  }
+
+  .word-ipa {
+    font-family: var(--font-mono);
+    font-size: 0.85em;
+    color: var(--color-accent-soft);
+  }
+
+  .word-key {
+    font-family: var(--font-mono);
+    font-size: 0.75em;
+    font-weight: 600;
+    color: var(--color-muted);
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 4px;
+    padding: 0.05em 0.4em;
+    letter-spacing: 0.04em;
+  }
+
+  .word-missing {
+    font-size: 0.85em;
+    color: var(--color-muted);
+    opacity: 0.6;
+  }
+</style>

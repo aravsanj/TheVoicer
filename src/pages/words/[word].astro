@@ -1,7 +1,7 @@
 ---
 import Navbar from '../../components/Navbar.astro';
 import wordsData from '../../data/words.json';
-import { SOUND_META } from '../../data/soundMeta';
+import { SOUND_META } from '../../data/sounds';
 
 export function getStaticPaths() {
   return wordsData.map(w => ({ params: { word: w.word } }));
