@@ -10,10 +10,16 @@ interface Props {
   ipaOnly?: boolean;
   /** Custom display text (e.g. stress-capitalized "BLACKboard") — links to word page, no IPA/respelling */
   custom?: string;
+  /** Which IPA variant to display — "strong" uses strongIPA, "weak" uses weakIPA */
+  variant?: 'strong' | 'weak';
 }
 
-const { id, link = true, compact = false, ipaOnly = false, custom } = Astro.props;
+const { id, link = true, compact = false, ipaOnly = false, custom, variant } = Astro.props;
 const entry = wordsData.find(w => w.word === id);
+const e = entry as any;
+const displayIPA = variant === 'strong' ? (e?.strongIPA ?? entry?.ipa)
+                 : variant === 'weak'   ? (e?.weakIPA   ?? entry?.ipa)
+                 : entry?.ipa;
 ---
 
 {entry ? (
@@ -23,8 +29,8 @@ const entry = wordsData.find(w => w.word === id);
       : <span class="word-text">{custom}</span>
   ) : ipaOnly ? (
     link
-      ? <a href={`/words/${id}`} class="word-ipa-link"><span class="word-ipa-chip">{entry.ipa}</span></a>
-      : <span class="word-ipa-chip">{entry.ipa}</span>
+      ? <a href={`/words/${id}`} class="word-ipa-link"><span class="word-ipa-chip">{displayIPA}</span></a>
+      : <span class="word-ipa-chip">{displayIPA}</span>
   ) : compact ? (
     link
       ? <a href={`/words/${id}`} class="word-compact-link">{entry.word}</a>
@@ -35,7 +41,7 @@ const entry = wordsData.find(w => w.word === id);
         ? <a href={`/words/${id}`} class="word-link">{entry.word}</a>
         : <span class="word-text">{entry.word}</span>
       }
-      <span class="word-ipa">{entry.ipa}</span>
+      <span class="word-ipa">{displayIPA}</span>
       <span class="word-key">{entry.respelling}</span>
     </span>
   )

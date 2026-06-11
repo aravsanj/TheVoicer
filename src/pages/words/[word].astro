@@ -47,6 +47,8 @@ const hasVariantForms = Array.isArray(e.strongSounds) && Array.isArray(e.weakSou
       <section class="section">
         <h2 class="section-title">Sounds in this word</h2>
         {hasVariantForms ? (
+          <div>
+          <a href="/words/weak-vs-strong" class="variant-ref">See all weak &amp; strong forms ↗</a>
           <div class="variant-forms">
             <div class="form-block">
               <div class="form-header">
@@ -84,6 +86,7 @@ const hasVariantForms = Array.isArray(e.strongSounds) && Array.isArray(e.weakSou
                 })}
               </div>
             </div>
+          </div>
           </div>
         ) : (
           <div class="sound-chips">
@@ -218,6 +221,17 @@ const hasVariantForms = Array.isArray(e.strongSounds) && Array.isArray(e.weakSou
     border: none;
     padding: 0;
   }
+
+  .variant-ref {
+    display: inline-block;
+    font-size: 0.78rem;
+    font-weight: 500;
+    color: var(--color-muted);
+    text-decoration: none;
+    margin-bottom: 0.9rem;
+    transition: color 0.15s;
+  }
+  .variant-ref:hover { color: var(--color-accent-soft); text-decoration: none; }
 
   .variant-forms {
     display: flex;

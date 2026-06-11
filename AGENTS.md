@@ -93,6 +93,8 @@ Shared components live in `src/components/`:
 ## Component Rules
 
 - Never duplicate component markup or styles across pages. Extract shared UI (cards, grids, etc.) into `src/components/` and import it everywhere it's needed.
+- Always use `Sound.astro` to render a sound — never write inline IPA chips or sound label markup directly in a page.
+- Always use `Word.astro` to render a word — never write inline word links, IPA spans, or respelling badges directly in a page.
 
 ## Lesson Content Rules
 

@@ -1,0 +1,193 @@
+---
+import Navbar from '../../components/Navbar.astro';
+import Word from '../../components/Word.astro';
+import Sound from '../../components/Sound.astro';
+import wordsData from '../../data/words.json';
+
+type WordEntry = typeof wordsData[number] & {
+  strongIPA?: string;
+  weakIPA?: string;
+  strongSounds?: string[];
+  weakSounds?: string[];
+};
+
+const words = (wordsData as WordEntry[]).filter(
+  w => Array.isArray(w.strongSounds) && Array.isArray(w.weakSounds)
+);
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weak vs Strong Forms — TheVoicer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Lora:wght@600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/src/styles/global.css" />
+  </head>
+  <body>
+    <Navbar />
+    <main class="page">
+      <a href="/words" class="back-link">← All words</a>
+
+      <header class="page-header">
+        <h1 class="page-title">Weak vs Strong Forms</h1>
+        <p class="page-desc">
+          These {words.length} words have two pronunciation forms. The <strong>strong</strong> form is used when stressed or in isolation; the <strong>weak</strong> form is used in unstressed positions in connected speech.
+        </p>
+      </header>
+
+      <ul class="word-list">
+        {words.map(w => (
+          <li class="word-card">
+            <div class="word-card-header">
+              <Word id={w.word} compact />
+            </div>
+
+            <div class="variant-forms">
+              <div class="form-block strong-block">
+                <div class="form-header">
+                  <span class="form-label strong-label">Strong</span>
+                  <Word id={w.word} ipaOnly variant="strong" />
+                </div>
+                <div class="sound-row">
+                  {w.strongSounds!.map(s => <Sound id={s} compact />)}
+                </div>
+              </div>
+
+              <div class="form-block weak-block">
+                <div class="form-header">
+                  <span class="form-label weak-label">Weak</span>
+                  <Word id={w.word} ipaOnly variant="weak" />
+                </div>
+                <div class="sound-row">
+                  {w.weakSounds!.map(s => <Sound id={s} compact />)}
+                </div>
+              </div>
+            </div>
+          </li>
+        ))}
+      </ul>
+    </main>
+  </body>
+</html>
+
+<style>
+  .page {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 3rem 2rem 6rem;
+  }
+
+  .back-link {
+    display: inline-block;
+    font-size: 0.85rem;
+    color: var(--color-muted);
+    margin-bottom: 2rem;
+    text-decoration: none;
+  }
+  .back-link:hover { color: var(--color-accent-soft); }
+
+  .page-header {
+    margin-bottom: 3rem;
+  }
+
+  .page-title {
+    font-family: 'Lora', Georgia, serif;
+    font-size: 2.8rem;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: -0.02em;
+    margin-bottom: 1rem;
+  }
+
+  .page-desc {
+    font-size: 0.95rem;
+    color: var(--color-muted);
+    line-height: 1.7;
+    max-width: 580px;
+  }
+
+  .page-desc strong {
+    color: var(--color-text);
+    font-weight: 600;
+  }
+
+  .word-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  .word-card {
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+    padding: 1.25rem 1.4rem;
+    background: var(--color-surface);
+    transition: border-color 0.15s;
+  }
+  .word-card:hover { border-color: rgba(124, 106, 247, 0.4); }
+
+  .word-card-header {
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+  }
+
+  .variant-forms {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+  }
+
+  @media (max-width: 540px) {
+    .variant-forms { grid-template-columns: 1fr; }
+  }
+
+  .form-block {
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    padding: 0.85rem 1rem;
+  }
+
+  .strong-block { border-color: rgba(124, 106, 247, 0.3); }
+  .weak-block   { border-color: rgba(255, 255, 255, 0.08); }
+
+  .form-header {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .form-label {
+    font-size: 0.65rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    border-radius: 999px;
+    padding: 0.15rem 0.55rem;
+  }
+
+  .strong-label {
+    color: var(--color-accent);
+    background: rgba(124, 106, 247, 0.12);
+    border: 1px solid rgba(124, 106, 247, 0.25);
+  }
+
+  .weak-label {
+    color: var(--color-muted);
+    background: rgba(255,255,255,0.05);
+    border: 1px solid var(--color-border);
+  }
+
+  .sound-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+</style>
