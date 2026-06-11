@@ -74,4 +74,4 @@ For words ending in these sounds, the length difference is perceived through the
 | **rays** | Long         | Short /z/        | Voiced continuant ends the word    |
 | **go**   | Long         | (none)           | Word-final in sentence             |
 
-Paying attention to these length patterns, even subtly, will make your speech clearer and help you distinguish minimal pairs when listening.
+Paying attention to these length patterns, even subtly, will make your speech clearer and help you distinguish words like **cap/cab** and **race/rays** when listening.
