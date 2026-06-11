@@ -56498,11 +56498,11 @@
   },
   {
     "word": "abs",
-    "arpabet": "EY1 B IY1 EH1 S",
-    "stress": "111",
-    "respelling": "ay-bee-EHS",
-    "sounds": ["long-a", "b", "long-e", "short-e", "s"],
-    "ipa": "ˈeɪ.ˈbiː.ˈes"
+    "arpabet": "AE1 B Z",
+    "stress": "1",
+    "respelling": "ABZ",
+    "sounds": ["short-a", "b", "z"],
+    "ipa": "æbz"
   },
   {
     "word": "slovakia",
