@@ -48,7 +48,7 @@ const letters = Object.keys(byLetter).sort();
 
       <div id="letter-nav" class="letter-nav">
         {letters.map(l => (
-          <a href={`#letter-${l}`} class="letter-link">{l}</a>
+          <a href={`/words/start-with-${l.toLowerCase()}`} class="letter-link">{l}</a>
         ))}
       </div>
 
