@@ -6,20 +6,30 @@ interface Props {
   link?: boolean;
   /** Show only the IPA chip, no label — for use in table cells */
   compact?: boolean;
+  /** Show only the label text, no IPA chip */
+  labelOnly?: boolean;
 }
 
-const { id, link = true, compact = false } = Astro.props;
+const { id, link = true, compact = false, labelOnly = false } = Astro.props;
 const meta = SOUND_META[id];
 ---
 
 {meta ? (
-  <span class="sound-inline">
-    {link
-      ? <a href={`/sounds/${id}`} class="sound-link">{meta.ipa}</a>
-      : <span class="sound-ipa">{meta.ipa}</span>
-    }
-    {!compact && <span class="sound-label">{meta.label}</span>}
-  </span>
+  labelOnly ? (
+    link
+      ? <a href={`/sounds/${id}`} class="sound-label-link">{meta.label}</a>
+      : <span class="sound-label">{meta.label}</span>
+  ) : link ? (
+    <a href={`/sounds/${id}`} class="sound-inline sound-link-wrap">
+      <span class="sound-ipa">{meta.ipa}</span>
+      {!compact && <span class="sound-label">{meta.label}</span>}
+    </a>
+  ) : (
+    <span class="sound-inline">
+      <span class="sound-ipa">{meta.ipa}</span>
+      {!compact && <span class="sound-label">{meta.label}</span>}
+    </span>
+  )
 ) : (
   <code class="sound-missing">{id}</code>
 )}
@@ -32,8 +42,7 @@ const meta = SOUND_META[id];
     white-space: nowrap;
   }
 
-  .sound-ipa,
-  .sound-link {
+  .sound-ipa {
     font-family: var(--font-mono);
     font-size: 1em;
     color: var(--color-accent-soft);
@@ -41,13 +50,29 @@ const meta = SOUND_META[id];
     border: 1px solid rgba(124, 106, 247, 0.25);
     border-radius: 4px;
     padding: 0.05em 0.4em;
+  }
+
+  .sound-link-wrap {
     text-decoration: none;
   }
 
-  .sound-link:hover {
+  .sound-link-wrap:hover .sound-ipa {
     color: var(--color-accent);
     border-color: var(--color-accent);
+  }
+
+  .sound-link-wrap:hover .sound-label {
+    color: var(--color-text);
+  }
+
+  .sound-label-link {
+    color: var(--color-muted);
     text-decoration: none;
+    font-size: 0.85em;
+  }
+
+  .sound-label-link:hover {
+    color: var(--color-text);
   }
 
   .sound-label {

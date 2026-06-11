@@ -6,6 +6,8 @@ order: 3
 tags: ["spelling", "phonics", "phonetics", "American English"]
 ---
 
+import Sound from '../../components/Sound.astro';
+
 ## The Key Idea
 
 Letters and sounds are not the same thing. When you read a word, count the **letters**. When you say a word, count the **sounds**. Those two numbers often disagree. Sometimes a word has more letters than sounds: silent letters and digraphs don't each need their own slot. Other times it has more sounds than letters: a single letter can produce two sounds.
@@ -32,14 +34,14 @@ A silent letter is written but produces no sound. It adds to the letter count wi
 
 A digraph is a pair of letters that together represent a single sound. The letter count is 2, the sound count is 1.
 
-| Letters | Sound    | Phoneme | Example | IPA    |
-| ------- | -------- | ------- | ------- | ------ |
-| sh      | sh-sound | /ʃ/     | ship    | /ʃɪp/  |
-| ch      | ch-sound | /tʃ/    | chip    | /tʃɪp/ |
-| th      | th-sound | /θ/     | think   | /θɪŋk/ |
-| ph      | f-sound  | /f/     | phone   | /foʊn/ |
-| ng      | ng-sound | /ŋ/     | ring    | /rɪŋ/  |
-| ck      | k-sound  | /k/     | back    | /bæk/  |
+| Letters | Sound                           | Phoneme | Example | IPA    |
+| ------- | ------------------------------- | ------- | ------- | ------ |
+| sh      | <Sound id="sh" labelOnly />     | /ʃ/     | ship    | /ʃɪp/  |
+| ch      | <Sound id="ch" labelOnly />     | /tʃ/    | chip    | /tʃɪp/ |
+| th      | <Sound id="th" labelOnly />     | /θ/     | think   | /θɪŋk/ |
+| ph      | <Sound id="f" labelOnly />      | /f/     | phone   | /foʊn/ |
+| ng      | <Sound id="ng" labelOnly />     | /ŋ/     | ring    | /rɪŋ/  |
+| ck      | <Sound id="k" labelOnly />      | /k/     | back    | /bæk/  |
 
 #### Example: _ship_
 
