@@ -14,16 +14,18 @@ for (const word of wordsData) {
   }
 }
 
-const sounds = Object.entries(soundCounts).map(([sound, count]) => ({
+const sounds = Object.entries(SOUND_META).map(([sound, meta]) => ({
   sound,
-  count,
-  meta: SOUND_META[sound] ?? { label: sound, ipa: '?', example: '', group: 'Other', desc: '' },
+  count: soundCounts[sound] ?? 0,
+  meta,
 }));
 
 const byGroup = GROUP_ORDER.map(group => ({
   group,
   items: sounds.filter(s => s.meta.group === group),
 })).filter(g => g.items.length > 0);
+
+let globalIndex = 0;
 ---
 
 <!doctype html>
@@ -51,16 +53,19 @@ const byGroup = GROUP_ORDER.map(group => ({
 
       {byGroup.map(({ group, items }) => (
         <section class="sound-group">
-          <h2 class="group-title">{group}</h2>
+          <h2 class="group-title">{group} <span class="group-count">{items.length}</span></h2>
           <div class="sounds-grid">
-            {items.map(({ sound, count, meta }) => (
-              <a href={`/sounds/${sound}`} class="sound-card">
-                <div class="ipa">{meta.ipa}</div>
-                <div class="card-label">{meta.label}</div>
-                <div class="card-example">as in <em>{meta.example}</em></div>
-                <div class="card-count">{count.toLocaleString()} words</div>
-              </a>
-            ))}
+            {items.map(({ sound, count, meta }) => {
+              globalIndex += 1;
+              return (
+                <a href={`/sounds/${sound}`} class="sound-card">
+                  <div class="ipa">{meta.ipa}</div>
+                  <div class="card-label"><span class="card-num">{globalIndex}.</span> {meta.label}</div>
+                  <div class="card-example">as in <em>{meta.example}</em></div>
+                  <div class="card-count">{count > 0 ? `${count.toLocaleString()} words` : 'no examples yet'}</div>
+                </a>
+              );
+            })}
           </div>
         </section>
       ))}
@@ -126,6 +131,14 @@ const byGroup = GROUP_ORDER.map(group => ({
     padding: 0;
   }
 
+  .group-count {
+    font-family: var(--font-mono);
+    font-weight: 400;
+    letter-spacing: 0;
+    text-transform: none;
+    opacity: 0.6;
+  }
+
   .sounds-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
@@ -163,6 +176,13 @@ const byGroup = GROUP_ORDER.map(group => ({
     font-size: 0.95rem;
     font-weight: 600;
     color: var(--color-text);
+  }
+
+  .card-num {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    color: var(--color-muted);
+    font-weight: 400;
   }
 
   .card-example {
