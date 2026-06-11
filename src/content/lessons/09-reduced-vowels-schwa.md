@@ -85,4 +85,6 @@ The word's stress shifted, and so did its entire vowel pattern. This is one of t
 
 ## Ear Training
 
+This same reduction applies to function words in connected speech. See [Content Words and Function Words](/lessons/content-words-function-words) for how stress patterns shape sentence rhythm.
+
 Listen for schwa in unstressed syllables. When you hear fluent English, most of the "quiet" syllables are schwas. Recognizing them helps you understand fast speech, speak with better rhythm, and predict stress patterns in new words.
